@@ -74,3 +74,8 @@ work/
 
 # Librerias de Borland (cualquier capitalizacion)
 *.[Ll][Ii][Bb]
+
+# Material de Borland (cualquier capitalizacion)
+*.[Pp][Dd][Ff]
+*.[Hh][Ll][Pp]
+*.[Aa][Vv][Ii]
