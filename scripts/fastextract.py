@@ -1,8 +1,8 @@
 import csv, os, sys, time, shutil, subprocess, threading, queue, collections
-ROOT = os.getcwd(); OUT = os.path.join(ROOT, 'Extraccion_UNPAQ'); N = int(sys.argv[1]) if len(sys.argv) > 1 else 8
+ROOT = os.getcwd(); OUT = os.path.join(ROOT, 'work/Extraccion_UNPAQ'); N = int(sys.argv[1]) if len(sys.argv) > 1 else 8
 BASE = '/tmp/uq'; UNPAQ = BASE + '/UNPAQ.EXE'
 jobs = collections.OrderedDict()
-for r in csv.DictReader(open('pak_manifest.csv', encoding='latin1')):
+for r in csv.DictReader(open('metadata/pak_manifest.csv', encoding='latin1')):
     if r['archivo'].startswith('<<'): continue
     jobs.setdefault(r['pak'], []).append((r['archivo'], int(r['tam_orig'])))
 lock = threading.Lock(); stats = collections.Counter(); logf = open(OUT + '_log.txt', 'a')
@@ -59,7 +59,7 @@ class Worker:
         while True:
             try: pak, files = q.get_nowait()
             except queue.Empty: break
-            rel = os.path.splitext(pak.split('Contenedores_Binarios_MME/')[1])[0]; dest = os.path.join(OUT, rel)
+            rel = os.path.splitext(pak.split('work/Contenedores_Binarios_MME/')[1])[0]; dest = os.path.join(OUT, rel)
             if os.path.isdir(dest) and verify(dest, files): stats['saltado'] += 1; continue
             tmo = 8 + sum(x[1] for x in files) / 2e5; res = 'FALLO'
             for intento in (1, 2):

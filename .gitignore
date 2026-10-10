@@ -68,3 +68,6 @@ tools/qdec_*
 *.[Ss][Nn][Pp]
 *.[Dd][Aa][Tt]
 Extraccion_UNPAQ_log.txt
+
+# Material generado/local
+work/

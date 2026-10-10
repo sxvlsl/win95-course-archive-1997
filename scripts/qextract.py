@@ -1,6 +1,6 @@
 import struct, glob, os, subprocess, sys, csv
-OUT = 'Extraccion_PAK'; rows = []; ok = fail = skip = 0
-for p in sorted(glob.glob('Contenedores_Binarios_MME/**/*', recursive=True)):
+OUT = 'work/Extraccion_PAK'; rows = []; ok = fail = skip = 0
+for p in sorted(glob.glob('work/Contenedores_Binarios_MME/**/*', recursive=True)):
     if not (os.path.isfile(p) and p.lower().endswith('.pak')): continue
     d = open(p, 'rb').read()
     if d[:3] != b'DS\x00':
@@ -12,7 +12,7 @@ for p in sorted(glob.glob('Contenedores_Binarios_MME/**/*', recursive=True)):
         sz, tm, dt = struct.unpack_from('<IHH', d, o); o += 8
         ents.append((name, sz, tm, dt))
     tot = sum(e[1] for e in ents)
-    dest = os.path.join(OUT, os.path.splitext(p[len('Contenedores_Binarios_MME/'):])[0])
+    dest = os.path.join(OUT, os.path.splitext(p[len('work/Contenedores_Binarios_MME/'):])[0])
     os.makedirs(dest, exist_ok=True); tmp = dest + '/_stream.bin'
     r = subprocess.run(['tools/qdec', p, str(o), str(wb), str(tot), tmp], capture_output=True)
     s = open(tmp, 'rb').read() if os.path.exists(tmp) else b''
@@ -24,5 +24,5 @@ for p in sorted(glob.glob('Contenedores_Binarios_MME/**/*', recursive=True)):
         pos += sz
         rows.append((p, name, sz, wb, 'OK' if good else 'FALLO rc=%d got=%d' % (r.returncode, len(s))))
     ok += good; fail += (not good)
-w = csv.writer(open('extraccion_resultado.csv', 'w')); w.writerow(['pak','archivo','tam','wbits','estado']); w.writerows(rows)
+w = csv.writer(open('metadata/extraccion_resultado.csv', 'w')); w.writerow(['pak','archivo','tam','wbits','estado']); w.writerows(rows)
 print('PAK ok:', ok, '| fallo:', fail, '| LHA omitidos:', skip)

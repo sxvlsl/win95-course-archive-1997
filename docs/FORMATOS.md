@@ -30,7 +30,7 @@ El flujo comprimido empieza justo tras la tabla (en `CALC.PAK`, offset 79).
 
 Decodificación: el decodificador Quantum de libmspack (variante CAB) solo
 decodifica parte del flujo; el framing de `.Q` difiere y no está resuelto.
-Los experimentos están en `qextract.py` y `tools/` (aparcados).
+Los experimentos están en `scripts/qextract.py` y `tools/` (aparcados).
 
 ## Contenedores `.PAK` de Turbo Assembler (LHA)
 
@@ -38,7 +38,7 @@ Son archivos LHA `-lh5-`: `7z x -tlzh fichero.PAK`.
 
 ## Método de extracción de los PAK de C++
 
-`fastextract.py` ejecuta `UNPAQ.EXE` bajo Wine + Xvfb + xdotool:
+`scripts/fastextract.py` ejecuta `UNPAQ.EXE` bajo Wine + Xvfb + xdotool:
 
 - 8 workers en paralelo, cada uno con su Xvfb (`:110+n`) y su `WINEPREFIX`.
 - Wine se reinicia tras cada PAK (UNPAQ no admite reutilización).
@@ -52,13 +52,13 @@ Son archivos LHA `-lh5-`: `7z x -tlzh fichero.PAK`.
   instalada en `CW95_*`, 362 existen solo dentro de PAK, y 4 aparentes
   discrepancias eran falsos positivos (se comparó contra una sola copia; al
   comparar contra todas las del mismo nombre coinciden).
-- TASM: 209 ficheros, todos idénticos (`verify_tasm.py`).
-- Tamaños por fichero contrastados con `pak_manifest.csv` (1937 entradas).
-- Hashes: `MANIFEST_isos.sha256` (13 ISOs) y `MANIFEST_extraidos.sha256`.
+- TASM: 209 ficheros, todos idénticos (`scripts/verify_tasm.py`).
+- Tamaños por fichero contrastados con `metadata/pak_manifest.csv` (1937 entradas).
+- Hashes: `metadata/MANIFEST_isos.sha256` (13 ISOs) y `metadata/MANIFEST_extraidos.sha256`.
 
 ## Reproducir
 
-    python3 pak_manifest.py     # manifiesto de cabeceras
-    python3 fastextract.py      # extracción C++ (Wine, Xvfb, xdotool)
-    python3 verify_tasm.py      # verificación TASM
-    sha256sum -c MANIFEST_extraidos.sha256
+    python3 scripts/pak_manifest.py     # manifiesto de cabeceras
+    python3 scripts/fastextract.py      # extracción C++ (Wine, Xvfb, xdotool)
+    python3 scripts/verify_tasm.py      # verificación TASM
+    sha256sum -c metadata/MANIFEST_extraidos.sha256

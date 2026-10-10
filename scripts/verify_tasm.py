@@ -1,9 +1,9 @@
 import os, glob, subprocess, tempfile, hashlib, collections
 h = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest()
 c = collections.Counter(); problemas = []
-for pak in sorted(glob.glob('Contenedores_Binarios_MME/CW95_Turbo_Assembler_*/**/*.PAK', recursive=True)):
-    rel = os.path.splitext(pak[len('Contenedores_Binarios_MME/'):])[0]
-    dest = os.path.join('Herramientas_Borland_Extraidas', rel)
+for pak in sorted(glob.glob('work/Contenedores_Binarios_MME/CW95_Turbo_Assembler_*/**/*.PAK', recursive=True)):
+    rel = os.path.splitext(pak[len('work/Contenedores_Binarios_MME/'):])[0]
+    dest = os.path.join('work/Herramientas_Borland_Extraidas', rel)
     with tempfile.TemporaryDirectory() as t:
         r = subprocess.run(['7z', 'x', '-y', '-tlzh', '-o' + t, pak], capture_output=True, text=True)
         if r.returncode != 0:
