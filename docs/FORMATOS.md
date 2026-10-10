@@ -61,4 +61,4 @@ Son archivos LHA `-lh5-`: `7z x -tlzh fichero.PAK`.
     python3 scripts/pak_manifest.py     # manifiesto de cabeceras
     python3 scripts/fastextract.py      # extracción C++ (Wine, Xvfb, xdotool)
     python3 scripts/verify_tasm.py      # verificación TASM
-    sha256sum -c metadata/MANIFEST_extraidos.sha256
+    (cd work && sha256sum -c ../metadata/MANIFEST_extraidos.sha256)
