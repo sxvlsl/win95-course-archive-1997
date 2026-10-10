@@ -1,0 +1,47 @@
+Instructions for the IDE example SRCPOOL.IDE.
+//
+// Instructions for SrcPool.IDE
+// Copyright Borland International, 1994
+//
+
+This project demonstrates the use of the "reference copy" feature on a
+simple SourcePool.
+
+NOTE: The example here assumes that you've looked at the example in the
+'MultiTrg' directory and are familiar with creating several targets in a
+single project and how to set local options on a target node.
+
+SourcePools are abstract containers that can hold dependencies. They can
+be moved, copied, or reference copied to targets in a project. When copied,
+SourcePools take on the options and target attributes of the context in which
+they are copied. When the project 'make' facility checks dependencies or 
+builds a response table for the linker and librarian, the SourcePool itself
+becomes invisble. The nodes referenced by the SourcePool are seen as direct
+dependencies of the target.
+
+'Reference copying' allows one node (and all of it's dependencies) to be
+referenced in many different places within the Project Tree. In this
+example the SourcePool is reference copied to two different targets.
+In a reference copy, all referenced copies are automatically updated
+whenever you add, delete, or modify the original SourcePool nodes.
+
+To create a SourcePool in an existing project:
+1) Select Project|New Target from the main menu
+2) Type a Target Name
+3) Select 'SourcePool' from the Target Type list
+4) Press OK to confirm your settings and create a SourcePool node
+5) Select that node in the Project window
+6) Press the Insert key to access the Add Item dialog box
+7) Select the files you want to add to the Source Pool
+8) Press OK to confirm your selections and add the dependencies under
+	 the SourcePool node
+
+Once you've created a SourcePool node and added dependencies, you can
+copy the node by reference to anywhere in your project:
+- While holding down the Alt key, drag the SourcePool node to
+- the target node where the Source Pool is needed.
+
+More advanced uses of SourcePools includes nesting them. This allow you to 
+logically group source files in your project without changing their location
+on disk. All nested SourcePools are 'flattened' during a 'make' or 'build' 
+of the target, as mentioned above.

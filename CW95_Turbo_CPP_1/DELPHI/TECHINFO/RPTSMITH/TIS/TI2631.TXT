@@ -1,0 +1,87 @@
+  PRODUCT  :  ReportSmith                                                                          NUMBER  :  2631
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       
+
+    TITLE  :  Conditionally Counting a Field
+
+
+
+Intended Audience:   All Users
+
+Prerequisites:     How to edit a macro, How to use derived fields
+
+Purpose:    Demonstrates how to count a field based on a macro defined condition
+
+Introduction:    This TI contains code for macro derived fields which count the values in a column if a condition exists.
+In these examples, the number of times that the value of the "EMPLYEE_ID" field equals "E2-30" is counted.  If there is a group break in your report, use Macro Derived Field #2 and Replace "GROUP"
+with the name of the field that is grouped.
+ 
+Note:     If you want this value to appear in a footer and not
+          as a column in your report, delete this column off 
+          the screen by selecting it with the mouse, then 
+          pressing the delete key.  From the "Insert" menu, 
+          select "Field", drop down the list box and select 
+          "Derived Fields", highlight the field and click
+          insert, drop the field in the footer.
+ 
+ 
+Macro Derived Field #1 - For use in a report with no group 
+breaks.
+ 
+Sub cond_count()
+While Current() >1
+   If (Field$("EMPLYEE_ID") = "E3-25") Then TOTAL = TOTAL + 1
+   GetPrevious
+Wend
+If (Current() = 1  AND Field$("EMPLYEE_ID") = "E3-25") Then TOTAL = TOTAL + 1 
+DerivedField Str$(TOTAL)  
+End Sub
+ 
+ 
+Macro Derived Field #2 - For use in a report with a group 
+break.
+ 
+Sub cond_count()
+ 
+Group$ = Field$("GROUP")
+ 
+while (Group$ = Field$("GROUP") AND current() >1)
+   if Field$("TEST") = "Example" then TOTAL = TOTAL + 1
+   GetPrevious
+wend
+ 
+If (Group$ = Field$("GROUP") AND Current() = 1) then
+   TOTAL = TOTAL + 1 
+end if
+ 
+DerivedField Str$(TOTAL) 
+ 
+End Sub
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

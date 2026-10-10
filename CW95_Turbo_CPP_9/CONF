@@ -1,0 +1,95 @@
+[IIC]
+InternalDesc=TURBOC
+
+[PRODUCTO]
+Nombre=Turbo C++
+NumFicheros=26
+NumDiscos=10
+DiscoActual=9
+ConfirmReins=1
+DelFirstline=1
+Espacio=10000000
+Bitmap=MME_INS.BMP
+
+[PROGS]
+\tcwin45
+tcwin45\install.txt
+tcwin45\readme.txt
+tcwin45\unpaq.exe
+\tcwin45\bin
+tcwin45\bin\bcpp.hlx
+tcwin45\bin\bcpp.hlp
+tcwin45\bin\help.ico
+tcwin45\bin\classlib.hlx
+tcwin45\bin\classlib.hlp
+tcwin45\bin\helpref.hlx
+tcwin45\bin\cwh.hlx
+tcwin45\bin\helpref.hlp
+tcwin45\bin\helpex.hlp
+tcwin45\bin\cwh.hlp
+tcwin45\bin\openhelp.hlx
+tcwin45\bin\openhelp.hlp
+tcwin45\bin\ptui.dll
+tcwin45\bin\bc45book.dll
+\tcwin45\doc
+tcwin45\doc\rescan.wri
+tcwin45\doc\owldoc.wri
+tcwin45\doc\bivbx.wri
+tcwin45\doc\utils.txt
+tcwin45\doc\rwini.txt
+tcwin45\doc\ole_errs.txt
+tcwin45\doc\intldemo.txt
+tcwin45\doc\easywin.txt
+tcwin45\doc\compat.txt
+tcwin45\doc\helpme.wri
+
+[INI]
++openhelp.ini
+
+:HelpFiles
+File10=#:\TCWIN45\BIN\BCPP.HLP
+File11=#:\TCWIN45\BIN\CLASSLIB.HLP
+
+:HLXFiles
+HLX10=#:\TCWIN45\BIN\BCPP.HLX
+HLX11=#:\TCWIN45\BIN\CLASSLIB.HLX
+
+:HelpTitles
+TITLE10=Programming Tips Help
+TITLE11=Class Library Reference
+
+:Count
+!HelpFiles=12
+
+:TCWIN 4.5
+!Descriptor=111111111111
+
+[GRUPO]
+-TCW.GRP "Turbo C++ 4.5"
+\tcwin45\bin
+tcw.exe Turbo C++
+workshop.exe Resource Workshop
+openhelp.exe OpenHelp
+ohelpcfg.exe OpenHelp Configuration
+ole.hlp OLE2 Online Help
+winsight.exe Winsight
+winspctr.exe Winspector
+fconvert.exe File Convert
+ctl3d.hlp Control 3D Reference
+owl.hlp ObjectWindows Reference
+bcw.hlp TCW and Library Reference
+win31wh.hlp Windows API Reference
+ocf.hlp ObjectComponent Reference
+workhelp.hlp Resource Workshop Reference
+rsl.hlp Resource Script Reference
+winsight.hlp Winsight Reference
+winspctr.hlp Winspector Reference
+bwcc.hlp Borland Custom Controls
+bcpp.hlp Programming Tips
+classlib.hlp Class Library Reference
+cwh.hlp Creating Help
+
+[SISTEMA]
+
+[EXTERNO]
+

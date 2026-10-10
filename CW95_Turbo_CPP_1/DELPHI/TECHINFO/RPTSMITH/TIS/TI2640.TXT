@@ -1,0 +1,47 @@
+PRODUCT  :  ReportSmith                                                      NUMBER  :  2640
+VERSION  :  ALL
+OS       :  ALL
+DATE     :  May 23, 1995               	                                     
+TITLE    :  Suppressing a Null Field (Field Squeezing)
+
+
+
+Intended Audience:   All Users
+
+Prerequisites:   How to add a derived field, How to edit a macro, How to insert a field
+
+Purpose:    The following macro example demonstrates how to suppress a null data field by using a macro derived field
+
+Introduction:    This TI covers the concatenation of fields which may or may not have data through the example of a
+macro derived field which prepares address information for a report.  In this example, addresses may have two or
+three lines of information depending on whether or not information is available for the address.  If there is no
+company name, the macro will not include a blank line for the missing information, moving the other address
+information up.  This example macro is used with the sample CUSTOMER table.
+
+Steps:
+Add the CUSTOMER table to a Label Report.
+Add a Macro Derived Field and name the derived field and the macro it is based on "TheAddress."
+Edit the macro to look like the following:
+
+Sub TheAddress()
+If Field$("CONTACT_FN") > "" Then Address$ = Field$("CONTACT_FN") + Chr(10)
+If Field$("CSTMR_NAME") > "" Then Address$ = Address$ + Field$("CSTMR_NAME") + Chr(10)
+If Field$("ADDRESS") > "" Then Address$ = Address$ + Field$("ADDRESS") + Chr(10)
+Address$ = Address$ + Field$("CITY") + ", " + Field$("STATE") + "  " + Field$("ZIP")
+DerivedField Address$
+End Sub
+
+Choose Insert | Field and drop the macro derived field in one of the labels.
+Finally, select the new macro derived field, click the right-mouse button, select "Field Height", and check "Can
+Grow."
+
+Explanation:    In the first three lines of the macro, each field is checked for a value.  If the field has a value,
+it is added (with a linefeed character) to the "Address$" string.  If the field does not have a value, it is ignored
+and the next field is checked.  The forth line concatenates the "CITY", "STATE", and "ZIP" fields on the bottom, and
+the last line returns the value of the "Address$" variable to the report.  This demonstrates how one macro derived
+field can manipulate data from many fields at once, and rearrange them for display.
+
+
+ 
+DISCLAIMER: You have the right to use this technical information subject to the terms of the No-Nonsense License
+Statement that you received with the Borland product to which this information pertains.

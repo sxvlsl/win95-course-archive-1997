@@ -1,0 +1,60 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2626
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 1, 1994                        PAGE  :  1/1
+
+    TITLE  :  Date Calculation
+
+
+
+
+Date Calculation
+ 
+The following macro example shows how to add days to a date field.
+ 
+ 
+Sub add2date()
+ 
+'Return a Julian Date
+Jdate = Str2Date(Date$,1)
+ 
+'Add 21 Days
+Plus21Days = Jdate + 21
+ 
+'Convert the date back to a string
+NewDate$ = Date2Str$(Plus21Days,3)
+ 
+DerivedField NewDate$
+ 
+End Sub
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

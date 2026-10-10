@@ -1,0 +1,45 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2637
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  1/1
+
+    TITLE  :  Selection Criteria based upon a Summary Field
+
+
+
+
+Selecting by Summary Values 
+
+At this time, we cannot use ReportSmith summaries in the 
+selection criteria. The following shows how to limit a query 
+according to a summary value.
+
+In the "selections" dialog box enter the following:
+
+date_field = (select MAX(date_field) from table_name)
+
+table_name being the table that date_field comes from. This 
+will compare the date field against the maximum value of the 
+date field, giving a result set of the most current data.
+
+In order to select according to a summary value per group, 
+simply add a group by to the end of the sub-select.
+
+date_field = (select MAX(date_field) from table_name group 
+by group_field)
+
+
+Note:     This will only work for databases which support 
+          sub-selects. At this time, ODBC does not.
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

@@ -1,0 +1,727 @@
+/*******************************************************************************
+***********  A Delphi Application Installation Using InstallShield3  ***********
+********************************************************************************
+THIS TEMPLATE FOR INSTALLING DELPHI APPLICATIONS IS PROVIDED BY INSTALLSHIELD
+CORPORATION.  PLEASE DO NOT CONTACT BORLAND OR BORLAND TECHNICAL SUPPORT WITH
+QUESTIONS REGARDING THIS TEMPLATE.
+
+PLEASE CONTACT INSTALLSHIELD CORPORATION ONLY. INSTALLSHIELD TECHNICAL SUPPORT
+WILL BE PLEASED TO HELP YOU WITH ANY QUESTIONS RELATED TO INSTALLATION OF
+DELPHI APPLICATIONS.
+
+This InstallShield3 template provides an easy-to-customize installation for
+Delphi applications. The template shows how to install a Delphi application,
+plus it contains the basis for extending the installation to install the Borland
+Database Engine (BDE) and Local InterBase Server (LIBS).  The template can also
+be easily extended to include Borland ReportSmith runtime files.
+
+This template consists of this README.TXT file and the installation SETUP.RUL
+file.
+
+********************************************************************************
+************************  Requirements and Information  ************************
+
+This Delphi application installation template is an InstallShield installation
+script and therefore requires InstallShield to compile and run.
+
+InstallShield is the world's leading installation creation software, providing
+unmatched power and versatility to installations.
+
+To obtain a copy of InstallShield, contact InstallShield Corporation at:
+
+Internet:               info@installshield.com
+
+Fax:                    (708) 240-9120
+
+Phone:                  708-619-7013
+                        708-619-7012
+
+Mail:                   InstallShield Corporation
+                        1100 Woodfield Road
+                        Suite 108, Schaumburg, IL 60173-9946
+                        USA
+
+World Wide Web:         http://www.installshield.com
+                        (available October 1995)
+
+If you have technical questions about the installation, or about Borland
+Delphi-related products as they relate to this installation template, contact
+InstallShield Technical Support at the following e-mail address, and specify
+Sanjay Shroff as the e-mail recipient:
+
+Internet:               sanjay@installshield.com
+
+NOTE: Do not contact Borland with questions related to this installation
+template.
+
+*/
+
+/*----------------------------------------------------------------------------*\
+ *
+ *  IIIIIII SSSSSS
+ *    II    SS                          InstallSHIELD (R)
+ *    II    SSSSSS          (c) 1990-1995, Stirling Technologies, Inc.
+ *    II        SS                     All Rights Reserved.
+ *  IIIIIII SSSSSS
+ *
+ *
+ *  This code is intended as a supplement to InstallSHIELD documentation
+ *  and is provided AS IS.
+ *
+ *
+ *    File Name:  SETUP.RUL
+ *
+ *  Description:  InstallShield 3
+ *                16-bit Delphi Application Installation Script.
+ *
+ *
+ *     Comments:  This template script performs a Delphi application
+ *                installation to a Windows 3.1 system. The installation
+ *                includes these components: Application Program, Database and
+ *                Driver files, Borland Database Engine, and Local InterBase
+ *                Server files. The script also adds Aliases and an ODBC driver,
+ *                and calls ODBC functions to add Data Source. With minor
+ *                changes, this template can be adapted to create new,
+ *                customized Delphi application installations.
+ *
+ *                Please contact InstallShield Technical Support via
+ *                Internet Email: sanjay@installshield.com with all your
+ *                questions related to installing Borland Delphi applications
+ *
+\*----------------------------------------------------------------------------*/
+
+declare
+
+// Constant declarations.
+#include "SdDialog.h"
+#define ITEM_BDE                "Borland DataBase Engine"
+#define ITEM_IBLOCAL            "Borland Local InterBase Server"
+#define ITEM_MYAPP              "Delphi Application"
+#define PROGRAM_FOLDER_NAME     "MyApp"
+#define EXTRA_BLOCKSPACE        200000
+
+#define APP_NAME                "Delphi Application"
+#define COMPANY_NAME            "SampleCompany"
+#define PRODUCT_NAME            "MyApp"
+#define PRODUCT_VERSION         "1.0"
+#define PRODUCT_KEY             "myapp.exe"
+#define DEINSTALL_KEY           "MyAppDeinstKey"
+
+// Define a spacing string for use in the ConstructInfoList function.
+#define STR_DEFTAB              "            "
+
+        // Variable declarations.
+        STRING svDir, szTitle, szMsg, szComponents;
+        STRING svFolder, svName, svCompany;
+        STRING szFileSet, szAppSharedDir, svUninstLogFile;
+        STRING szProgram, szInstallIBPath, szBDEPath;
+        NUMBER nResult, nType;
+        LIST listInfo;
+        BOOL bIsIBLOCALOld;
+
+        // User-defined function prototypes.
+        prototype DetermineComponentInfo( STRING );
+        prototype SetupScreen();
+        prototype ConstructInfoList( LIST );
+        prototype SetupFileTransfer( STRING, STRING );
+        prototype PerformFileTransfer( STRING );
+        prototype EnoughSpace( STRING, STRING, NUMBER );
+        prototype SetupFinish();
+        prototype InitializeIniForIB( BYREF STRING );
+        prototype InitialiazeIniForIDAPI( BYREF STRING );
+
+program
+
+StartHere:
+
+        Disable( BACKGROUND );
+
+        // Set installation info, which is required for registry entries.
+        InstallationInfo( COMPANY_NAME, PRODUCT_NAME, PRODUCT_VERSION, PRODUCT_KEY );
+
+        // Set up the installation screen. Enable dialog caching to avoid
+        // flicker between dialogs.
+        SetupScreen();
+        Enable( DIALOGCACHE );
+
+WelcomeDlg:
+
+        Disable( BACKBUTTON );
+
+        // Welcome the user.
+        SdProductName( "Delphi Application" );
+        SdWelcome( "", "" );
+        Enable( BACKBUTTON );
+
+RegisterUserName:
+
+        // Register the user.
+        nResult = SdRegisterUser( "", "", svName, svCompany );
+        if ( nResult = BACK ) then goto WelcomeDlg; endif;
+
+GetComponet:
+
+        szComponents = "Delphi";
+
+        // Get component information.
+        DetermineComponentInfo( szComponents );
+
+GetTargetLocAndSelection:
+
+        // Get setup type (Typical, Compact, or Custom).
+        svDir = WINDISK ^ "MyApp";
+        nType = SdSetupType( "", "", svDir, STYLE_NORMAL );
+        StrRemoveLastSlash( svDir );
+
+
+        switch (nType)
+
+                // Select components for Typical and Compact setup types.
+                case TYPICAL:
+                        ComponentSelectItem( szComponents, ITEM_BDE ,TRUE );
+                        ComponentSelectItem( szComponents, ITEM_IBLOCAL , TRUE );
+                        ComponentSelectItem( szComponents, ITEM_MYAPP ,TRUE );
+
+                case COMPACT:
+                        ComponentSelectItem( szComponents, ITEM_BDE, FALSE );
+                        ComponentSelectItem( szComponents, ITEM_IBLOCAL, FALSE );
+                        ComponentSelectItem( szComponents, ITEM_MYAPP, TRUE );
+
+                // For Custom setup type, allow user to select components.
+                case CUSTOM:
+                        nResult = SdComponentDialog( "", "",
+                                                     svDir,
+                                                     szComponents );
+                        if ( nResult = BACK ) then
+                                goto GetTargetLocAndSelection; endif;
+
+                case BACK:
+                        goto RegisterUserName;
+
+                default:
+                        MessageBox( "Error selecting setup type. Exiting.", SEVERE );
+                        exit;
+        endswitch;
+
+        szAppSharedDir  = svDir ^ "System";
+
+        // Perform space check of target drive.
+        if (EnoughSpace( svDir,
+                         szComponents,
+                         EXTRA_BLOCKSPACE ) = FALSE) goto GetTargetLocAndSelection;
+
+
+
+GetProgramFolderInfo:
+
+        svFolder = PROGRAM_FOLDER_NAME;
+        nResult = SdSelectFolder( "", "", svFolder );
+        if ( nResult = BACK ) then
+                goto GetTargetLocAndSelection;
+        endif;
+
+
+SetupAndDecompFiles:
+
+        // Use the SdStartCopy dialog to inform users of the file copy
+        // operations about to take place and allow them to make changes.
+        listInfo = ListCreate( STRINGLIST );
+        ConstructInfoList( listInfo );
+
+        szMsg = "Setup has enough information to start copying the Delphi " +
+                "Application files. If you want to review or change any " +
+                "settings, click Back. If you are satisfied with the " +
+                "settings, click Next to begin copying files.";
+        if ( SdStartCopy( "", szMsg, listInfo ) = BACK ) then
+                ListDestroy( listInfo );
+                goto GetProgramFolderInfo;
+        endif;
+
+        ListDestroy( listInfo );
+
+        // Disable dialog caching because the series of same-sized dialogs
+        // is over and you don't want the last dialog to persist.
+        Disable( DIALOGCACHE );
+
+        // Enable the dialog style progress indicator and prepare file transfer.
+        Enable ( STATUSDLG );
+        szFileSet = "General";
+        SetupFileTransfer( szComponents, szFileSet );
+
+        // Prepare InstallShield to record uninstallation information.
+        DeinstallStart( svDir, svUninstLogFile, DEINSTALL_KEY, 0 );
+        RegDBSetItem( REGDB_UNINSTALL_NAME, PRODUCT_NAME );
+
+        // Set WIN.INI file settings for IBLOCAL.
+        if(ComponentIsItemSelected(szComponents, ITEM_IBLOCAL)) then
+                InitializeIniForIB( szInstallIBPath );
+        endif;
+
+        if(ComponentIsItemSelected(szComponents, ITEM_BDE)) then
+                szBDEPath = svDir ^ "IDAPI";
+                InitialiazeIniForIDAPI( szBDEPath );
+        endif;
+
+        // Transfer files to the target system.
+        PerformFileTransfer( szFileSet );
+        Delay(2);
+        Disable( STATUSDLG );
+        Disable( FEEDBACK_FULL );
+
+
+// Create program folder and icons.
+CreateProgramIcons:
+
+        SetStatusWindow( 95, "Creating Program Group and Icons...." );
+
+        AppCommand( PROGMAN, CMD_RESTORE );
+
+        TARGETDIR = svDir;
+
+        CreateProgramFolder( svFolder );
+        ShowProgramFolder( svFolder, SW_SHOW );
+        Delay(1);
+
+        if (ComponentIsItemSelected( szComponents, ITEM_MYAPP )) then
+                szProgram = TARGETDIR ^ "PROJ\\MYAPP.EXE";
+
+                AddFolderIcon( svFolder, APP_NAME, szProgram,
+                               TARGETDIR ^ "PROJ",
+                               "", 0, "", REPLACE );
+                Delay( 1 );
+        endif;
+
+
+        szProgram = WINDIR ^ "UNINST16.EXE";
+        szProgram = szProgram + " -f" + svUninstLogFile;
+        AddFolderIcon( svFolder, "unInstallShield", szProgram,
+                       WINDIR,
+                       "", 0, "", REPLACE );
+        Delay( 1 );
+
+
+// Announce setup complete and offer to read README file.
+CloseOfInstall:
+
+        SetStatusWindow( 100, "Installation complete." );
+
+        SetupFinish();
+
+exit;
+
+/*---------------------------------------------------------------------------*\
+ *
+ * Function:  DetermineComponentInfo
+ *
+ *  Purpose:  This function will place all the separately identifiable
+ *            file components into a component list. It will also
+ *            set the total size of all the files and will by default
+ *            enable each to be selected.
+ *
+\*---------------------------------------------------------------------------*/
+
+function DetermineComponentInfo( szFileList )
+
+number nvSize;
+string svSize;
+
+begin
+
+        CompressInfo( "data.1", "BDE\\*.*",
+                      COMP_INFO_ORIGSIZE | INCLUDE_SUBDIR,
+                      nvSize, svSize );
+        ComponentAddItem( szFileList, ITEM_BDE, nvSize, TRUE );
+
+        CompressInfo( "data.1", "IBLOCAL\\*.*",
+                      COMP_INFO_ORIGSIZE | INCLUDE_SUBDIR,
+                      nvSize, svSize );
+        ComponentAddItem( szFileList, ITEM_IBLOCAL, nvSize, TRUE );
+
+        CompressInfo( "data.1", "MYAPP\\*.*",
+                      COMP_INFO_ORIGSIZE | INCLUDE_SUBDIR,
+                      nvSize, svSize );
+        ComponentAddItem( szFileList, ITEM_MYAPP, nvSize, TRUE );
+
+end;
+
+/*---------------------------------------------------------------------------*\
+ *
+ * Function:  SetupScreen
+ *
+ *  Purpose:  This function will set up the screen look.  This includes
+ *            colors, fonts, text to be displayed, etc.
+ *
+\*---------------------------------------------------------------------------*/
+
+function SetupScreen()
+
+string szBitmap;
+number nvDx, nvDy, nStatus, nDxBillboard, nDyBillboard;
+
+begin
+
+        GetExtents( nvDx, nvDy );
+
+        Enable( FULLWINDOWMODE );
+
+        Enable( INDVFILESTATUS );
+        Enable( BITMAP256COLORS );
+        Enable( DIALOGCACHE );
+
+        SetFont( FONT_TITLE, STYLE_BOLD, "MS Sans Serif" );
+        SetColor( BACKGROUND, BK_BLUE ); // Gradient blue background.
+        SetColor( STATUSBAR, BLUE );
+        SetTitle( "Setup", 0, BACKGROUNDCAPTION ); // Caption bar text.
+
+        // Display Your application Title
+        SetTitle("A Delphi Application Setup\n    " +
+                 "using InstallShield3", 24, YELLOW);
+
+        Enable( BACKGROUND );
+
+end;
+
+/*---------------------------------------------------------------------------*\
+ *
+ * Function:  ConstructInfoList
+ *
+ *  Purpose:  This function will construct a list of information for display
+ *            in the SdStartCopy dialog so the user can preview file copy
+ *            operations and make changes if desired.
+\*---------------------------------------------------------------------------*/
+
+function ConstructInfoList( listInfo )
+
+        STRING szItem;
+begin
+
+        ListAddString( listInfo, "SetupType", AFTER );
+
+        switch (nType)
+                case TYPICAL:
+                        ListAddString( listInfo, STR_DEFTAB + "TYPICAL", AFTER );
+                        szItem = STR_DEFTAB + STR_DEFTAB + ITEM_BDE;
+                        ListAddString( listInfo, szItem, AFTER );
+                        szItem = STR_DEFTAB + STR_DEFTAB + ITEM_IBLOCAL;
+                        ListAddString( listInfo, szItem, AFTER );
+                        szItem = STR_DEFTAB + STR_DEFTAB + ITEM_MYAPP;
+                        ListAddString( listInfo, szItem, AFTER );
+                case COMPACT:
+                        ListAddString( listInfo, STR_DEFTAB + "COMPACT", AFTER );
+                        szItem = STR_DEFTAB + STR_DEFTAB + ITEM_MYAPP;
+                        ListAddString( listInfo, szItem, AFTER );
+                case CUSTOM:
+                        ListAddString( listInfo, STR_DEFTAB + "CUSTOM", AFTER );
+                        if (ComponentIsItemSelected( szComponents, ITEM_BDE )) then
+                                szItem = STR_DEFTAB + STR_DEFTAB + ITEM_BDE;
+                                ListAddString( listInfo, szItem, AFTER );
+                        endif;
+                        if (ComponentIsItemSelected( szComponents, ITEM_IBLOCAL )) then
+                                szItem = STR_DEFTAB + STR_DEFTAB + ITEM_IBLOCAL;
+                                ListAddString( listInfo, szItem, AFTER );
+                        endif;
+                        if (ComponentIsItemSelected( szComponents, ITEM_MYAPP)) then
+                                szItem = STR_DEFTAB + STR_DEFTAB + ITEM_MYAPP;
+                                ListAddString( listInfo, szItem, AFTER );
+                        endif;
+        endswitch;
+
+        ListAddString( listInfo, "", AFTER );
+        ListAddString( listInfo, "Target Directory", AFTER );
+        ListAddString( listInfo, STR_DEFTAB + svDir, AFTER );
+
+        ListAddString( listInfo, "", AFTER );
+        ListAddString( listInfo, "Program Folder", AFTER );
+        ListAddString( listInfo, STR_DEFTAB + svFolder, AFTER );
+end;
+
+/*---------------------------------------------------------------------------*\
+ *
+ * Function:  SetupFileTransfer
+ *
+ *  Purpose:  This function defines the file set based on the user's choices
+ *            of components. Then, it performs the file set.
+ *
+\*---------------------------------------------------------------------------*/
+
+function SetupFileTransfer( szComponents, szFileSet )
+
+begin
+
+        // Define the file set.
+        TARGETDIR = svDir;
+
+        FileSetBeginDefine( szFileSet );
+
+                // Always include README files, located at the root of the
+                // DATA.Z library file.
+                SetStatusWindow( -1, "Copying README files..." );
+                TARGETDIR = svDir;
+                //CompressGet( "data.z", "*.*", COMP_NORMAL );
+
+                // If BDE files are selected, then add them to file set.
+                if (ComponentIsItemSelected( szComponents, ITEM_BDE )) then
+                        SetStatusWindow( -1, "Copying program files..." );
+                        TARGETDIR = svDir ^ "IDAPI";
+                        CompressGet( "data.z", "BDE\\*.*",
+                                     INCLUDE_SUBDIR | COMP_UPDATE_VERSION | SHAREDFILE );
+                endif;
+
+                // If Application files are selected, then add them to the file set.
+                if (ComponentIsItemSelected( szComponents, ITEM_MYAPP )) then
+                        SetStatusWindow( -1, "Copying sample files..." );
+                        TARGETDIR = svDir ^ "MYAPP" ^ "PROJ";
+                        CompressGet( "data.z", "MYAPP\\PROJ\\*.*", INCLUDE_SUBDIR );
+                        TARGETDIR = svDir ^ "MYAPP" ^ "DATA";
+                        CompressGet( "data.z", "MYAPP\\DATA\\*.*", INCLUDE_SUBDIR );
+                endif;
+
+                // If template files are selected, then add them to the file set.
+                if (ComponentIsItemSelected( szComponents, ITEM_IBLOCAL )) then
+                        SetStatusWindow( -1, "Copying template files..." );
+                        TARGETDIR = szInstallIBPath;
+                        CompressGet( "data.z", "IBLOCAL\\*.*",
+                                     COMP_UPDATE_DATE );
+                        TARGETDIR = szInstallIBPath ^ "BIN";
+                        CompressGet( "data.z", "IBLOCAL\\BIN\\*.*",
+                                     INCLUDE_SUBDIR | COMP_UPDATE_VERSION | SHAREDFILE );
+                endif;
+
+        FileSetEndDefine( szFileSet );
+
+end;
+
+/*---------------------------------------------------------------------------*\
+ *
+ * Function:  PerformFileTransfer
+ *
+ *  Purpose:  This function will perform the file transfer and handle
+ *            any error that may occur during the file transfer.
+ *
+\*---------------------------------------------------------------------------*/
+
+function PerformFileTransfer( szFileSet )
+
+STRING szTemp;
+
+begin
+
+        // Set up progress indicator and information gauge. Disable dialog caching.
+        Disable( DIALOGCACHE );
+
+        StatusUpdate( ON, 90 );
+
+        // Perform the file set.
+        nResult = FileSetPerformEz( szFileSet, 0 );
+
+        switch (nResult)
+                case FS_DONE: // Successful completion.
+
+                case FS_CREATEDIR: // Create directory error.
+                        MessageBox( "Unable to create a directory under " +
+                                    TARGETDIR + ". "+ "Please check write " +
+                                    "access to this directory.", SEVERE );
+                        exit;
+
+        default: // Group all other errors under the default label.
+                NumToStr( szTemp, nResult );
+                MessageBox( "General file transfer error. " +
+                            "Please check your target location and try again." +
+                            "\n\n Error Number:"+szTemp+"\nError File:" +
+                            ERRORFILENAME, SEVERE );
+                exit;
+        endswitch;
+
+end;
+
+/*---------------------------------------------------------------------------*\
+ *
+ * Function:  EnoughSpace
+ *
+ *  Purpose:  This function will determine if enough space exists on
+ *            the target drive based on the selection in the component
+ *            list.
+\*---------------------------------------------------------------------------*/
+
+function  EnoughSpace( svDir, szComponents, nExtraSpace )
+
+LIST    list;
+number  nTotal, nvSize, nFreeSpace, nResult;
+string  svComponent;
+
+begin
+
+        // Get total size of all selected components.
+        list   = ListCreate( STRINGLIST );
+        nTotal = nExtraSpace;
+        ComponentListItems( szComponents, list );
+
+        nResult = ListGetFirstString( list, svComponent );
+
+        while (nResult = 0)
+                ComponentGetItemSize( szComponents, svComponent, nvSize );
+                if (ComponentIsItemSelected( szComponents, svComponent )) then
+                        nTotal = nTotal + nvSize;
+                endif;
+                nResult = ListGetNextString( list, svComponent );
+        endwhile;
+
+        ListDestroy( list );
+
+        // Determine if target disk has enough space.
+        nFreeSpace = GetDiskSpace( svDir );
+
+        if (nFreeSpace < nTotal) then
+                szMsg = "There is not enough space available, %ld bytes, " +
+                        "on the disk\n'" + svDir + "'\n" +
+                        "Please free up some space or change the target " +
+                        "location\nto a different disk";
+                SprintfBox( WARNING, "Setup", szMsg, nTotal );
+                return FALSE;
+        endif;
+        return TRUE; // Enough space.
+
+end;
+
+/*---------------------------------------------------------------------------*\
+ *
+ * Function:  SetupFinish
+ *
+ *  Purpose:  This function will construct messages and info for showing
+ *            in the SdFinish dialog.
+ *
+\*---------------------------------------------------------------------------*/
+
+function SetupFinish()
+
+        string szMsg1, szMsg2;
+        string szReadme, szApp, szProgram, szParam;
+        BOOL   bReadme, bApp;
+
+begin
+
+        if (BATCH_INSTALL = TRUE) then
+                szMsg = "Some files could not be installed because they are " +
+                        "currently in use by other programs on the system.  " +
+                        "To complete Setup and allow the new program to " +
+                        "operate correctly, you should restart your system now.";
+                CommitSharedFiles(0);
+                RebootDialog( "", szMsg, SYS_BOOTWIN );
+        else
+                bReadme = FALSE;
+                bApp    = FALSE;
+
+                szMsg1 = "Setup is complete. You may run the installed program " +
+                         "by double-clicking the program icon installed.\n\n" +
+                         "Please view the contents of the README icon before " +
+                         "starting the program.";
+
+                szMsg2 = "Click Finish to complete Setup.";
+
+
+                bReadme = TRUE;
+                szReadme = "Yes, I want to view the README file now.";
+
+                szApp = "";
+                if (ComponentIsItemSelected( szComponents, ITEM_MYAPP )) then
+                        szApp = "Yes, I want to run Example 1 now.";
+                endif;
+
+                MessageBeep( 0 );
+                SdFinish( "", szMsg1, szMsg2, szReadme, szApp, bReadme, bApp );
+
+                if ( bReadme ) then
+                        szProgram = "NOTEPAD.EXE";
+                        szParam   = svDir ^ "README.TXT";
+                        LaunchAppAndWait( szProgram + " " + szParam, "", NOWAIT );
+                        Delay(2);
+                endif;
+
+                if ( bApp ) then
+                        szProgram = svDir ^ "MYAPP\\PROJ\\ANIMALS.EXE ";
+                        LaunchAppAndWait( szProgram, "", NOWAIT );
+                endif;
+        endif;
+
+end;
+
+/*---------------------------------------------------------------------------*\
+ *
+ * Function:  InitializeIniForIB
+ *
+ *  Purpose:  This function initializes the WIN.INI file to make appropriate
+ *            settings for Local InterBase Server.
+ *
+\*---------------------------------------------------------------------------*/
+function InitializeIniForIB( szInstallIBPath )
+
+        STRING szPath, svResult, szTemp;
+        BOOL bIsIBLOCALOld;
+
+begin
+
+        bIsIBLOCALOld = FALSE;
+        // Script to install.
+        szPath = WINDIR^"WIN.INI";
+        if ( GetProfString(szPath, "InterBase", "RootDirectory",
+                           svResult) < 0 ) then
+                szInstallIBPath = WINDISK ^ "iblocal";
+        else
+                bIsIBLOCALOld = TRUE;
+                szInstallIBPath = svResult;
+        endif;
+
+        ReplaceProfString(WINDIR^"WIN.INI", "InterBase", "RootDirectory",
+                          szInstallIBPath, szInstallIBPath);
+
+        szTemp = szInstallIBPath ^ "BIN";
+        StrRemoveLastSlash( szTemp );
+        EzBatchAddPath("PATH", szTemp, "", AFTER);
+end;
+
+/*---------------------------------------------------------------------------*\
+ *
+ * Function:  InitialiazeIniForIDAPI()
+ *
+ *  Purpose:  This function initializes the WIN.INI file to make appropriate
+ *            settings for IDAPI.
+ *
+\*---------------------------------------------------------------------------*/
+
+function InitialiazeIniForIDAPI( szBDEPath )
+
+STRING szPath, szLangDrvPath, svResult;
+STRING szOldPath, szNewPath;
+
+begin
+
+        // Set information on language drivers in the WIN.INI file.
+        szPath = WINDIR^"WIN.INI";
+        szLangDrvPath = szBDEPath ^ "LANGDRV";
+        if ( WriteProfString(szPath, "Borland Language Drivers",
+                             "LDPath", szLangDrvPath ) < 0 ) then
+                return FALSE;
+        endif;
+
+        // Set information on DLLPATH in the WIN.INI file.
+        // Get original DLL path and append new path to it.
+
+        if ( GetProfString( szPath, "IDAPI",
+                             "DLLPATH", szOldPath ) < 0 ) then
+                WriteProfString(szPath, "IDAPI",
+                                "DLLPATH", szBDEPath );
+
+        else
+                szNewPath = szOldPath + ";" + szBDEPath;
+                ReplaceProfString(szPath, "IDAPI", "DLLPATH",
+                                  szNewPath, szOldPath );
+        endif;
+
+        //Set path of CONFIGFILE01
+        WriteProfString( szPath, "IDAPI", "CONFIGFILE01",
+                         szBDEPath ^ "IDAPI.CFG" );
+
+end;
+
+#include "SdDialog.rul"
+

@@ -1,0 +1,273 @@
+ALPHABETIZED LIST OF PRODUCT FILES
+----------------------------------
+
+ACC       PAK (Disk2) - Contains the following compressed files:
+   RED110    DLL - MS ODBC 1.0 File - Access driver
+
+ACCHLP    PAK (Disk3) - Contains the following compressed files:
+   DRVACCSS  HLP - MS ODBC 1.0 File - Access help file
+
+BTRIV     PAK (Disk3) - Contains the following compressed files:
+   BTRV110   DLL - MS ODBC 1.0 File - Btrieve driver
+
+BTRIVHLP  PAK (Disk3) - Contains the following compressed files:
+   DRVBTRV   HLP - MS ODBC 1.0 File - Btrieve help file
+
+CTABSTY   PAK (Disk3) - Contains the following compressed files:
+   RCS0      RST - required ReportSmith file, crosstab styles
+   RCS1      RST - required ReportSmith file, crosstab styles
+   RCS2      RST - required ReportSmith file, crosstab styles
+   RCS3      RST - required ReportSmith file, crosstab styles
+   RCS4      RST - required ReportSmith file, crosstab styles
+   RCS5      RST - required ReportSmith file, crosstab styles
+   RCS6      RST - required ReportSmith file, crosstab styles
+   RCS7      RST - required ReportSmith file, crosstab styles
+   RCS8      RST - required ReportSmith file, crosstab styles
+   RSCTSFMT  RST - required ReportSmith file, crosstab styles
+
+DBASE     PAK (Disk3) - Contains the following compressed files:
+   DRVDBASE  HLP - MS ODBC 1.0 File, dBASE help file
+
+DBFP      PAK (Disk3) - Contains the following compressed files:
+   XBS110    DLL - MS ODBC 1.0 File - dBASE driver
+
+EXCEL     PAK (Disk3) - Contains the following compressed files:
+   XLSISAM   DLL - MS ODBC 1.0 File - Excel driver
+
+EXCHLP    PAK (Disk3) - Contains the following compressed files:
+   DRVEXCEL  HLP - MS ODBC 1.0 File - Excel help file
+
+FOXPRO    PAK (Disk3) - Contains the following compressed files:
+   DRVFOX    HLP - MS ODBC 1.0 file - FoxPro help file
+
+IDAPI     PAK (Disk3) - Contains the following compressed files:
+   BDECFG    EXE - Borland Database Engine Configuration Utility
+   IDAPI01   DLL - Borland Database Engine API DLL
+   IDASCI01  DLL - Borland Database Engine ASCII Driver DLL
+   IDBAT01   DLL - Borland Database Engine Batch Utilities DLL
+   IDDBAS01  DLL - Borland Database Engine dBASE Driver DLL
+   IDODBC01  DLL - Borland Database Engine ODBC Socket DLL
+   IDPDX01   DLL - Borland Database Engine Paradox Driver DLL
+   IDQRY01   DLL - Borland Database Engine Query DLL
+   IDR10009  DLL - Borland Database Engine Resources DLL
+   ILD01     DLL - Language Driver DLL
+
+IDAPICFG  PAK (Disk2) - Contains the following compressed files:
+   IDAPI     CNF - Borland Database Engine Configuration File
+
+IDAPIHLP  PAK (Disk2) - Contains the following compressed files:
+   BDECFG    HLP - Borland Database Engine Configuration Utility Help
+
+IDAPILD   PAK (Disk3) - Contains the following compressed files:
+   ANCHINA    LD - Paradox Windows Chinese language driver
+   ANCYRR     LD - Paradox Windows Cyrillic language driver
+   ANCZECH    LD - Paradox Windows Czech language driver
+   ANGREEK1   LD - Paradox Windows Greek language driver
+   ANHUNDC    LD - Paradox Windows Hungarian language driver
+   ANKOREA    LD - Paradox Windows Korean language driver
+   ANPOLISH   LD - Paradox Windows Polish language driver
+   ANSII850   LD - Paradox Windows Western European language driver
+   ANSIINTL   LD - Paradox Windows Western European language driver
+   ANSINOR4   LD - Paradox Windows Norwegian/Danish language driver
+   ANSISLOV   LD - Paradox Windows Slovene language driver
+   ANSISPAN   LD - Paradox Windows Spanish language driver
+   ANSISWFN   LD - Paradox Windows Swedish/Finnish language driver
+   ANTAIWAN   LD - Paradox Windows Taiwanese language driver
+   ANTHAI     LD - Paradox Windows Thai language driver
+   ANTURK     LD - Paradox Windows Turkish language driver
+   BLLT1CA0   LD - InterBase Latin-1 Canadian language driver
+   BLLT1DA0   LD - InterBase Latin-1 Danish language driver
+   BLLT1DE0   LD - InterBase Latin-1 German language driver
+   BLLT1ES0   LD - InterBase Latin-1 Spanish language driver
+   BLLT1FI0   LD - InterBase Latin-1 Finnish language driver
+   BLLT1FR0   LD - InterBase Latin-1 French language driver
+   BLLT1IS0   LD - InterBase Latin-1 Icelandic language driver
+   BLLT1IT0   LD - InterBase Latin-1 Italian language driver
+   BLLT1NL0   LD - InterBase Latin-1 Dutch language driver
+   BLLT1NO0   LD - InterBase Latin-1 Norwegian language driver
+   BLLT1PT0   LD - InterBase Latin-1 Portuguese language driver
+   BLLT1SV0   LD - InterBase Latin-1 Swedish language driver
+   BLLT1UK0   LD - InterBase Latin-1 English (International) language driver
+   BLLT1US0   LD - InterBase Latin-1 English (US) language driver
+   CHINA      LD - Paradox Chinese language driver
+   CSKAMEN    LD - Paradox Czech cp867 language driver
+   CYRR       LD - Paradox Cyrillic language driver
+   CZECH      LD - Paradox Czech cp852 language driver
+   DB437DE0   LD - dBASE German cp437 language driver
+   DB437ES1   LD - dBASE Spanish cp437 language driver
+   DB437FI0   LD - dBASE Finnish cp437 language driver
+   DB437FR0   LD - dBASE French cp437 language driver
+   DB437GR0   LD - dBASE Greek cp437 language driver
+   DB437IT0   LD - dBASE Italian cp437 language driver
+   DB437NL0   LD - dBASE Dutch cp437 language driver
+   DB437SV0   LD - dBASE Swedish cp437 language driver
+   DB437TH0   LD - dBASE Thai language driver
+   DB437UK0   LD - dBASE English cp437 language driver
+   DB850CF0   LD - dBASE Canadian cp850 language driver
+   DB850DE0   LD - dBASE German cp850 language driver
+   DB850ES0   LD - dBASE Spanish cp850 language driver
+   DB850FR0   LD - dBASE French cp850 language driver
+   DB850IT1   LD - dBASE Italian cp850 language driver
+   DB850NL0   LD - dBASE Dutch cp850 language driver
+   DB850PT0   LD - dBASE Portuguese cp850 language driver
+   DB850SV1   LD - dBASE Swedish cp850 language driver
+   DB850UK0   LD - dBASE English(International) cp850 language driver
+   DB850US0   LD - dBASE English(US) cp850 language driver
+   DB852CZ0   LD - dBASE Czech cp852 language driver
+   DB852HDC   LD - dBASE Hungarian cp852 language driver
+   DB852PO0   LD - dBASE Polish cp852 language driver
+   DB852SL0   LD - dBASE Slovene cp852 language driver
+   DB857TR0   LD - dBASE Turkish cp857 language driver
+   DB860PT0   LD - dBASE Portuguese cp860 language driver
+   DB863CF1   LD - dBASE Canadian cp863 language driver
+   DB865DA0   LD - dBASE Danish cp865 language driver
+   DB865NO0   LD - dBASE Norwegian cp865 language driver
+   DB866RU0   LD - dBASE Cyrillic cp866 language driver
+   DB867CZ0   LD - dBASE Czech cp867 language driver
+   DB936CN0   LD - dBASE Chinese language driver
+   DB949KO0   LD - dBASE Korean language driver
+   DB950TW0   LD - dBASE Taiwanese language driver
+   DBWINES0   LD - dBASE Windows Spanish language driver
+   DBWINUS0   LD - dBASE Windows US language driver
+   DBWINWE0   LD - dBASE Windows Western European language driver
+   GRCP437    LD - Paradox Greek language driver
+   HUN852DC   LD - Paradox Hungarian language driver
+   ICELAND    LD - Paradox Icelandic language driver
+   INTL       LD - Paradox Western European cp437 language driver
+   INTL850    LD - Paradox Western European cp850 language driver
+   KOREA      LD - Paradox Korean language driver
+   NORDAN     LD - Paradox Norwegian/Danish language driver
+   NORDAN40   LD - Paradox Norwegian/Danish language driver
+   POLISH     LD - Paradox Polish language driver
+   SLOVENE    LD - Paradox Slovene language driver
+   SPANISH    LD - Paradox Spanish language driver
+   SWEDFIN    LD - Paradox Swedish/Finnish language driver
+   TAIWAN     LD - Paradox Taiwanese language driver
+   THAI       LD - Paradox Thai language driver
+   TURK       LD - Paradox Turkish language driver
+
+INSTALL   EXE (Disk1) - Install file
+
+INSTRUN   EXE (Disk1) - Install file
+
+INSTXTRA  PAK (Disk1) - Contains the following compressed files:
+   BOXMGR    DLL - Install file
+   IDAPINST  DLL - Install file
+   IDAPINST  HLP - Install Help file
+   INSTALL   HLP - Install Help file
+   INSTBOR   DLL - Install file
+   INSTCUI   DLL - Install file
+   INSTDEL   EXE - Install file
+   INSTDEL   LST - Install file
+   INSTDEL   PIF - Install file
+   INSTOBJ   DLL - Install file
+   INSTRRF   DLL - Install file
+   INSTSCR   DLL - Install file
+
+MACROS    PAK (Disk2) - Contains the following compressed files:
+   B4RPT     MAC - ReportSmith file, macro sample
+   CONDFMT   MAC - ReportSmith file, macro sample
+   DATE      MAC - ReportSmith file, macro sample
+   DISABLE   MAC - ReportSmith file, macro sample
+   ENABLE    MAC - ReportSmith file, macro sample
+   GREETING  MAC - ReportSmith file, macro sample
+   ID2NAME   MAC - ReportSmith file, macro sample
+   LOADREP   MAC - ReportSmith file, macro sample
+   LOADREPS  MAC - ReportSmith file, macro sample
+   RECNO     MAC - ReportSmith file, macro sample
+   THETIME   MAC - ReportSmith file, macro sample
+
+ODBC      PAK (Disk2) - Contains the following compressed files:
+   CTL3D     DLL - MS ODBC 1.0 File, driver manager
+   MSJETDSP  DLL - MS ODBC 1.0 File, driver manager
+   ODBC      DLL - MS ODBC 1.0 File, driver manager
+   ODBCADM   EXE - MS ODBC 1.0 File, driver manager
+   ODBCINST  DLL - MS ODBC 1.0 File, driver manager
+   SIMADMIN  DLL - MS ODBC 1.0 File, driver manager
+   SIMBA     DLL - MS ODBC 1.0 File, driver manager
+
+ODBCHLP   PAK (Disk3) - Contains the following compressed files:
+   ODBCINST  HLP - MS ODBC 1.0 File, help file
+
+OLE       PAK (Disk4) - Contains the following compressed files:
+   COMPOBJ   DLL - MS OLE File
+   OLE2      DLL - MS OLE File
+   OLE2CONV  DLL - MS OLE File
+   OLE2DISP  DLL - MS OLE File
+   OLE2NLS   DLL - MS OLE File
+   OLE2PROX  DLL - MS OLE File
+   STORAGE   DLL - MS OLE File
+   TYPELIB   DLL - MS OLE File
+
+OLEOTHER  PAK (Disk2) - Contains the following compressed files:
+   OLE2      REG - required ReportSmith file, OLE file
+   STDOLE    TLB - required ReportSmith file, OLE file
+
+README    TXT (Disk1) - The ReportSmith Readme file
+
+RPT1      PAK (Disk2) - Contains the following compressed files:
+   BC30RTL   DLL - required ReportSmith file, Borland runtime library
+   DATALIB2  DLL - required ReportSmith file, export data utility
+   DLOLE2    DLL - required ReportSmith file, export data utility
+   IMAGEMAN  DLL - required ReportSmith file, graphic image display utility
+   IMGPCX    DIL - required ReportSmith file, graphic image display utility
+   IMGTIFF   DIL - required ReportSmith file, graphic image display utility
+   RS_DFW    DLL - ReportSmith file, dBASE for Windows connectivity
+
+RPT2      PAK (Disk2) - Contains the following compressed files:
+   IMGGIF    DIL - required ReportSmith file, graphic image display utility
+   MUSCROLL  DLL - required ReportSmith file, scroll bar utility
+   RS_BASIC  DLL - required ReportSmith file, macro language
+   RS_DATAD  DLL - required ReportSmith file, Data Dictionary interface
+   RS_SQLIF  TXT - required ReportSmith file, data access
+
+RPT3      PAK (Disk2) - Contains the following compressed files:
+   RS_FMT    DLL - required ReportSmith file, formatting
+   RS_IDAPI  DLL - required ReportSmith file, IDAPI interface
+   RS_ODBC   DLL - required ReportSmith file, ODBC interface
+   RS_OGLWL  DLL - required ReportSmith file, OGL interface (display)
+   RS_OLE2C  DLL - required ReportSmith file, OLE interface
+   RS_OLE2U  DLL - required ReportSmith file, OLE interface
+
+RPT4      PAK (Disk2) - Contains the following compressed files:
+   RS_OWL31  DLL - required ReportSmith file, Borland Windows interface
+   RS_SIFUT  DLL - required ReportSmith file, data access
+   RS_SQLIF  DLL - required ReportSmith file, data access
+   RS_SYS    DLL - required ReportSmith file, formatting
+   RS_TBP1   DLL - required ReportSmith file, calendar and date/time entry
+                   controls
+   RS_TBP2   DLL - required ReportSmith file, calendar and date/time entry
+                   controls
+   RS_TCL31  DLL - required ReportSmith file, Borland class library
+   RS_TKRIB  DLL - ReportSmith File
+
+RPT5      PAK (Disk2) - Contains the following compressed files:
+   RS_DFWEN  DLL - required ReportSmith file, dBASE for Windows
+   RS_TKSTB  DLL - required ReportSmith file, status bar utility
+   RS_TKTB   DLL - required ReportSmith file, toolbar utility
+   RS_UTIL   DLL - required ReportSmith file, general utility functions
+   SMRTHEAP  DLL - required ReportSmith file, memory management utility
+
+RT        PAK (Disk4) - Contains the following compressed files:
+   RSR_CTAB  DLL - required ReportSmith file, RunTime crosstab
+   RSR_DBAC  DLL - required ReportSmith file, Runtime data access
+   RSR_DBUI  DLL - required ReportSmith file, RunTime SQL user interface
+   RSR_MAIN  DLL - required ReportSmith file, RunTime main ReportSmith DLL
+   RSR_RPT   DLL - required ReportSmith file, RunTime report layout
+   RSR_RUTL  DLL - required ReportSmith file, RunTime report layout utilities
+   RSR_XPRT  DLL - required ReportSmith file, RunTime general utilities
+   RS_RUN    EXE - required ReportSmith file, RunTime main executable
+   RS_RUN    HLP - ReportSmith file, RunTime help file
+
+SQLIF     PAK (Disk2) - Contains the following compressed files:
+   RS_SQLIF  INI - required ReportSmith file, data access INI file
+
+SYS       PAK (Disk2) - Contains the following compressed files:
+   CTL3DV2   DLL - required ReportSmith file
+
+TXT       PAK (Disk3) - Contains the following compressed files:
+   TXTISAM   DLL - MS 1.0 ODBC File, Text driver
+
+TXTHLP    PAK (Disk3) - Contains the following compressed files:
+   DRVTEXT   HLP - MS 1.0 ODBC File, Text help file
+

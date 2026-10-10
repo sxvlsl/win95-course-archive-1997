@@ -1,0 +1,60 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2629
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  1/1
+
+    TITLE  :  Connecting to a Database and Opening a Table
+
+
+
+
+Connecting to a database and opening a table
+ 
+The following Macro connects to a datasource, adds a specific
+table, and starts a new report using the added table.  This 
+can be very useful if a specific table is frequently queried.  
+Linking this macro to ReportSmith startup or adding a menu 
+selection that calls this macro are a few ways it can be used.
+ 
+NOTE:     The information being passed to the database 
+          (Server Name, User ID, etc.) via .Connect and 
+          .AddTable functions is case sensitive.  If the macro
+          fails to connect or cannot find the specified table,
+          check the case and verify that it matches the case 
+          of the datasource.
+ 
+ 
+ 
+Sub db_login()
+ 
+Dim DB as DataSet
+ 
+'connect to Oracle using the given user ID and password
+DB.Connect 7,"x:orasrv7","user_id","password"," "
+ 
+'add the given table to the new report (in this case SCOTT is
+the 'owner name, EMP is the table name)
+DB.AddTable "SCOTT.EMP"," "
+ 
+'start a new report with the above information
+DB.Commit
+ 
+End Sub
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

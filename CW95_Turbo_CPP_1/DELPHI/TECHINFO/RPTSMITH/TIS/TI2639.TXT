@@ -1,0 +1,59 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2639
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  1/1
+
+    TITLE  :  Calculating a Summary Field
+
+
+
+
+Calculating a Summary Field
+
+Sample code for a Macro Derived Field to subtract the summary 
+value of one group from the summary value of the previous group.  
+Replace "EMPLYEE_ID" with the name of the field you are grouped 
+on.  Replace SumField$(....) with your summary field.  The 
+easiest way to insert the text for a summary field is to drop 
+down the listbox which currently displays "Data Fields" and 
+select "Summary Fields," Double click on the name of the 
+summary field to drop it into the text window.
+
+Once the macro has executed, you will have an additional 
+column in your workspace. You will probably want to delete this 
+column from the workspace. Then from the insert menu select 
+"Fields" and insert the new Macro Derived Field into a footer.
+
+Note:     To better understand this logic, keep in mind that a 
+          Macro Derived Field executes for each record in the 
+          detail area.  
+
+
+Sub sum_sum()
+
+g$ = Field$("EMPLYEE_ID")
+
+While (g$ = Field$("EMPLYEE_ID") and Current() > 1)
+   GetPrevious
+Wend
+
+a = Val(SumField$("TOTAL","C:\INDIGO\VIDEO\INVOICES",1,"Sum"))
+GetNext
+b = Val(SumField$("TOTAL","C:\INDIGO\VIDEO\INVOICES",1,"Sum"))
+c = a - b
+
+DerivedField Str$(c)
+
+End Sub
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

@@ -1,0 +1,79 @@
+Delphi Technical Information Sheets                                   
+
+Application Interoperability                              
+----------------------------
+2824  Passing a Variable to a ReportSmith Report                     
+
+Database                                                   
+--------
+2711  How to Circumvent the "index not found" Exception.            
+2783  Creating Database Aliases in Code                            
+2790  Creating & Deleting TFields at run-time                        
+2791  How to iterate through the fields of a table                   
+2807  Loading Bitmaps Into dBASE And Paradox BLOB Fields              
+2810  Extracting A Bitmap From A BLOB Field                          
+2811  Bitmaps And InterBase BLOB Fields                               
+2814  Handling EDBEngineError Exceptions                               
+2820  Searching Through Query Result Sets                          
+2821  dBASE .DBF File Structure                                      
+2825  Extracting Index Data From A Table                             
+2837  Cascading Deletes With Pdox Referential Integrity               
+2838  dBASE Expression Indexes: A Primer                             
+
+File Management                                            
+---------------
+2719  College Student Guide to Reading and Writing Files               
+2792  How to match file date/time stamps.                              
+
+General Tips and Techniques                               
+---------------------------
+2683  Drag a form without clicking the caption bar                     
+2719  College Student Guide to Reading and Writing Files               
+2778  Making your Delphi apps show minimized.                        
+2793  Adding Graphics in Your Listboxes and Comboboxes                
+2796  Using OnHint Events Among Mulitiple Forms                      
+2810  Extracting A Bitmap From A BLOB Field                            
+2812  Control Font Styles                                             
+2815  How to handle text drawing in a TDBGrid                        
+2818  Searching your application's help file                           
+2837  Cascading Deletes With Pdox Referential Integrity               
+2840  Removing the vertical scrollbar from a TDBGrid                    
+
+Installation / Configuration                               
+----------------------------
+2777  Instructions for Running Delphi from CD-ROM                      
+2781  Step by Step Configuration of an ODBC Driver                       
+2816  Trouble running Delphi programs from Delphi                        
+
+ObjectPascal / VCL                                        
+------------------
+2683  Drag a form without clicking the caption bar                      
+2778  Making your Delphi apps show minimized.                           
+2783  Creating Database Aliases in Code                                 
+2790  Creating & Deleting TFields at run-time                          
+2792  How to match file date/time stamps.                               
+2807  Loading Bitmaps Into dBASE And Paradox BLOB Fields                
+2809  Printing the contents of a TMemo or TListbox                       
+2811  Bitmaps And InterBase BLOB Fields                                
+2815  How to handle text drawing in a TDBGrid                          
+2825  Extracting Index Data From A Table                               
+
+Press Release / Product Information                       
+-----------------------------------
+2767  Delphi Fact Sheet                                              
+2768  Delphi Quick Info Sheet                                          
+2776  List of Delphi Books From Third-Party Publishers                  
+2779  Delphi Client/Server and Power Builder Compared                  
+2780  Delphi vs Visual Basic                                             
+2841  Delphi Consultants and Training Centers                          
+8520  Delphi Titles From Leading Book Publishers.                        
+8522  Borland Rolls Out Delphi Client/Server Bundle.                    
+8527  Borland Ships Rad Pack for Delphi.                                 
+8528  Delphi Seminar Series.                                            
+
+Printing                                                  
+--------
+2809  Printing the contents of a TMemo or TListbox        
+
+
+            

@@ -1,0 +1,210 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2712
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 26, 1994                       PAGE  :  1/4
+
+    TITLE  :  ReportSmith connectivity to Paradox 5 and dBASE 5
+
+
+
+
+
+Currently, ReportSmith 2.0 uses ODBC to connect to local
+database tables. Because these drivers were created prior
+to the releases of dBASE 5.0 for Windows or DOS and
+Paradox 5.0 for Windows, they do not support new field types 
+available in the current Paradox and dBASE releases. The new
+field types for Paradox are: BCD, Long Integer, Auto-
+increment, Time, Timestamp, Logical, and Bytes. The new
+field types for dBASE for Windows are: OLE and Binary. The
+new field types for dBASE for DOS are: Binary and General.
+
+If your new tables do not contain any of the new field
+types, you can use ReportSmith right away to create reports.
+However, if your tables do contain any of the new field
+types, you must follow the steps below to create tables
+which are compatible with the previous versions of these
+applications.
+
+From within Paradox 5.0 for Windows:
+
+The instructions below show you how to create a new table
+that changes all BCD, Long Integer, and Autoincrement field
+types to Number. In addition, you change all Logical, Time,
+and Timestamp field types to Alpha. Bytes field types cannot
+be converted and must be deselected within the table.
+
+Choose File | Open | Table and select the table you will
+convert.
+
+Choose Table | Restructure Table and change the field types
+in the Type column as follows:
+
+Right-click on each autoincrement (+), BCD (#), and Long
+Integer (I) field type to pull down the selection menu.
+Select Number from the menu to change them to number (N)
+field types.
+
+Right-click on each Logical (L), Time (T), and Timestamp
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2712
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 26, 1994                       PAGE  :  2/4
+
+    TITLE  :  ReportSmith connectivity to Paradox 5 and dBASE 5
+
+
+
+
+(@) field type to pull down the selection menu. Select Alpha
+from the menu to change them to alpha (A) field types and
+specify a field size.
+
+Note: You will not be able to format the Time and Timestamp
+fields as Time fields from within ReportSmith, but the data
+will be visible as a string.
+
+Choose Save As and type a name and path for your new table.
+
+Choose File | New | Query and select the newly named table.
+
+Choose CheckPlus in the highlighted Query check box under
+the table name to select all fields and records.
+
+Note: If your table contains Bytes (Y) field types, you will
+need to deselect those fields.
+
+Choose the lightning bolt on the toolbar to run the query.
+
+Choose Table | Rename to save the resulting answer table and
+specify the name and path you used in Step 3.
+
+You can now use the new table to create your ReportSmith
+report.
+
+
+From within dBASE for Windows:
+
+Follow the instructions below to create a new table which
+does not include OLE or Binary field types.
+
+Choose Windows | Navigator to specify the correct working
+directory.
+
+Choose Windows | Command to make a copy of the table, type:
+
+ use <table_name>
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2712
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 26, 1994                       PAGE  :  3/4
+
+    TITLE  :  ReportSmith connectivity to Paradox 5 and dBASE 5
+
+
+
+
+
+where <table_name> is the name of the table you will
+convert. Then type:
+
+copy to <new_table_name>
+
+where <new_table_name> is the name of the table from which
+you will create your report.
+
+Choose File | Open and select the new table name.
+
+Choose View | Table Structure and click on Open Exclusive.
+
+For each OLE and Binary field type, click on the field type
+and choose Structure | Delete Selected Field.
+
+Choose File | Save and close.
+
+You can now use the new table to create your ReportSmith
+report.
+
+
+From within dBASE 5.0 for DOS:
+
+Follow the instructions below to create a new table which
+does not include General or Binary field types:
+
+From within the Command window, type:
+
+ use <table_name>
+
+ where <table_name> is the name of the table you will convert.
+
+Type:
+
+ copy to <new_table_name> fields <field_names...>
+
+where <new_table_name> is the name of the table from which
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2712
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 26, 1994                       PAGE  :  4/4
+
+    TITLE  :  ReportSmith connectivity to Paradox 5 and dBASE 5
+
+
+
+
+you will create your report and <field_names...> are the
+names of the fields you will create in your report. Include
+only supported field types. Do not include Binary or General
+field types.
+
+You can now use the new table to create your ReportSmith
+report.
+
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

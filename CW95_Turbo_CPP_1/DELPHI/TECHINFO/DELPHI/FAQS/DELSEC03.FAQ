@@ -1,0 +1,820 @@
+This document contains information that is most often provided
+to users of this section.  There is a listing of common
+Technical Information Documents that can be downloaded from the
+libraries, and a listing of the most frequently asked
+questions and their answers.
+
+TI1171  Bug Report Form
+TI1736  Keeping BC++ 4.x and BP/TPW on the same system
+TI2841  Delphi Consultants and Training Centers
+
+TDSVGA.ZIP  Newer DLL's for Turbo Debugger for Windows
+
+VCLPATCH.ZIP   Patch for the Visual Component Library source.
+DELCSPAT.ZIP   Patch for Delphi Client Server.
+DELPATCH.ZIP   Patch for Delphi
+
+
+Q:  "When I click on the TDW icon my screen goes blank or is          
+    scrambled.  How do I fix this?"
+
+A:  The Turbo Debugger video DLL you are using is probably
+    incompatible with your Windows graphics driver.  Download
+    TDSVGA.ZIP from library 2, and try either TDWGUI.DLL or 
+    TDSVGA.DLL.  Follow the instructions in the readme.
+
+
+Q:  "When I exit Turbo Debugger for Windows my machine hangs.
+    What's going on?"
+
+A:  The Turbo Debugger video DLL you are using is probably
+    incompatible with your Windows graphics driver.  Download
+    TDSVGA.ZIP from library 2, and try either TDWGUI.DLL or 
+    TDSVGA.DLL.  Follow the instructions in the readme.
+
+
+Q:  "When I click on TDW, I get the error message 'Cannot 
+    load WINDEBUG.DLL'.  What should I do?"
+
+A:  This error occurs when trying to use the debugger from 
+    TPW 1.0 with Windows 3.1.  TPW 1.0 was designed to be 
+    used with Windows 3.0.  There are two solutions to this 
+    problem.  The recommended solution is to upgrade to TPW 
+    1.5 or BP 7.0.  Call the order desk at (800) 331-0877 for 
+    pricing information.  The other solution is to reinstall 
+    Windows 3.0.
+
+
+Q:  "I just installed Borland C++ 4.x, and I have TPW 1.5 or 
+    BP 7.0.  Why am I having problems getting the Pascal 
+    Turbo Debugger for Windows to work correctly?"
+
+A:  Download TI1736.ZIP.
+
+
+Q:  "My VBX will not load or it crashes Delphi when I try to 
+    load it.  What's wrong?"
+
+A:  Most likely the VBX you are trying to use is a Visual Basic 
+    2.0 or 3.0 compatible VBX.  Delphi can only use VB 1.0 
+    compatible VBXs.
+
+
+Q:  "Since installing Delphi, a few VB apps I have are having 
+    problems.  What's going on?"
+
+A:  From the INSTALL.TXT file located in ..\DELPHI directory:
+     __________________________________________________________ 
+     |   
+     |  2. BEFORE YOU RUN SETUP
+     |  -----------------------
+     |  .
+     |  .
+     |  .
+     |  o VBX controls - SETUP installs the following VBX files
+     |    into the \WINDOWS\SYSTEM directory that will 
+     |    overwrite any existing VBX files with the same name:
+     |          
+     |      GAUGE.VBX
+     |      SWITCH.VBX
+     |      PICT.VBX
+     |      CHART2FX.VBX
+     |          
+     |    Before running SETUP, check for filename collisions 
+     |    and backup your existing copies of these files.
+     |            
+     |  .
+     |  .
+     |  .
+     |  _______________________________________________________ 
+
+    The original files that may have been overwritten could 
+    have been part of your VB application.  If this is the case 
+    do the following steps (we will use GAUGE.VBX as an 
+    example):
+
+    1)  Go into Delphi and Remove the GAUGE.VBX from the 
+	Component Palette:
+      a) Select Options | Install Components from the menu.
+      b) Select(Highlight) the GAUGE from the Installed Units 
+	 list.
+      c) Click on the REMOVE button (it will disappear from the 
+	 list).
+      d) Click on the OK button.  Delphi will now re-compile 
+	 the component library.
+      e) Exit Delphi.
+	
+    2)  From the File Manager Rename the GAUGE.VBX to something 
+	like BIGAUGE.VBX.
+	
+    3)  Go back into Delphi and Add the BIGAUGE.VBX to the 
+	Component Palette:
+      a) Select Options | Install Components from the menu.
+      b) Click on the VBX button.
+      c) Select the VBX you want (BIGAUGE.VBX in this case).
+      d) Click on the OK button in the Install VBX File Dialog 
+	 Box. 
+      f) Click on the OK button in the Install Components 
+	 Dialog Box.  Delphi will now re-compile the component 
+	 library.
+	
+    4)  Copy the VBX (GAUGE.VBX) that your VB application uses 
+	to the \Windows\System directory.
+	
+    This should fix any conflicts.
+
+
+Q:  "After installing Delphi, every time I start NetCom's 
+    NetCruiser application (which is a VB app), it comes up 
+    with 'NETCRUZ An error has occurred in your application.  
+    If you choose ignore..'  What happened?"
+
+A:  Delphi installed a "GAUGE.VBX" over the one from VB. The 
+    one that Delphi installed is incompatible with the VB 
+    version (See above Q&A).
+
+
+Q:  I'm trying to run the Delphi tutors, but it's really SLOW.  
+    What's going on?
+
+A:  Two observations:
+ 
+    1) Running the tutors doubles the memory requirements for 
+       running Delphi.
+ 
+    2) The Tutors do a lot of background work to keep track of 
+       what the IDE is doing, and what you are doing to the 
+       IDE, to try to keep the class on topic.  This makes the 
+       Tutors' manipulation of Delphi much slower than if you 
+       were running Delphi by itself.
+ 
+    If you don't need to create OLE client applications right 
+    away, you can remove the TOLEContainer component from 
+    Delphi's component library.  Not having to load OLE when 
+    Delphi starts up will cut Delphi's load time almost in 
+    half, and reduce memory use by about 1Mb.
+ 
+    To remove the OLE component from Delphi's component 
+    library, go to Options | Install Components and remove the 
+    OLEREG unit from the left-hand listbox.  Click OK and the 
+    component library will be recompiled without OLE.
+ 
+ 
+Q:  When I click on the Delphi icon, I get the error message 
+    "COMPOBJ.DLL caused a GPF at 0003:2EED".
+
+A:  COMPOBJ.DLL is part of the Windows OLE subsystem.  Double 
+    check your OLE installation.  It's not uncommon to discover 
+    that you have a partial OLE installation, or mixed versions 
+    of OLE modules, or a corrupted OLEREG.DAT file.  Delphi's 
+    TOLEContainer component requires/loads OLE, and Delphi's 
+    component library (COMPLIB.DCL), where TOLEComponent 
+    resides, is loaded when Delphi starts up.
+
+    To check your OLE installaion, look in your WINDOWS\SYSTEM 
+    directory to see if you have these files with these 
+    time/date stamps:
+
+    filename        date     time    version
+    ----------------------------------------
+    BOLE16D.DLL     02/15/95 8:00    1.00 *
+
+    OLE2.DLL        09/4/94  8:07    2.02
+    OLE2.REG        09/4/94  8:07    2.02
+    OLE2CONV.DLL    09/4/94  8:07    2.10
+    OLE2DISP.DLL    09/4/94  8:07    2.02
+    OLE2NLS.DLL     09/4/94  8:07    2.02
+    OLE2PROX.DLL    09/4/94  8:07    2.02
+    STDOLE.TBL      09/4/94  8:07    1.10
+    COMPOBJ.DLL     10/3/94 13:16    2.02
+    STORAGE.DLL     09/4/94  8:07    2.02
+    TYPELIB.DLL     09/4/94  8:07    2.02
+
+    * The only Borland DLL - all others are from Microsoft.
+
+    The problem is with the different versions of OLE, Borland
+    distributes Microsoft's OLE v2.02, Windows 3.1 installs OLE
+    v2.0. The only exception from the list above is BOLE16D.DLL
+    which is Borland's.
+
+    If you are unsuccessful at finding or correcting your OLE 
+    configuration problem then you can rebuild the Delphi 
+    component library without the TOLEContainer. This will 
+    allow you to use Delphi (without OLE support) until you can 
+    get OLE straighted out.  Not having to load OLE when Delphi 
+    starts up will cut Delphi's load time almost in half, and 
+    reduce memory use by about 1Mb.
+
+    To rebuild the Delphi component library without the 
+    TOLEContainer, first make sure you've exited Delphi.  Then
+    go to your Windows\system directory and edit DELPHI.INI.
+    Look for the line that reads:
+      ComponentLibrary=C:\DELPHI\BIN\COMPLIB.DCL
+    and change it to read:
+      ComponentLibrary=
+
+    Save and Exit from the DELPHI.INI file.  Start up Delphi.
+    Delphi will give you an error message saying that it 
+    couldn't load the component library.  Just click OK.  
+    Choose Options | Install Components and type in a new 
+    filename under Library filename (such as 
+    c:\delphi\bin\newlib.dcl).  Click on the Add button, click 
+    on the Browse button.  Change to the Delphi\lib directory.  
+    Choose STDREG.DCU and click on the OK button.  Repeat (from 
+    clicking on the Add button) and add the following *.DCU 
+    files:  VBXREG, STDREG, DBREG, SYSREG, DDEREG, SWITCH, 
+    GAUGE, PICT, CHART2FX, SAMPREG, and LIBEXPT.  Now click on 
+    the OK button and the library will compile and load for 
+    you.
+
+
+Q:  I am trying to run Delphi under OS/2 Warp (for Windows) 
+    with the fixpak installed. I am experiencing a GPF in 
+    TOOLHELP.DLL at 0001:0626 whenever I try to close any 
+    generated application.  Any of the example programs 
+    demonstrate this.  From then on, I can't exit Delphi. I get 
+    three msg boxes: 1) Debug process running...; 
+    2) Terminating an app the usual way is better...; and 
+    3) Unable to kill the process. I get the same three dlg's 
+    if I try to exit Delphi. I have to kill it from the window 
+    list. Has anybody seen this error under Warp?
+
+A:  This only occurs under Warp when the fixpak has been 
+    installed.  Try restoring Warp without the fixpak.  You can
+    remove the fixpak altogether, or you can try the following:
+
+    The fixpack asked for an archive directory before it 
+    updated the system. Several packed files are stored there. 
+    You simply execute the unpack command on them and you're 
+    ready to go. Just execute "unpack users.sc_" etc. and make 
+    sure they are in the right directory.
+
+    USERS.SCR and WINSMSG.DLL belong in your windows system 
+    directory. WINOS2.COM belongs in the windows directory 
+    (Parent of System).
+
+Disclaimer: This fix has not been approved by IBM.
+
+Q:  I am trying to run Delphi under OS/2 2.1X and am experiencing
+    the same problems as in the previous question.
+
+A:  Delphi has only been extensivly tested under Warp, and does
+    not work correclty under this version of OS/2    
+
+
+Q:  Do you have any useful IDE navigation tips?
+
+A:  If you have a form open, F12 puts you in the editor in that 
+    form's code.  F12 in the editor takes you to the form 
+    corresponding to the active page of code.  So the editor 
+    can serve as a navigation aid for getting between forms.
+
+
+Q:  How do I deploy my application on other machines?
+
+A:  Read DEPLOY.TXT (located in the Delphi directory) for 
+    instructions.
+
+
+Q:  When I move my application to another machine, I get the 
+    error "error initializing IDAPI $2108" or something 
+    similar.  What's going on?
+
+A:  If your application is a database application, then you 
+    need to install IDAPI on any machine where you run that 
+    application.  See DEPLOY.TXT (located in the Delphi 
+    directory) for instructions.  If IDAPI is already installed make 
+    sure that the path to the IDAPI directory is in the DOS PATH 
+    statement and also that there is an [IDAPI] section in the
+    Windows WIN.INI file with correct path information. 
+
+
+Q:  Is there a list of Delphi books?
+
+A:  Yes.  Download TI2776.ZIP from Library 2 of the Compuserve Delphi
+    forum, or through TechFax at 1-800-822-4269.
+
+
+Q:  I'm thinking about buying Delphi.  Where can I find more 
+    information?
+
+A:  Download the files TI2767.ZIP and TI2768.ZIP from Library 2 
+    of this forum.
+
+
+Q:  When I click on the 'Database Desktop' or the 'Database 
+    Engine Configuration' icons, I get the error message 
+    "multiple net files found".  How do I resolve this?
+
+A:  Search your system for *.lck files and delete them.
+
+
+Q:  How do I enable the Version Control capabilities of Delphi?
+
+A:  Click on Help | Topic Search, enter in 'Version control'
+    and follow the instructions.  This feature is only 
+    available with the Client/Server edition.
+
+
+Q:  I'm getting the error message "Out of Memory" or "Out of
+    System Resources", but I have plenty of memory available!  
+    What's going on?
+
+A:  Try changing video driver to the Windows standard (vanilla-
+    flavored) VGA driver.  To change your video driver, click 
+    on the Windows Setup icon, then choose Options | Change
+    System Settings.  If the error message doesn't appear any 
+    more, then the video driver you were using isn't behaving 
+    properly.  Contact the manufacturer of your video driver
+    to get the latest version.  The reason for this strange behavior
+    is that The exception is raised when a call to Create a Window 
+    returns an error code rather than a window handle.
+
+
+Q:  I already have Paradox for Windows and/or dBase for 
+    Windows.  Will Delphi's version of the Borland Database 
+    Engine coexist with these products?
+
+A:  Yes, Delphi's newer version of the Borland Database Engine 
+    (aka IDAPI) has been certified with Paradox for Windows and 
+    dBase for Windows.
+
+    Always install Delphi's IDAPI and SQL Links over any 
+    earlier versions on your system.
+
+
+Q:  I think I've found a bug in the product, how do I report 
+    it?
+
+A:  Download TI1171.ZIP and follow the instructions.
+
+
+Q:  Where is the Language Reference Guide for Delphi?
+
+A:  The Language Reference Guide is available separately.  
+    Call the Order Desk at 800-331-0877 for pricing 
+    information.
+
+
+Q:  I'm running under Warp and I'm having problems getting
+    Acrobat to work.  Any ideas?
+
+A:  Go to the Acrobat Win-OS/2 session settings and set the 
+    Win ATM selection to 'ON'.  You might also want to do the 
+    same in the Win-OS/2 setup (in the system setup folder).
+
+
+Q:  I'm trying to start Delphi and I get the error message 
+    "can't open c:\delphi\bin\complib.dcl".  How do I fix this?
+
+A:  This error message can occur for many reasons:  share or 
+    vshare not loaded, using the wrong parameters for share 
+    (should be F:4096 L:40).  The IDAPI section of the WIN.INI
+    file is bad or missing.  It should read something like:
+    
+    [IDAPI]
+    CONFIGFIL01=C:\IDAPI\IDAPI.CFG
+    DLLPATH=C:\IDAPI
+
+    COMPLIB.DCL could be corrupted.  Get a new copy from the CD
+    ..\RUNIMAGE\DELPHI\BIN\COMPLIB.DCL
+
+    If all the above fails, it is possibe that the Windows install
+    is bad.  Some possible things to check:
+
+    VER.DLL     9,008
+    USER.EXE    264,016
+    KRNL386.EXE 76,400
+
+
+Q:  Adobe Acrobat gives the message "Could not find Adobe Type 
+    Manager" when I try to access the Delphi on-line manuals.  
+    I am running under Win NT.  How can I fix this problem?
+
+A:  Adobe Type Manager will not run under NT.  Adobe is aware
+    of the situation.  Rumor has it that Adobe is working on
+    a version of ATM that will run under NT - possibly in the
+    September or October time frame.
+    
+    There is a workaround that a user recommended.  It is in
+    no way sanctioned by Adobe, and Borland will take no responsibilty
+    to any unforseen adverse affects that it might generate.
+
+    FIX as follows:
+    Add the following to your ACROREAD.INI
+
+    [AdobeViewer]
+    AtmOption=1
+
+    Copy ACROREAD.INI to ACROEXCH.INI
+    You will be able to use the Acrobat book reader, minus some fonts.
+
+
+Q:  I'm writing an MDI application using Delphi.  When I
+    minimize an MDI child, I get a GPF.  Is this a known 
+    problem?
+
+A:  Yes, this is a known problem which the patch fixed. 
+    Download the patch (delpatch.zip), apply it, and then 
+    rebuild the Library.
+
+
+Q.  Why do I get the message "To run the interactive tutors, you must
+    change the Delphi configuration slightly..." when I start the
+    interactive tutors?
+
+A.  This happens because you are not running with the default
+    settings of Delphi.  Backup your current DELPHI.INI file in
+    the Windows directory and then copy DELPHI.CBT file to 
+    DELPHI.INI.  The tutors will now work correctly.  When
+    finished with the tutors the old DELPHI.INI will need to be 
+    restored.
+
+
+Q.  The interactive tutors don't appear to be working correctly.
+    How do I get them to work?
+
+A.  See previous answer.
+
+
+Q:  When I try to run the interactive tutors I get the message "Error
+    creating Process: Insufficient memory to run the interactive tutors."
+    How can I fix this?
+
+A:  The interactive tutors have a larger memory requirement than Delphi,
+    on the order of twice the amount.  Check to make sure you have enough
+    memory to run the tutors.  You can still run the tutorials without
+    12 or 16 megs, but make sure that you are running Windows in 386
+    Enhanced mode, and that you have a large enough swap file set.  If
+    you think you have enough RAM, but are getting the error message, try
+    increasing your swap file anyway in the Virtual Memory option of the
+    386 Enhanced control panel.  Windows may be trying to swap out things
+    to disk to accomodate the Delphi tutorial, and if the swap file is too
+    small, it may have trouble doing this.  Finally, clean boot your
+    machine's Dos and Windows configuration, to make certain nothing
+    you have loaded in memory besides the bare minimum is hogging or
+    corrupting vital memory space necessary to run the tutors.  Download
+    TI 1561 and TI 1283 from either Compuserve (TI1561.ZIP, TI1283.ZIP) or
+    TechFax (1-800-822-4269) for detailed instructions on how to "clean
+    boot" your machine.
+
+
+Q.   I managed to delete the Delphi group and icons, or I did a manual install.
+     How can I recreate it?
+
+A.   There is a program for creating the Delphi program group and associated icons.
+     The name of the file is  DLPGRP.ZIP.  It can be found in the "From Borland" 
+     section of the "Borland Delphi" forum.
+
+
+Q.   What is W8LOSS.EXE used for?
+
+A.   W8LOSS.EXE is a command line tool that optimizes your exectuable for size
+     and load time. It is equivalent to choosing OPTIONS|PROJECT|LINKER and
+     turning on for 'optimize for size and load time.'  Use this tool if
+     you are experiencing difficulty from using the option from within the
+     IDE.
+
+
+Q.   I did a manual install, what do I have to add to my WIN.INI and path
+     for Delphi to function correctly? (Assuming Installed to C:)
+
+A.   Add "C:\iblocal\bin;c:\delphi\bin" to the path in your autoexec.bat   
+     Add the following lines to your WIN.INI   
+	
+	[IDAPI]
+	DLLPATH=C:\IDAPI
+	CONFIGFILE01=C:\IDAPI\IDAPI.CFG
+
+	[Borland Language Drivers]
+	LDPath=C:\IDAPI\LANGDRV
+
+	[BWCC]
+	BitmapLibrary=BWCC.DLL
+
+	[Interbase]
+	RootDirectory=C:\IBLOCAL
+
+	[Paradox Engine]
+	UserName=PxEngine
+	NetNamePath=C:\
+	MaxTables=64
+	RecBufs=64
+	MaxLocks=64
+	MaxFiles=64
+	SwapSize=64
+
+	[DDE Servers]
+	DBD=C:\DBD\DBD
+
+	[DBD]
+	WORKDIR=C:\DBD
+	PRIVDIR=C:\DBD\DBDPRIV
+
+
+Q:   I am running OS/2 Warp (no fixpak) and cannot run the default form 
+     in Delphi without total system hangup.  The mouse doesn't respond, 
+     all escapes to OS/2 unavailable, ctrl-alt-delete ignored. 
+
+A:   Try turning off your ROM-Shadowing in your computers BIOS.
+
+
+
+Q:      I get an error while trying to launch the Database Desktop, or
+	while trying to access a table.  It says, "Could not initialize
+	IDAPI" followed by a particular IDAPI error message, and then
+	forces me to click "Ok", and quits.  How can I fix this?
+
+A:      There are number of things you can check for that may be causing
+	this error:
+
+	First, make sure that the IDAPI paths in the [IDAPI] section
+	of your WIN.INI are set correctly.  Go to your Windows directory
+	and look at your WIN.INI file.  In particular, check that
+	the following two lines:
+		DLLPATH=C:\IDAPI
+		CONFIGFILE01=C:\IDAPI\IDAPI.CFG
+	are set to the correct paths.  Often,  if IDAPI was moved from
+	a network or to another drive, these paths were not updated to
+	reflect the change.  Also, check the private directory setting
+	by double-clicking on  the Database Desktop Local Configuration
+	icon.  Sometimes the path accidentally gets set to a shared
+	directory or a network drive during the installation.  The private
+	directory should be pointing to a non-shared directory on your local
+	drive (e.g.:  C:\DBD\DBDPRIV).  Also, check the other paths settings
+	within the Database Desktop Local Configuration to verify the paths
+	are correct.  
+
+	If this still doesn't resolve the problem, check your Net Control
+	File Directory (NETDIR) setting for the Paradox driver by opening
+	the BDE Configuration Utility, and, if you are not attempting to 
+	open a table on the network, try setting it to a place on your local
+	drive (e.g.: C:\).  If it is pointing to a drive on the network, 
+	or you wish to open a table out on the network, make sure that  
+	the directory exists, and that you have read/write access to it.
+	In addition, everyone who has IDAPI installed on their machine and
+	has their NETDIR setting pointing to a directory on the network MUST
+	all have this NETDIR set to the SAME directory.  Until you can 
+	determine this, scan the entire network for *.net and *.lck files,
+	and delete them all.  A pdoxusrs.net file will be recreated in the
+	directory you have the NETDIR set to.  Then make sure everyone points
+	to this directory to prevent multiple net control files from being
+	created. 
+
+	Lastly, you can backup the idapi.cfg file from your IDAPI directory,
+	and copy a fresh one over from the runimage off the CD rom.  If you
+	had created aliases before backing up the idapi.cfg file, they will
+	need to be re-created if you copy over a new idapi.cfg.  This can be
+	done easily using the merge function within the Alias section of the
+	BDE Configuration Utility.  Refer to the Database Engine
+	Configuration Help for more information regarding merging.
+
+	In addition to the above, you should already have share loaded with 
+	the correct parameters.  Make sure you have the line:
+		C:\DOS\SHARE.EXE /F:4096 /L:40
+	somewhere in your autoexec.bat file.
+
+	Should you be running Delphi on a Novel Lantastic 6.0 network, there
+	is a known problem with the latest version of IDAPI that will not
+	allow you to use Paradox tables on the network (possibly giving you
+	this error).  Borland is aware of this, and is currently working on
+	a fix for it.  Meanwhile, as a possible temporary workaround, you
+	can try to switch your network driver down to an earlier version of
+	Lantastic, such as Lantastic 5.0.  This has been known to work for
+	most users.
+
+	Finally, if you are still unable to get passed this error, you may
+	wish to consult two Technical Information documents Borland has
+	available:  TI 2733 and TI 2734.  These documents contain solutions
+	to specific IDAPI error messages (e.g. "not initialized for
+	accessing network files", or "call to undefined dynalink", or
+	"directory is busy") and so go into greater depth in addressing
+	IDAPI problems.  The TI's can be obtained either through TechFax
+	(800-822-4269), Compuserve (GO DELPHI), ftp (ftp.borland.com), or
+	the BBS (408-431-5096) as 'ti2733.zip' and 'ti2734.zip'.
+	
+
+Q:      When I try printing my source files from within Delphi,
+	using File | Print, the output doesn't look right.  It's
+	printing junk characters, or is printing some of the
+	output right, but not all of it.
+
+A:      Delphi just uses the standard Windows print function calls to 
+	print the source files.  Try opening up the .pas file in Notepad,
+	and printing from there.  If it's still not printing properly, then 
+	you need to find an updated printer driver that is fully compatible
+	with your particular printer.  Contact your printer manufacturer to 
+	get an updated printer driver.  If it prints fine from Notepad, try
+	changing Delphi's editor font by going to the Options | Environment
+	menu item within Delphi, selecting the Editor Display tab, and 
+	clicking on the down arrow button of the Editor Font box to get a 
+	selection of the alternative fonts you can try.  Try all of the
+	different fonts.  Also, try turning off syntax highlighting by
+	selecting the Editor Options tab and making sure the Syntax
+	Highlighting option is not checked.  If none of these worked, your 
+	best bet is to try another printer driver.  Delphi uses some of the
+	latest TrueType technology, and your current printer driver might need 
+	to be updated to support the latest TrueType capabilities.  So, even 
+	if it printed fine from Notepad, it may still require an updated 
+	driver in order to handle the fonts shipped with Delphi.  Contact 
+	your printer manufacturer for obtaining another driver.
+
+
+Q:      I had Quattro Pro running on a network, and after I installed 
+	Delphi and overwrote the IDAPI that was on the network, none of
+	the users can run Quattro Pro anymore.  They get a "Cannot load
+	language driver" error.  How can I fix this?
+
+A:      The version of IDAPI that comes with Delphi is compatible with 
+	Quattro Pro, with only slight modification.  For each client that
+	will be accessing IDAPI on the network, be sure the following
+	section is added to their win.ini file:
+
+	[Borland Language Drivers]
+	LDPath=F:\IDAPI\LANGDRV
+
+	where F: should be replaced by the network drive letter that 
+	is housing IDAPI, and \IDAPI\LANGDRV should contain any necessary 
+	path changes to reflect the correct path.  Users should now be able 
+	to now use Quattro Pro with the new IDAPI that came with Delphi.
+
+
+Q.      The Install program for Delphi will not start.  
+	I am receiving the error:
+	"Cannot execute INSTALL.EXE or one of it's components."
+
+A.      This error is generated when the install program can not unpack some
+	of the files integral to launching itself.
+	There are a few things that can be tried in case this happens.
+		First and foremost, one must always clean boot to make
+	sure that the problem isn't as simple as a memory conflict with
+	another program.  If this fails, check to be sure that TEMP is 
+	pointing to a valid location, that has enough space to unpack files.
+	(about 10-15 megs.)  Remember, Delphi will install a slew of DLL's to
+	the WINDOWS\SYSTEM directory, so it is important that the drive that
+	Windows is on has at least 10 megs free.
+		If this fails to cure the problem, try a hard drive install.
+	This entails copying the diskettes to a temporary directory
+	on the hard drive, and running the install from there.
+		Jump starting the install program will be the next line 
+	of defense.
+	Copy INSTXTRA.PAK, INSTRUN.EX_, BAMGR16.DL_, and INSTALL.INI to
+	a temporary directory.
+	Expand the *.??_ files by running EXPAND.EXE.
+	Run INSTRUN.EXE with INSTALL.INI as a parameter.
+		A Manual install would be the last line of defense.
+	This is only a viable option if you have the CD.  It requires
+	copying the runimage onto your hard drive, and manually creating
+	the program groups, and manually massaging the
+	appropriate INI files.(See previous QA)
+
+
+
+Q:      I have just installed Delphi, and when I double-click on the Delphi
+	icon, the program begins to load, but then it flashes a message
+	box on the screen for a second and then quits back out to Program
+	Manager before ever loading Delphi completely.  Or, the splash screen
+	will appear, but then Delphi will just shut down (without any error
+	messages or warnings).  Any ideas what's wrong?
+
+A:      Try switching your video driver down to standard VGA by going to
+	the Windows Setup utility (in the Main group).  If this fixes it,
+	you will need to get an updated video driver from your video card
+	manufacturer (most manufacturers have updated video drivers for
+	Delphi now).  If this doesn't work, try deleting delphi.ini from
+	your Windows directory and then restaring Delphi (delphi.ini will
+	get recreated).  If this still doesn't resolve the problem, try
+	backing up C:\DELPHI\BIN\DELPHI.EXE, and copying a fresh DELPHI.EXE
+	from the CD rom (\RUNIMAGE\DELPHI\BIN\DELPHI.EXE), in case the
+	executable has become corrupted.  If this doesn't do it, then the
+	problem stems from a conflict with your particular system
+	configuration.  To resolve the problem you will need to make sure
+	your system is running on an absolutely "clean", or minimal,
+	configuration.  Download Technical Information Document 1561 and
+	1283 from TechFax (call 1-800-822-4269) for step-by-step information
+	on how to do a DOS and Windows clean boot.
+
+
+Q:      I am trying to install a vbx or component into the Component Library,
+	using the Options | Install Components... menu item. After I add the
+	component and I hit 'Ok' in the Install Components dialog box,
+	the dialog box closes, and the component library begins to rebuild
+	itself (as it should).  But, when I go to the component palette to
+	look for the new component, it isn't there!  The installation of
+	the component didn't report any errors.  What did I do wrong?
+
+A:      Close Delphi, and check the attributes of complib*.*, using File
+	Manager, or the DOS 'attrib' command.  Sometimes, the files
+	complib.dcl and complib.~dc become marked as read-only.  Make sure
+	the are NOT set to read-only.  If complib.dcl is marked as read-only,
+	then the component library will be unable to save any changes you
+	make to it, such as installing or removing a component. A less
+	obvious but similar situation will arise if the file complib.~dc
+	is also marked as read-only.  This file is the backup file for
+	complib.dcl.  When the component library goes to rebuild itself,
+	it backs up the current version of the library, complib.dcl, to the
+	file complib.~dc.  But, if this file is marked read-only, complib.dcl
+	cannot be backed up, and if complib.dcl cannot be backed up, the
+	component library will not attempt to modify itself.
+	Be sure that both complib.dcl and complib.~dc do not have their
+	read-only attributes set.
+
+
+Q:      I am trying to install a new component or vbx to my component
+	library, and after selecting the component or vbx in the Options |
+	Install Components dialog box, I hit "OK" to return back to Delphi,
+	and I get the error message "File not found [filename.dcu]" when
+	it tries to rebuild the component library.  The file is on my
+	hard drive, and the 'Search Path' edit box inside the Install
+	Components dialog box has the correct path.  Why is it that Delphi
+	can see the component when I Add it, but not when it tries to
+	rebuild the component library?
+
+A:      Try checking the length of the search path in the edit box within
+	the Install Components dialog box.  This phenomenon could be
+	explained if the search path is too long; Delphi will only take
+	the first 127 characters of the path. So, if your search path is
+	greater than 127 characters, and the component you added appended
+	its location to the end of the search path, it effectively will
+	not be part of the search path, and when the component library
+	tries to rebuild itself, it will not be able to find your newly
+	added component.  Try moving the path containing the component to
+	the front of the search path, and see if that works.  If it does,
+	you will need to shorten your path, perhaps by renaming directories
+	to shorter names, or moving subdirectories up one level in your
+	directory hierarchy.
+
+
+Q:      I am installing from the CD, and I am getting file corruption
+	errors.  Is there something wrong with the CD?
+
+A:      It is virtually impossible that the CD is actually corrupt.  This
+	error usually stems from corruption of the file occuring when it
+	is being copied.  It is most often on faster computers (DX4's and
+	P5's mainly) with faster hard drives.
+	   Try slowing down the computer.  This is most easily accomplished
+	with the turbo switch (Didn't you always wonder what those things were
+	for?) If your computer doesn't have a turbo switch, try disabling your
+	video Rom shadowing, disabling Smartdrive, turning off Windows 
+	caching, or a combination of all of the above.
+	   If you still are having problems, copy the install directories
+	off of the CD (with the computer slowed) and try doing a hard drive
+	install.
+___________________________Added by Zoya 8/4/95 _____________________________
+
+Q:      I am installing Delphi and I get an error message: "No ExtVer Method"
+	in the file ODBCDRV.PAK ..\install\disk3. Where is the method?
+
+A:      This is a konwn bug. There are, however, some options to try:
+	1. Clean boot.(TI 1561)
+	2. Disk install. Copy an INSTALL subdirectory from the Delphi CD to 
+	   the temporary directory on the hard drive and run SETUP.EXE from 
+	   there.
+	3. Try to run Delphi from the CD ROM (ti 2777) and if it works, copy 
+	   the Runimage directory to the hard drive.
+	
+	Apparently this error can be circumvented  if you install without DBD 
+	and/or Local Interbase.
+------------------------------------------------------------------------------
+
+Q:      I want to apply to be a Beta tester for the 32-bit version of Delphi. 
+	Where I can get more information?
+
+A:      You need to call us at Borland, (408)431-1000, and ask for the
+	Developer Relations program.
+
+--------------------------------------------------------------------------------
+
+Q:      I ran the BDE installation program to deploy my application, and now I 
+	am getting an  error message: "Could not find language driver". What 
+	is wrong?
+
+A:      The install program will not unpack the Language driver sudirectory 
+	if you install BDE to a network drive.  You will have to manually
+	unpack LANGDRV.PAK file into separate subdirectory.
+
+______________________________________________________________________________
+
+
+Q:      My FormExpert does not run, or does not appear. What do I need to do?
+
+A:      1. Make sure that [Experts] section in delphi.ini has 
+	   FormExpert=Mydrive:\delphi\bin\exptdemo.dll
+	2. Close Delphi, backup DELPHI.INI, delete DELPHI.INI, start Delphi 
+	   and FormExpert again.
+	3. Backup EXPTDEMO.DLL, and copy a new one off the Delphi CD ROM 
+	   from the Runimage subdirectory.
+--------------------------------------------------------------------------------
+
+Q. Why do I get the message 'Unable to load RPTSMITH.EXE' when I
+   double click on the TReport component on the form?  It should
+   bring up ReportSmith.
+
+A. Either the [ReportSmith] section is missing or incorrect in
+   the DELPHI.INI file.  Make sure that it specifies the correct
+   path.  e.g.
+
+   [ReportSmith]
+   ExePath=C:\RPTSMITH
+
+

@@ -1,0 +1,132 @@
+  PRODUCT  :  ReportSmith                            NUMBER  :  2690
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 23, 1995                        
+
+    TITLE  :  Creating a Temporary Table
+
+
+
+
+Temporary Tables
+                                       
+                                       
+Temporary tables are useful for reporting on selections of
+groups, or for grouping and sorting on macro derived fields.
+To create a temporary table, you must first create a set of
+data that the table will be composed of.  The types of data
+that will be included are: included  columns (i.e. columns
+listed in the SELECT statement), summary fields, and macro
+derived fields (summary and macro derived fields will appear
+as columns in the table).  After creating a report with the
+desired data, you then use a macro to export the table
+(which must be done through an ODBC driver).  For example,
+to export to dBase:
+                                       
+Dim DS as DataSet
+DS.SetFromActive
+DS.ExportTable  "C:\DATA\TableName",2,"","","",""  
+                                       
+ 
+This macro creates a snapshot table of the source data to
+report from. If you wish to have the snapshot table 
+become automatically updated every time you run a
+report, you must also save the data set information in an
+.RQF file.  An .RQF file contains a description of how to
+get the data you just exported from the source.  Creating an
+.RQF file can be done through File | Save As... or via a
+macro.  If you choose to save the .RQF file via a macro, add
+the following line to the above macro:
+                                       
+DS.Save  FileName.RQF 
+                                       
+With both a temporary table and an .RQF file saved, open a
+new report and add the snapshot table you created before.
+You must then link a report macro to Before Report Open
+similar to this:
+                                       
+Dim DS as DataSet
+DS.Load  FileName.RQF 
+DS.Recalc
+ExecSQL "DROP TABLE C:\DATA\TableName", 2,"","","",""     
+DS.ExportTable  "C:\DATA\TableName", 2,"","","",""   
+                                       
+Every time the report is opened after this, ReportSmith will
+replace the old table with a table containing updated
+information before reporting from it.
+                                       
+NOTES -   For PC databases, do not include file extentions
+          in the DS.ExportTable or ExecSQL commands
+          (do include a path). For SQL databases, include
+          a fully qualified table name.
+                                       
+A type of 55 can be used when the ODBC database driver type
+is unknown (types are listed on page 5-25 of the
+ReportBasic Macro Language Guide).  For example an ODBC
+SQL Server export would be: 
+DS.ExportTable  "scr.dbo.Table",55, "SQLServer","sa","","" 
+where the third argument is the Data Source Name (only for 
+type 55).
+                                       
+You can also use type 55 to direct the statement to a
+specific ODBC driver.  For example, if you have 3 different
+dBASE drivers, the first two for dBASE III and the last for
+dBASE IV, and you want to export to the dBASE IV driver.
+Use type 55 and specify the dBase IV driver by its Data
+Source Name.  If you were to use type 2 for dBASE,
+ReportSmith would use the first dBASE driver it finds.
+                                       
+The column names of summary fields are composed in this
+order: The type of operation performed + a number
+representing the group level (starting with the
+Entire_Report_Group at 1) + an underscore + a number
+representing the number of the column in the temporary
+table that the summary field is based on.  For example,
+SUM2_6 would read as a sum on column 6 with a grouping
+level of 2.
+
+The order in which records will be exported is the order
+that they appear in the report they are being exported from,
+or, in the case of the records being retrieved from an .RQF
+file, the order in which the records appeared at the time 
+of the creation of the .RQF file.
+                                       
+SYNTAX - 
+ 
+ExecSQL SQL$, DbType%, Server$, UserId$, Password$, DbName$
+
+.ExportTable Table$, DbType%, Server$, UserId$, Password$,
+DbName$
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

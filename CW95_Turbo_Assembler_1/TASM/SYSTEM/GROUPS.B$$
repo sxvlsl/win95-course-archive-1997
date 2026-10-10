@@ -1,0 +1,5 @@
+[group1]
+caption=Borland Tasm 5.0
+file=TASM50.GRP
+[icons1]
+TASM.HLP=C:\TASM\BIN,Tasm Reference, HELP.ICO

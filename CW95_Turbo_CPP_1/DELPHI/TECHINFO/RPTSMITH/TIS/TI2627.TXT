@@ -1,0 +1,60 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2627
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 1, 1994                        PAGE  :  1/1
+
+    TITLE  :  Calculating Current Age
+
+
+
+
+Current Age
+ 
+The following Macro Derived Field calculates the age of a 
+person orthing, in years, as compared to the system date. 
+ 
+Note: The system date (Date$) can be replaced with a date 
+string or date field.
+ 
+Sub macro_age()
+ 
+birthyear=Str2Date(Field$("Birth_Date"),4)
+currentyear=Str2Date(Date$,4)
+birthmonth=Str2Date(Field$("Birth_Date"),2)
+currentmonth=Str2Date(Date$,2)
+birthday=Str2Date(Field$("Birth_Date"),3)
+currentday=Str2Date(Date$,3)
+ 
+age=currentyear-birthyear
+ 
+if birthmonth > currentmonth then
+   age=age-1
+   elseif birthmonth = currentmonth 
+          and birthday > currentday then
+      age=age-1
+end if
+ 
+DerivedField Str$(age) 
+ 
+End Sub
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

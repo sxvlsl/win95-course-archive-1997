@@ -1,0 +1,46 @@
+COMPAT.TXT - Compatibility Information
+
+
+Using Turbo Assembler 4.0 with Turbo C++ 4.5
+==============================================
+Turbo Assembler 4.0 is fully compatible with Turbo C++ 4.5.  There is
+an error in the WHEREIS example program which will cause two undefined
+symbol errors when built.  The following corrections will resolve the
+problem:
+
+In file \examples\tasm\whereis\iexedos.asm
+line 118, change:
+mov es,[es:psp.EnvironmentBlock]
+to:
+mov es,[es:Psp.EnvironmentBlock]
+
+line 196, change:
+mov ax, [ComSpecSeg]
+to:
+mov ax, [ComspecSeg]
+
+In file \examples\tasm\whereis\whereis.asm
+line 448, change:
+endp main
+to:
+endp Main
+
+line 565, change:
+call WriteAsciizString,ds,offset Syntax
+to:
+call WriteASCIIZString,ds,offset Syntax
+
+
+
+OWL 1, Object-Based Class Library, and Turbo C++ 4.5
+====================================================
+
+Due to changes in the debug information format, symbol length, and
+runtime library, the OWL 1 and class library .LIB files do not
+work with Turbo C++ 4.5.  Turbo C++ programs built with the old
+libraries must be converted in order for Turbo C++ 4.5 to build them.
+
+The OWLCVT utility can help you move from OWL 1 to OWL 2.5.  OWLCVT
+is described in the Turbo C++ for Windows Users Guide.
+
+         ========= END OF FILE COMPAT.TXT =========

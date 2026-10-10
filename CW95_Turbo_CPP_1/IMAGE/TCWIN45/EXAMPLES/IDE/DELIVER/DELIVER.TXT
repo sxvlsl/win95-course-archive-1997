@@ -1,0 +1,146 @@
+//
+//  Deliver Utilities Reference (DELIVER.TXT)
+//  Copyright Borland International, 1995
+//
+
+
+Description
+===========
+
+The Deliver utilities help you distribute project targets 
+(.exe, .lib, etc.) from an intermediate area to a final 
+"delivery" area.
+
+Important!  Always backup your projects before using the 
+Deliver utilities.
+
+
+Syntax
+======
+
+You can invoke a Deliver utility by giving one of the 
+following command-line arguments to the Deliver application 
+(DELIVER.EXE).
+
+COPY <source> [<source> ...] <destination>
+Copies one or more source files to a new directory.
+
+MOVE <source> [<source> ...] <destination>
+Moves one or more source files to a new directory.
+
+MKDIR <newdir> [<newdir> ...]
+Creates one or more new directories.
+
+CLEAN <filespec> [<filespec> ...]
+Deletes one or more files.
+
+RENAME <oldname> <newname>
+Renames a file.
+
+The COPY, MOVE, and CLEAN utilities accept arguments with 
+wildcards; the other utilities do not accept arguments with 
+wildcards.
+
+Any part of the command line, including the command itself, can 
+be placed in a response file.  To use a response file, include 
+in the command line a plus sign (+), followed by the filename 
+of the response file.  For example, you can type 
+
+move +mydeps.rsp c:\deliver 
+
+on the command line, where mydeps.rsp is a response file that 
+contains 
+
+c:\myproj\libs\*.lib c:\myproj\final\*.dll
+
+
+Invoking deliver utilities from the Tools menu or during the build process
+==========================================================================
+
+The first step toward using deliver utilities in the IDE is to 
+create a set of Deliver tools for your project.  Usually you'll 
+want a generic Deliver tool, which prompts you to specify which 
+Deliver utility to invoke (the command line), and several 
+specific Deliver tools, which automatically invoke particular 
+Deliver utilities. 
+
+To create a new Deliver tool,
+
+1. Choose Options|Tools.
+2. Choose New.
+3. In the Name box, type the name of the new tool.  
+If you're creating a generic Deliver utility, type "Deliver". 
+Otherwise, type a more specific name, such as "DeliverToNetwork" 
+or "DeliverToSafe".
+4. In the Path box, type "deliver.exe".
+5. In the Command Line box, type $PROMPT (for a generic utility) 
+or type a command line for a specific Deliver utility.
+6. In the Menu Text box, type a menu command name for the tool. 
+(This menu command name won't appear unless you specify that 
+the utility can be invoked from the Tools menu.)
+7. In the Help Hint box, type a description of the tool.
+8. Choose the Advanced button.
+9. If you plan to invoke the utility during the build process, 
+select Translator, and then type all node filename extensions 
+to which you want to apply the utility in the Translate From 
+and Translate To boxes.
+10. If you don't want to invoke the utility from the Tools menu, 
+unselect Place On Tools Menu.
+11. Choose OK, OK, and Close.
+
+After you create a Deliver tool, you can invoke it manually from 
+the Tools menu or automatically during the build process.
+
+To invoke a Deliver utility manually from the Tools menu, choose 
+the corresponding menu command from the Tools menu.
+
+To invoke a Deliver utility automatically during the build process,
+1. Choose Edit Node Attributes from the Speed Menu of a project 
+node.  (Right-click on a project node.)
+2. In the Translator drop-down box, choose the tool for the 
+Deliver utility.
+3. Choose OK.
+
+
+Examples
+========
+
+Here are some examples of using the Deliver utilities in the IDE:
+
+To automatically deliver an online Help (.hlp) target to the 
+delivery area "Q:\PRODUCT" during the build process,
+
+1. Create a tool called DeliverHelp with the command line 
+
+COPY $NAME($EDNAME)$EXT($EDNAME) $DRIVE($EDNAME)$DIR($EDNAME)
+
+For more information about creating a tool, see the previous section.
+Note: this command line uses transfer macros.  For information 
+about transfer macros, search online Help for "transfer macros".
+2. Add a SourcePool node called "q:\product\myproj.hlp".
+3. Link the tool you created in Step 1 to the SourcePool node.  For 
+more information about linking a node to a tool, see the previous section.
+
+To make a directory tree for a project,
+1. Create a tool called CreateTree with the command line 
+
+MKDIR OBJS\S OBJS\M OBJS\L OBJS\H
+
+2. Add a new SourcePool node.
+3. Link the tool you created in Step 1 to the SourcePool node.
+
+To clean the directory of a project,
+1. Create a tool called CleanTree with the command line 
+
+CLEAN OBJS\S\*.* OBJS\M\*.* OBJS\L\*.* OBJS\H\*.*
+
+2. Add a new SourcePool node.
+3. Link the tool you created in Step 1 to the SourcePool node.
+
+
+Extending and enhancing the Deliver utilities
+=============================================
+
+You can easily extend and enhance the deliver utilities by 
+modifying the source code in the DELIVER.IDE project.
+

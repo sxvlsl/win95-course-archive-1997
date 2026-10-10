@@ -1,0 +1,112 @@
+// Borland C++ Windows - (C) Copyright 1995 by Borland International
+// Mahjongg.rh
+
+#define szCMDLGAPAbout "Mahjongg Example\nCopyright (c) 1995 Borland International, Inc."
+
+#define CM_FILEOPEN               0x100
+#define CM_COLOR                  0x101
+#define CM_FONT                   0x102
+#define CM_EXIT                   0x103
+
+#define CM_HELPABOUT              0x200
+
+// From mahjonngg.rh
+
+#define IDC_VERSION             22001
+#define IDC_COPYRIGHT           22002
+#define IDC_DEBUG               22003
+
+#define IDI_SDIAPPLICATION      0x300            // Application icon
+
+//#define SDI_MENU                100             // Menu resource ID and Accelerator IDs
+#define IDM_EXIT            1120
+#define IDA_GAME            1150
+#define IDM_NEW_G           1151
+#define IDA_MOVES           1200
+#define IDM_UNDO            1201
+#define IDM_REDO            1202
+#define IDM_SHOW            1203
+#define IDA_OPTIONS         1300
+#define IDM_SOUND           1310
+#define IDM_SAVEOPT         1360
+#define IDA_HELP            1900
+#define IDM_HELP_HELP       1910
+#define IDM_HELP_EXTENDED   1911
+#define IDM_HELP_GAME       1912
+#define IDM_HELP_RULES      1912
+#define IDM_HELP_PATIENCE   1912
+#define IDM_HELP_KEYS       1913
+#define IDM_HELP_INDEX      1914
+#define IDM_ABOUT           1999
+
+#define IDD_READ_STATUS     2000
+#define IDD_STATUS          2001
+
+
+#define IDD_NOMORE          3510
+#define IDD_NEW             3511
+
+/*
+ * Bitmap IDs
+ */
+
+#define IDB_CONGRATULATION  4002
+
+#define IDB_ABOUT           4001
+
+//#define IDB_BACKVGA         4000
+//#define IDB_BACKSVGA        4003
+#if 1
+#define IDB_TILE_N_0        4090
+#define IDB_TILE_N_1        4091
+#define IDB_TILE_N_2        4092
+#define IDB_TILE_N_3        4093
+#define IDB_TILE_N_4        4094
+#define IDB_TILE_N_5        4095
+#define IDB_TILE_N_6        4096
+#define IDB_TILE_N_7        4097
+#define IDB_TILE_N_8        4098
+#define IDB_TILE_N_9        4099
+#define IDB_TILE_C_1        4100
+#define IDB_TILE_C_2        4101
+#define IDB_TILE_C_3        4102
+#define IDB_TILE_C_4        4103
+#define IDB_TILE_C_5        4104
+#define IDB_TILE_C_6        4105
+#define IDB_TILE_C_7        4106
+#define IDB_TILE_C_8        4107
+#define IDB_TILE_C_9        4108
+#define IDB_TILE_D_1        4109
+#define IDB_TILE_D_2        4110
+#define IDB_TILE_D_3        4111
+#define IDB_TILE_D_4        4112
+#define IDB_TILE_D_5        4113
+#define IDB_TILE_D_6        4114
+#define IDB_TILE_D_7        4115
+#define IDB_TILE_D_8        4116
+#define IDB_TILE_D_9        4117
+#define IDB_TILE_B_1        4118
+#define IDB_TILE_B_2        4119
+#define IDB_TILE_B_3        4120
+#define IDB_TILE_B_4        4121
+#define IDB_TILE_B_5        4122
+#define IDB_TILE_B_6        4123
+#define IDB_TILE_B_7        4124
+#define IDB_TILE_B_8        4125
+#define IDB_TILE_B_9        4126
+#define IDB_TILE_R_1        4127
+#define IDB_TILE_R_2        4128
+#define IDB_TILE_R_3        4129
+#define IDB_TILE_W_N        4130
+#define IDB_TILE_W_S        4131
+#define IDB_TILE_W_E        4132
+#define IDB_TILE_W_W        4133
+#define IDB_TILE_F_1        4134
+#define IDB_TILE_F_2        4135
+#define IDB_TILE_F_3        4136
+#define IDB_TILE_F_4        4137
+#define IDB_TILE_S_SPR      4138
+#define IDB_TILE_S_SUM      4139
+#define IDB_TILE_S_AUT      4140
+#define IDB_TILE_S_WIN      4141
+#endif

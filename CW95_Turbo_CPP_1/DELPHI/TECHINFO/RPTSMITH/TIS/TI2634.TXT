@@ -1,0 +1,169 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2634
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  1/3
+
+    TITLE  :  Writing data out to a delimited text file
+
+
+
+
+Conditionally writing data out to a delimited text file
+
+The follow macro examples show how to conditionally write a field in
+a record out to a delimited text file.  All of the examples are
+report macros that are linked to "After the Report is Open"
+
+
+
+'Testing the value of a numeric field. If the condition is true, the
+'EMPLOYEE_ID is written out to a file.
+
+Sub out2file()
+Open "C:\tempdata\test.txt" for output as 1
+GetRandom 1
+
+for x = 1 to RecordCount()
+
+   if Val(Field$("PRICE")) > 5 then
+      a$ = Field$("EMPLYEE_ID")
+      Write #1,a$
+   end if
+   GetNext
+
+next x
+
+Close #1
+
+End Sub
+
+
+'Testing the value of a character field. If the condition is true,
+'the EMPLOYEE_ID is written out to a file.
+
+Sub out2file2()
+Open "C:\tempdata\test2.txt" for output as 2
+GetRandom 1
+
+for x = 1 to RecordCount()
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2634
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  2/3
+
+    TITLE  :  Writing data out to a delimited text file
+
+
+
+
+
+   if Field$("CSTMR_ID")  = "C34" then
+      a$ = Field$("EMPLYEE_ID")
+      Write #2,a$
+   end if
+   GetNext
+
+next x
+
+Close #2
+
+End Sub
+
+'Testing the value of a SQL Derived field. If the condition is true,
+'the EMPLOYEE_IDis written out to a file.
+
+Sub out2file3()
+Open "C:\tempdata\test3.txt" for output as 3
+GetRandom 1
+
+for x = 1 to RecordCount()
+
+   if Val(Field$("TOTAL")) > 25 then
+      a$ = Field$("EMPLYEE_ID")
+      Write #3,a$
+   end if
+   GetNext
+
+next x
+
+Close #3
+
+End Sub
+
+
+
+'Testing the value of a Macro Derived field. If the condition is
+'true, the EMPLOYEE_ID is written out to a file.  Because of some
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2634
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  3/3
+
+    TITLE  :  Writing data out to a delimited text file
+
+
+
+
+'issues with macro files being open or closed at the same time, the
+'data from a Macro Derived field must be written out to an array
+'before it is written out to a file.  There is a limit of 64000 in
+'the ReDim function.
+
+Sub out2file4()
+n = 1
+ReDim values$(RecordCount())
+GetRandom 1
+
+for x = 1 to RecordCount()
+   if Val(Field$("MAC_TOTAL")) > 25 then
+      values$(n) = Field$("EMPLYEE_ID")
+   n = n + 1 
+   end if
+   GetNext
+next x
+
+open "c:\tempdata\test4.txt" for output as #4
+
+for y = 1 to n
+   Write #4,values$( y )
+next y
+
+Close #4
+
+End Sub
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

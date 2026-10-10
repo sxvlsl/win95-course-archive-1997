@@ -1,0 +1,465 @@
+                        UTILS.TXT
+                        =========
+
+Turbo C++ comes with many stand-alone utilities. This file
+documents the following tools and utilities:
+
+-----------------------------------------------------
+Name         Description
+-----------------------------------------------------
+Documented in this file:
+
+CPP          Stand-alone preprocessor
+GREP         File-search utility
+OBJXREF      Object module cross-referencer
+TRIGRAPH     Character-conversion utility
+WINRUN	     Windows program launcher for DOS boxes
+-------------------------------------------------------
+
+
+============================================================
+CPP: THE PREPROCESSOR
+============================================================
+CPP produces a list (in a file) of a C program in
+which include files and #define macros have been expanded.
+CPP is not needed for normal compilation of C programs.
+
+Often, when the compiler reports an error inside a macro or
+an include file, you can get more information about what the
+error is if you can see the include files or the results of
+the macro expansions. In many multipass compilers, a
+separate pass performs this work, and the results of the
+pass can be examined. Because Turbo C++ uses an integrated
+single-pass compiler, use CPP to get the first-pass 
+functionality found in other compilers.
+
+CPP recognizes the same command line switches and reads the same
+TURBOC.CFG file as BCC, the command-line compiler in Borland C++
+(see "Compiler Options" in the online Help.) CPP ignores any BCC
+options that don't pertain to CPP, and there is no special
+treatment for .OBJ, .LIB, or .ASM files.
+
+For each file processed by CPP, the output is written
+to a file in the current directory (or the output
+directory named by the -n option) with the same name as
+the source name but with an extension of .I.
+
+This output file is a text file containing each line of the
+source file and any include files. Any preprocessing 
+directive lines have been removed, along with any conditional
+text lines excluded from the compile. Unless you use a 
+command-line option to specify otherwise, text lines are
+prefixed with the file name and line number of the source or
+include file the line came from. Within a text line, any
+macros are replaced with their expansion text.
+
+IMPORTANT!  The resulting output of CPP cannot be compiled
+because of the file name and line number prefix attached to
+each source line.
+
+CPP as a macro preprocessor
+---------------------------
+The -P option tells CPP to prefix each line with the source
+file name and line number. With the -P- option, CPP can be
+used as a macro preprocessor; the resulting .I file can then
+be compiled with BCC or BCC32. (Note that you can also use the
+BCC option -P to set default file extensions.)
+
+The following simple program illustrates how CPP
+preprocesses a file, first with -P selected, then with -P-.
+
+     Source file: HELLOAJ.C
+      #define NAME "H.R. Floyd"
+      #define BEGIN {
+      #define END   }
+
+      main()
+      BEGIN
+         printf("%s\n", NAME);
+      END
+
+CPP command line:   CPP HELLOAJ.C
+Output:
+    HELLOAJ.c 1:
+    HELLOAJ.c 2:
+    HELLOAJ.c 3:
+    HELLOAJ.c 4:
+    HELLOAJ.c 5: main()
+    HELLOAJ.c 6: {
+    HELLOAJ.c 7:    printf("%s\n","H.R. Floyd");
+    HELLOAJ.c 8: }
+
+CPP command line:   CPP -P- HELLOAJ.C
+Output:
+    main()
+    {
+       printf("%s\n","H.R. Floyd");
+    }
+
+
+=============================================================
+GREP: A TEXT-SEARCH UTILITY
+=============================================================
+GREP (Global Regular Expression Print) is a powerful
+text-search program derived from the UNIX utility of
+the same name. GREP searches for a text pattern in one
+or more files or in its standard input stream.
+
+Here's a quick example of a situation where you might
+want to use GREP. Suppose you wanted to find out which
+text files in your current directory contained the
+string "Bob". You would type:
+
+    grep Bob *.txt
+
+GREP responds with a list of the lines in each file (if any)
+that contained the string "Bob". Because GREP ignores case by
+default, the strings "bob" and "boB" also match.
+
+GREP can do a lot more than match a single, fixed string.
+In the following section, you'll see how to make GREP search
+for any string that matches a particular pattern.
+
+Command-line syntax
+-------------------
+The general command-line syntax for GREP is
+
+  grep [options] searchstring [file(s) ... ]
+
+options      consist of one or more letters, preceded by a
+             hyphen (-), that change GREP's behavior.
+searchstring gives the pattern to search for.
+file(s)      tells GREP which files to search. (If you don't
+             specify a file, GREP searches standard input;
+             this lets you use pipes and redirection.) If you
+             find that the results of your GREP are longer
+             than one screen, you can redirect the output to
+             a file. For example, you could use this command
+               GREP "Bob" *.txt > temp.txt
+             which searches all files with the TXT extension
+             in the current directory, then puts the results
+             in a file called TEMP.TXT. (You can name this
+             file anything you like.) Use any word processor
+             to read TEMP.TXT (the results of the search).
+
+The command GREP ? prints a help screen showing GREP's
+options, special characters, and defaults.
+
+GREP options
+------------
+In the command line, options are one or more single
+characters preceded by a hyphen (-). Each individual
+character is a switch that you can turn on or off: A
+plus symbol (+) after a character turns the option on;
+a hyphen (-) after the character turns the option off.
+The + sign is optional; for example, -r means the same
+thing as -r+. You can list multiple options
+individually (like this: -i -d -l), or you can combine
+them (like this: -ild or -il, -d, and so on).
+
+Here are the GREP option characters and their meanings:
+------------------------------------------------------------
+Option  Meaning
+------------------------------------------------------------
+  -c    Match Count only: Prints only a count of matching
+        lines. For each file that contains at least one
+        matching line, GREP prints the file name and a
+        count of the number of matching lines. Matching lines
+        are not printed. This option is off by default.
+
+  -d    Search subdirectories: For each file specified on the
+        command line, GREP searches for all files that match
+        the file specification, both in the directory
+        specified and in all subdirectories below the specified
+        directory. If you give a file without a path, GREP
+        assumes the files are in the current directory. This
+        option is off by default.
+
+  -i   Ignore case: GREP ignores upper/lowercase differences.
+       When this option is on, GREP treats all letters a to z
+       as identical to the corresponding letters A to Z in all
+       situations. This option is on by default.
+
+  -l   List file names only: Prints only the name of each file
+       containing a match. After GREP finds a match, it prints
+       the file name and processing immediately moves on to the
+       next file. This option is off by default.
+
+  -n   Line Numbers: Each matching line that GREP prints is
+       preceded by its line number. This option is off by default.
+
+  -o   UNIX output format: Changes the output format of
+       matching lines to support more easily the UNIX style
+       of command-line piping. All lines of output are
+       preceded by the name of the file that contained the 
+       matching line. This option is off by default.
+
+  -r   Regular expression search: The text defined by
+       searchstring is treated as a regular expression
+       instead of as a literal string. This option is on by
+       default. A regular expression is one or more occurrences
+       of one or more characters optionally enclosed in quotes.
+       The following symbols are treated specially:
+             ^  start of line        $  end of line
+             .  any character        \  quote next character
+             *  match zero or more   +  match one or more
+       [aeiou0-9]   match a, e, i, o, u, and 0-9
+       [^aeiou0-9]  match all but a, e, i, o, u, and 0-9
+
+  -u   Update options: GREP adds any options from the command
+       line to its default options in GREP.COM. This option
+       lets you to customize the default option settings.
+       To see the defaults are set in GREP.COM, type GREP ?,
+       then each option on the help screen is followed by a +
+       or a - depending on its default setting.
+
+  -v   Nonmatch: Prints only nonmatching lines. Only lines
+       that don't contain the search string are considered
+       nonmatching lines. This option is off by default.
+
+  -w   Word search: Text found that matches the regular
+       expression is considered a match only if the character
+       immediately preceding and following cannot be part of
+       a word. The default word character set includes A to Z,
+       0 to 9, and the underscore ( _ ). This option is off
+       by default. An alternate form of this option lets you
+       specify the set of legal word characters. Its form is
+       -w[set], where set is any valid regular expression.
+
+       If you define the set with alphabetic characters, it
+       is automatically defined to contain both the uppercase
+       and lowercase values for each letter in the set
+       (regardless of how it is typed), even if the search is
+       case-sensitive. If you use the -w option in combination
+       with the -u option, the new set of legal characters
+       is saved as the default set.
+
+  -z   Verbose: GREP prints the file name of every file
+       searched. Each matching line is preceded by its
+       line number. A count of matching lines in each file
+       is given, even if the count is zero. This option is
+       off by default.
+------------------------------------------------------------
+
+The search string
+-----------------
+The value of searchstring defines the pattern GREP searches
+for. A search string can be either a regular expression or
+a literal string.
+
+o In a regular expression, certain characters have special
+  meanings: They are operators that govern the search.
+
+o In a literal string, there are no operators: Each
+  character is treated literally.
+
+You can enclose the search string in quotation marks to
+prevent spaces and tabs from being treated as delimiters.
+The text matched by the search string cannot cross line
+boundaries; that is, all the text necessary to match the
+pattern must be on a single line.
+
+A regular expression is either a single character or a set
+of characters enclosed in brackets. A concatenation of
+regular expressions is a regular expression.
+
+When you use the -r option (on by default), the search
+string is treated as a regular expression (not a literal
+expression. The following characters have special meanings:
+------------------------------------------------------------
+Option   Meaning
+------------------------------------------------------------
+
+  ^      A circumflex at the start of the expression matches
+         the start of a line.
+
+  $      A dollar sign at the end of the expression matches
+         the end of a line.
+
+  .      A period matches any character.
+
+  *      An expression followed by an asterisk matches
+         zero or more occurrences of that expression. For
+         example, in to*, the * operates on the expression o;
+         it matches t, to, too, etc. (t followed by zero or
+         more os), but doesn't match ta.
+
+  +      An expression followed by a plus sign matches one
+         or more occurrences of that expression: to+ matches
+         to, too, etc., but not t.
+
+  [ ]    A string enclosed in brackets matches any character
+         in that string. If the first character in the string
+         is a circumflex (^), the expression matches any
+         character except the characters in the string.
+         For example, [xyz] matches x, y, or z, while [^xyz]
+         matches a and b, but not x, y, or z. You can specify
+         a range of characters with two characters separated
+         by a hyphen (-). These can be combined to form
+         expressions (like [a-bd-z?], which matches the ?
+         character and any lowercase letter except c).
+
+  \      The backslash escape character tells GREP to search
+         for the literal character that follows it. For
+         example, \. matches a period instead of "any
+         character." The backslash can be used to quote
+         itself; that is, you can use \\ to indicate a literal
+         backslash character in a GREP expression.
+------------------------------------------------------------
+
+Four of the "special" characters ($, ., *, and +) don't
+have any special meaning when used within a bracketed
+set. In addition, the character ^ is only treated
+specially if it immediately follows the beginning of
+the set definition (immediately after the [ delimiter).
+
+File specifications
+-------------------
+The files option tells GREP which files to search. Files
+can be an explicit file name or a generic file name 
+incorporating the DOS ? and * wildcards. In addition, you
+can type a path (drive and directory information). If you
+list files without a path, GREP searches the current directory.
+If you don't specify any files, input to GREP must come
+from redirection (<) or a vertical bar (|).
+
+Some GREP examples
+------------------
+The following examples show how to combine GREP's
+features to do different kinds of searches. They assume
+GREP's default settings are unchanged.
+
+EXAMPLE 1       grep -r [^a-z]main\ *( *.c
+matches:                           Does not match:
+  main(i,j:integer)                  mymain()
+  if (main  ()) halt;
+  if (MAIN  ()) halt;
+
+The search string tells GREP to search for the word main
+with no preceding lowercase letters ([^a-z]), followed by
+zero or more occurrences of blank spaces (\ *), then a 
+left parenthesis. Since spaces and tabs are normally 
+considered command-line delimiters, you must quote them if
+you want to include them as part of a regular expression.
+In this case, the space after main is quoted with the
+backslash escape character. You could also accomplish
+this by placing the space in double quotes.
+
+
+EXAMPLE 2       grep -ri [a-c]:\\data\.fil *.c *.inc
+Matches:    A:\data.fil            Does not match:
+  c:\Data.Fil                        d:\data.fil
+  B:\DATA.FIL                        a:data.fil
+
+Because the backslash (\) and period (.) characters
+usually have special meaning in path and file names,
+you must place the backslash escape character 
+immediately in front of them if you want to search for them.
+The -i option is used here, so the search is not case
+sensitive.
+
+
+EXAMPLE 3         grep "search string with spaces" *.doc *.c
+Matches:          This is a search string with spaces in it.
+Does not match:         This search string has spaces in it.
+
+This is an example of how to search for a string with
+embedded spaces.
+
+
+EXAMPLE 4         grep -rd "[ ,.:?'\"]"$ \*.doc
+Matches:    He said hi to me.
+  Where are you going?
+  In anticipation of a unique situation,
+  Examples include the following:
+  "Many men smoke, but fu man chu."
+
+Does not match:
+  He said "Hi" to me
+  Where are you going? I'm headed to the
+
+This example searches for any one of the characters
+" . : ? ' and , at the end of a line. The double quote
+within the range is preceded by an escape character so it is
+treated as a normal character instead of as the ending quote
+for the string. Also, the $ character appears outside of the
+quoted string. This demonstrates how regular expressions can
+be concatenated to form a longer expression.
+
+
+EXAMPLE 5         grep -w[=] = *.c
+Matches:    i = 5;             Does not match:
+  j=5;                          if (i == t) j++;
+  i += j;                       /* =================== */
+
+This example redefines the current set of legal
+characters for a word as the assignment operator (=)
+only, then does a word search. It matches C assignment
+statements, which use a single equal sign (=), but not
+equality tests, which use a double equal sign (==).
+
+
+============================================================
+TRIGRAPH: A character-conversion utility
+============================================================
+Trigraphs are three-character sequences that replace
+certain characters used in the C language that are not
+available on some keyboards. Translating trigraphs in
+the compiler would slow compilation down considerably,
+so Turbo C++ provides a filter named TRIGRAPH.EXE to
+handle trigraph sequences when you need to. The syntax
+for invoking this program is as follows:
+
+TRIGRAPH [-u] file(s) [file(s) ...]
+
+The following table shows the trigraph sequences that
+TRIGRAPH.EXE recognizes:
+
+ Trigraph  Characters
+-------------------------------------------------------
+
+    ??=   #    ??(   [
+    ??/   \    ??)   ]
+    ??'   ^    ??<   {
+    ??!   |    ??>   }
+    ??-   ~
+
+
+================================================================
+WINRUN: Launching Windows Programs from a DOS Box Command Prompt
+================================================================
+
+WinRun is a utility that lets you run a Windows program in a DOS
+box. This utility is especially useful if you need to run
+Windows programs from a DOS box in order to build certain
+ObjectWindows OLE-enabled applications.  It requires Windows 3.1
+Enhanced mode. 
+
+On the command line, you can optionally add /a or /w or /aw 
+switches.  (Autodetect and Wait mode)
+
+The install program automatically adds WinRun to your startup
+group.
+
+
+Switches for WinRun:
+--------------------
+
+If you have selected the AutoDetect mode (either by WinRun's
+command line switch /a, or setting it in WinRun's system menu),
+you can simply type TCW in a DOS box, and TCW will launch. You
+can still use WR to launch an application, (for example to
+override the current Asynch mode setting with wr.exe's /w or /a
+switches) However, this switch slightly affects the loadtime of
+all DOS programs, though the delay is minimal if you are
+using a disk cache.
+
+The Asynchronous mode (selectable through WinRun's menu or /w
+command line switch) causes the DOS box NOT to wait for the
+Windows application to finish. Instead, it will always return
+with an exit code of 0.  In synchronous (wait) mode, the DOS box
+will be suspended until the Windows application terminates, and
+the exit code will be propagated to the DOS box.
+
+
+=================END OF FILE UTILS.TXT======================

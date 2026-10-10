@@ -1,0 +1,548 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2546
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  August 3, 1994                           PAGE  :  1/9
+
+    TITLE  :  Client Server Bug Report Form
+
+
+
+
+              Borland Client/Server Bug Report Form
+              -------------------------------------
+ 
+Customers should use this form to report a suspected Bug in
+ReportSmith or the Paradox Engine. See the end of this
+document for a list of methods to send this form to Borland.
+ 
+If you require programming assistance or assistance debugging
+your program please call the following numbers:
+ 
+     ReportSmith      (800) 673-2288 (Credit Card Advisor)
+                      (900) 555-1011
+     Paradox Engine   (800) 782-5558 (Credit Card Advisor)
+                      (900) 555-1002
+ 
+Additional information can also be found in the following
+sources:
+ 
+     The on-line HELPME!.DOC and README.
+ 
+     If you have a CompuServe, BIX or GEnie id, you may submit
+     an item to the appropriate section within the forums.  On
+     CompuServe, in BDEVTOOLs: section 7 for ReportSmith,
+     section 3 for the Paradox Engine.
+ 
+     Call Borland TechFax (800 822-4269) to fax yourself
+     technical information.
+ 
+     Call Borland Online Automated Support for an
+     interactive guided method of locating technical
+     information. (408) 431-5250 for modem, (800) 524-8420
+     for voice.
+ 
+     Borland Download BBS at (408) 431-5096.
+ 
+     Borland Assist. For more information on Borland Assist,
+     get document #9800 from one of the above services. To
+     order Borland Assist:
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2546
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  August 3, 1994                           PAGE  :  2/9
+
+    TITLE  :  Client Server Bug Report Form
+
+
+
+
+ 
+         Personal or Expert:     (800) 523-7070
+         Help Desk or Developer: (800) 636-7778
+ 
+Installation support can be found at the following numbers:
+ 
+     Paradox Engine:  (408) 461-9133
+     ReportSmith:     (408) 461-9150
+ 
+Please provide as much information as possible on your problem.
+If necessary, you may expand sections of this form to meet your
+needs.
+ 
+Any forms that are incomplete may be returned for additional
+information.
+ 
+ 
+                ** IMPORTANT **
+ 
+Before submitting a Bug Report to Borland you should remove all
+items from your CONFIG.SYS and AUTOEXEC.BAT files that are not
+ 
+absolutely necessary to your machine's operation and see if the
+problem persists.  Please download TI1561.ZIP from the Borland
+BBS or call TechFax at 1-800-822-4269 and order document 1561 if
+you need help with the above process.
+ 
+Name:     __________________________________
+ 
+Address:  __________________________________
+ 
+          __________________________________
+ 
+City:     _______________
+ 
+State:    _______________
+ 
+Zip:      _______________
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2546
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  August 3, 1994                           PAGE  :  3/9
+
+    TITLE  :  Client Server Bug Report Form
+
+
+
+
+ 
+PHONE NUMBER:(___) ___-____ x____  Phone number where you can be
+ 
+FAX NUMBER:  (___) ___-____ x____  contacted between 8-5 PST,
+                                   M-F.
+ 
+CIS ID #       : ____________________
+ 
+Borland BBS ID : ____________________
+ 
+Tech support PIN #: _________________ (if you have been assigned
+                                       a PIN # by Technical
+                                       Support please include
+                                       it here)
+ 
+       ** IMPORTANT**
+ 
+   If you submit multiple bug reports, please give each one a
+   unique  reference number, which we can include in our reply.
+   This will  help you identify which bug report our reply is
+   referring to.
+ 
+Reference #: ________________________
+ 
+ 
+Note:   You are only guaranteed a response to your Bug Report if
+        you supply a CompuServe ID, fax number, or U.S. Mail
+        address.  Borland may contact you via telephone if it
+        appears it will expedite a resolution.  If you upload
+        your report to the BBS, the reply will be sent to that
+        account.
+ 
+DETAILED PROBLEM DESCRIPTION -
+ Please enter a concise detailed description of the problem you
+ encountered including anything you may have already tried in
+ order to solve the problem.
+ 
+__________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2546
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  August 3, 1994                           PAGE  :  4/9
+
+    TITLE  :  Client Server Bug Report Form
+
+
+
+
+ 
+__________________________________________________________________
+ 
+__________________________________________________________________
+ 
+__________________________________________________________________
+ 
+__________________________________________________________________
+ 
+__________________________________________________________________
+ 
+Enter any error messages that occurred:___________________________
+ 
+__________________________________________________________________
+ 
+__________________________________________________________________
+ 
+Select the appropriate answers by placing an "X" in the space
+indicated.
+ 
+  Can you re-create the bug?                      Y _   N _
+ 
+  Has the bug occurred on more than one system?   Y _   N _
+ 
+  Borland Product and version: ___________________________________
+ 
+  Executable name: _______________________________________________
+ 
+  Size (in bytes) of executable: _________________________________
+ 
+  File date and time of this EXE:  __/__/__  __:__ ( )am
+                                                   ( )pm
+ 
+ 
+SYSTEM CONFIGURATION (local Machine) (provide as much as possible):
+ 
+  Brand and model of PC: ________________________________________
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2546
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  August 3, 1994                           PAGE  :  5/9
+
+    TITLE  :  Client Server Bug Report Form
+
+
+
+
+  Brand and version of operating system: ________________________
+ 
+    Type:     286 _  386SX _  386 _  486SX _  486 _ Pentium _
+ 
+  Brand of Coprocessor:    _______________
+ 
+           Speed:   __ MHz
+  Total RAM ....:   __ MB
+ 
+  Disk drive ...: ____ MB
+ 
+  Manufacturer: ___________________  Model # _______
+ 
+            Type: IDE _  SCSI _  MFM _  RLL _  Unknown _
+ 
+Manufacturer, revision #, and date of System BIOS: ______________
+ 
+Manufacturer and model # of video adapter: ______________________
+ 
+Name of Windows video driver (i.e. VGA.DRV):_____________________
+ 
+Date of Windows video driver:  __________________________________
+ 
+Manufacturer and model # of display: ____________________________
+ 
+Memory installed on video adapter:____ EGA _  VGA _  SVGA _  XGA
+Diskette Drive A:  3 1/2" _  5 1/4" _
+ 
+Diskette Drive B:  3 1/2" _  5 1/4" _
+ 
+Network manufacturer and version: _______________________________
+ 
+List other adapters or hardware installed:
+      _____________________
+ 
+      _____________________
+ 
+      _____________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2546
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  August 3, 1994                           PAGE  :  6/9
+
+    TITLE  :  Client Server Bug Report Form
+
+
+
+
+ 
+Please enter the contents of your CONFIG.SYS file after removing
+all unnecessary items:
+ 
+__________________________________________________________________
+ 
+__________________________________________________________________
+ 
+__________________________________________________________________
+ 
+Please enter the contents of your AUTOEXEC.BAT file after
+removing all unnecessary items:
+ 
+__________________________________________________________________
+ 
+__________________________________________________________________
+ 
+__________________________________________________________________
+ 
+GP FAULT INFORMATION - If a General Protection Fault occurs
+please record all the information displayed:
+ 
+  UNHANDLED EXCEPTION ___ at ____:____ Error Code: ____
+ 
+      AX=____   BX=____   CX=____   DX=____
+ 
+      SI=____   DI=____   BP=____   SP=____
+ 
+      DS=____
+ 
+  CS=____   Limit =____   _______________________________________
+ 
+  DS=____   Limit =____   _______________________________________
+ 
+  ES=____   Limit =____   _______________________________________
+ 
+  SS=____   Limit =____   _______________________________________
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2546
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  August 3, 1994                           PAGE  :  7/9
+
+    TITLE  :  Client Server Bug Report Form
+
+
+
+
+ 
+Please describe exactly what you were doing when the GP Fault
+occurred:
+ 
+  ________________________________________________________________
+ 
+  ________________________________________________________________
+ 
+  ________________________________________________________________
+ 
+  ________________________________________________________________
+ 
+ 
+SYSTEM CONFIGURATION (Server - if any):
+ 
+  Brand and model of Machine: _____________________________________
+ 
+  Brand and version of operating system: __________________________
+ 
+            Processor Type: _______
+ 
+            Speed:   __ MHz
+ 
+  Brand and version of SQL Server: ________________________________
+ 
+ 
+STEPS TO REPRODUCE:
+ Please enter the exact steps necessary to re-create the bug.
+ If you have included a code fragment, then you should specify
+ what the compilation and linking procedures and options are.
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2546
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  August 3, 1994                           PAGE  :  8/9
+
+    TITLE  :  Client Server Bug Report Form
+
+
+
+
+ 
+_________________________________________________________________
+ 
+ 
+CODE SAMPLE:
+ Please enter a code sample if applicable.  Code samples should
+ be concise in demonstrating the bug.  Code samples larger
+ than 100 lines are not accepted, unless it is necessary to
+ demonstrate the bug (e.g. exceeding compiler tables).
+ It is advisable that the code compiles without warnings, with the
+ the compiler configured to display all warnings.
+ 
+________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+_________________________________________________________________
+ 
+ 
+PLEASE REVIEW ALL OF THIS BUG REPORT BEFORE SENDING.
+When you are ready to send this Bug Report you may submit it via:
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2546
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  August 3, 1994                           PAGE  :  9/9
+
+    TITLE  :  Client Server Bug Report Form
+
+
+
+
+Internet:
+ Send it via e-mail to 75300.1422@compuserve.com.  This account is
+ used as part of our automated bug reporting system.  All other
+ types of correspondence to this account will not receive a reply.
+ 
+CompuServe by:
+ private CIS Mail to "AutoTech 75300,1422".  This account is used
+ as part of our automated bug reporting system.  All other types
+ of correspondence to this account will not receive a reply.
+ 
+Fax by:
+ calling (408) 431-4133.  Code samples for faxes are limited to 20
+ lines of code. If you submit a code example longer than this you
+ may receive a request to resubmit your Bug Report using one of
+ the other mediums mentioned here.
+ 
+U.S. Mail by:
+   Mailing the form to:
+            Borland International
+            Client/Server Customer Services
+            100 Borland Way
+            P.O. BOX 660001
+            Scotts Valley, CA 95066-0001
+ 
+ Code samples on paper should not exceed 20 lines of code.  Code samples
+ longer than 20 lines should be submitted on a floppy disk.
+ 
+Borland BBS by:
+ Calling (408) 431-5096 and uploading the file to one of the
+ Client/Server Conferences.  From the main screen of the BBS, choose
+ "F" to move to the file area and then select "U" for upload.
+ Then choose "L" to the list the different file areas that you
+ can upload to: choose one of the product areas.
+ 
+ If you send your report via the BBS, your reply will be sent your
+ account on the BBS.  You will need to log back on to check for this
+ response.
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

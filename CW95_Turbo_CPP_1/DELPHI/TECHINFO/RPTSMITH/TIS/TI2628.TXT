@@ -1,0 +1,60 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2628
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 1, 1994                        PAGE  :  1/1
+
+    TITLE  :  Replacing a Table
+
+
+
+
+Replacing a Table
+ 
+The following macro example replaces the existing table in a 
+report with a different table. This is a Report Macro linked 
+to the "After Report Open" event.
+ 
+Sub change_table()
+ 
+DIM KC as DataSet
+ 
+'applies the dataset object to the active SQL statement
+KC.SetFromActive
+ 
+Current_Table$ = "C:\rptsmith\texttest\dept1.csv"
+New_Table$ = "C:\rptsmith\texttest\dept2.csv"
+ 
+'replace the table
+KC.ReplaceTable Current_Table$,"",New_Table$,""
+ 
+'Re-execute the SQL statement with the new table
+Recalc 
+ 
+End Sub
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

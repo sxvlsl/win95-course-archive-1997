@@ -1,0 +1,79 @@
+[IIC]
+InternalDesc=TURBOC
+
+[PRODUCTO]
+Nombre=Turbo C++
+NumFicheros=41
+NumDiscos=10
+DiscoActual=3
+ConfirmReins=1
+DelFirstline=1
+Espacio=12000000
+Bitmap=MME_INS.BMP
+
+[PROGS]
+\tcwin45
+tcwin45\install.txt
+tcwin45\readme.txt
+tcwin45\unpaq.exe
+\tcwin45\bin
+tcwin45\bin\help.ico
+tcwin45\bin\mars.mob
+tcwin45\bin\regload.exe
+tcwin45\bin\yesmouse.drv
+tcwin45\bin\vgap.drv
+tcwin45\bin\msmouse.drv
+tcwin45\bin\dib.drv
+tcwin45\bin\stress.dll
+tcwin45\bin\mars.dll
+tcwin45\bin\win31mwh.hlp
+tcwin45\bin\shed.hlp
+tcwin45\bin\mcistrwh.hlp
+tcwin45\bin\shed.exe
+tcwin45\bin\mrbc.exe
+tcwin45\bin\markmidi.exe
+tcwin45\bin\winsight.exe
+tcwin45\bin\wsiwin.dll
+tcwin45\bin\wsihook.dll
+tcwin45\bin\winspctr.exe
+tcwin45\bin\exemap.exe
+tcwin45\bin\dfa.exe
+tcwin45\bin\ctl3d.hlp
+tcwin45\bin\tmapsym.exe
+tcwin45\bin\fconvert.exe
+tcwin45\bin\buildsym.exe
+tcwin45\bin\bcw.hlp
+tcwin45\bin\bcpp.hlp
+tcwin45\bin\owl.hlp
+tcwin45\bin\win31wh.hlp
+tcwin45\bin\workhelp.hlp
+tcwin45\bin\rsl.hlp
+tcwin45\bin\bwcc.hlp
+tcwin45\bin\winsight.hlp
+tcwin45\bin\winspctr.hlp
+tcwin45\bin\classlib.hlp
+tcwin45\bin\ocf.hlp
+\tcwin45\include
+tcwin45\include\ctl3d.h
+\tcwin45\lib
+tcwin45\lib\ctl3dv2.lib
+
+[INI]
+
+[GRUPO]
+-TCW.GRP "Turbo C++ 4.5"
+\tcwin45\bin
+tcw.exe Turbo C++
+workshop.exe Resource Workshop
+openhelp.exe OpenHelp
+ohelpcfg.exe OpenHelp Configuration
+ole.hlp OLE2 Online Help
+winsight.exe Winsight
+winspctr.exe Winspector
+fconvert.exe File Convert
+ctl3d.hlp Control 3D Reference
+
+[SISTEMA]
+
+[EXTERNO]
+

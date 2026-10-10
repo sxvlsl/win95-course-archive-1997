@@ -1,0 +1,8 @@
+This file explains how to play this game.
+You have to match the tiles by clicking on it.
+If it matches it will decrease the count displayed on the
+upper right hand corner of the window.
+If you run out of moves, you can undo and select different moves.
+The objective of the game is to score 0.
+You can turn on/off the sound from the menu item.
+You can "New" a game which will give you a new set of tiles.

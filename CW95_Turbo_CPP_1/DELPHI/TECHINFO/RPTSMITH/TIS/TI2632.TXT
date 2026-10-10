@@ -1,0 +1,121 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2632
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  January 30, 1995                         PAGE  :  1/2
+
+    TITLE  :  Visual Basic DDE Example
+
+
+
+
+Visual Basic DDE examples
+ 
+The following example shows the syntax for loading and 
+printing a report via ReportSmith.
+ 
+ 
+Sub Command1_Click()
+ 
+'Store off a quote character for convenience
+q$ = Chr$(34)
+ 
+'Open a DDE conversation with ReportSmith's command 
+'topic
+Label1.LinkTopic = "ReportSmith|Command"
+Label1.LinkMode = 2
+ 
+'Send a DDE Command to the ReportSmith application using
+'the Service Topic
+'The text in the DDE Command is of the form: LoadReport
+'"MyReport.rpt"," (the second argument is used to initialize 
+'report variables)
+'The following command should all be on one line
+DDECommand$ = "LoadReport " + q$ + "C:\sample.rpt" + q$ + 
+"," + q$ + q$
+ 
+'Create the command to print the report
+SecondCommand$ = "PrintReport 0,0,"+q$+q$+","+q$+q$+","+q$+q$
+ 
+'Create the command to close the report
+ThirdCommand$ = "CloseReport(0)"
+ 
+'Multiple commands may be separated by two vertical bar 
+'characters
+'The following command should all be on one line
+DDECommand$ = DDECommand$ + "||" + SecondCommand$ + "||" +
+ThirdCommand$
+ 
+'Execute the command string that was built above
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2632
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  January 30, 1995                         PAGE  :  2/2
+
+    TITLE  :  Visual Basic DDE Example
+
+
+
+
+Label1.LinkExecute DDECommand$
+ 
+End Sub
+ 
+Sub Command2_Click()
+ 
+Command2.Caption="Launching! ReportSmith"
+x=Shell ("C:\RPTSMITH\RPTSMITH.EXE")
+Command2.Caption="Launch ReportSmith"
+ 
+End Sub
+ 
+ 
+Example of a DDE statement passing a string literal value to
+a report variable:
+ 
+q$ = Chr$(34)  'Chr$(34) is the code for double quotes (")
+ 
+ 
+ 
+'The following command should all be on one line
+DDECommand$= "LoadReport  " +q$+ "C:\sample.rpt" +q$+ "," +
+q$+ "@startdate=<1993-01-30>,@enddate=<1993-12-30>" +q$
+ 
+ 
+Example of a DDE statement passing a value contained in a 
+variable to a report variable:
+ 
+q$ = Chr$(34)  'Chr$(34) is the code for double quotes (")
+s$ = "1993-01-30"
+e$ = "1993-12-30"
+ 
+'The following command should all be on one line
+DDECommand$ = "LoadReport " +q$+ "C:\sample.rpt" +q$+ "," +
+q$ + "@startdate=<" + s$ + ">,@enddate=<" + e$ + ">" +q$
+ 
+ 
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

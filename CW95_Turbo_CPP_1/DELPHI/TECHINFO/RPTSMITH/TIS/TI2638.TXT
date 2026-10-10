@@ -1,0 +1,93 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2638
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  1/2
+
+    TITLE  :  Summarizing Macro Derived Fields
+
+
+
+
+Summarizing Macro Derived Fields
+
+The following are examples of Macro Derived Fields that will 
+sum the values of another Macro Derived Field.  In the 
+examples, substitute the field name of the Marco Derived Field 
+to be summarized in place of "MDF."  Also, substitute the name 
+of the of the field that data is grouped on, in place of 
+"GROUP," if you are working with grouped data.  If the report 
+is grouped on more than one field, and you want a summary for 
+each group, create a Macro Derived Field for each group. 
+
+Macro #1  (Summarize the value of another Macro Derived Field 
+in a report with no group breaks.)
+
+
+Sub sum_mac()
+
+while Current() > 1
+   TOTAL = TOTAL + Val(Field$("MDF"))
+   GetPrevious
+wend
+
+if Current() = 1 then TOTAL = TOTAL + Val(Field$("MDF"))
+
+DerivedField Str$(TOTAL)
+
+End Sub
+
+
+Macro #2  (Summarize the value of another Macro Derived Field 
+in a report with a group break.)
+
+
+Sub sum_mac_group()
+
+Group$ = Field$("GROUP")
+
+while (Group$ = Field$("GROUP") AND Current() > 1)
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2638
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  2/2
+
+    TITLE  :  Summarizing Macro Derived Fields
+
+
+
+
+   TOTAL = TOTAL + Val(Field$("MDF"))
+   GetPrevious
+wend
+
+if (Group$ = Field$("GROUP") AND Current() = 1) then
+   TOTAL = TOTAL + Val(Field$("MDF"))
+end if
+
+DerivedField Str$(TOTAL)
+
+End Sub
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

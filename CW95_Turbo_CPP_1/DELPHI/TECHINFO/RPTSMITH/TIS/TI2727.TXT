@@ -1,0 +1,975 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  1/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+BDEVTOOLS SECTION #7 - ReportSmith                  9/30/94
+----------------------------------
+ 
+This document contains information most often provided to 
+users of this section.  First, there is a listing of common 
+Technical Information Documents (TI's) that can be 
+downloaded from the libraries and are also available through 
+the TechFax line of Borland Assist.  Following the TI list, 
+there is a listing of the most frequently asked questions 
+and answers.
+ 
+TECHNICAL INFORMATION DOCUMENTS
+-------------------------------
+ 
+TI2546.ZIP  Bug Report Form for ReportSmith and the Paradox
+      Engine.
+TI2572.ZIP  How to install ReportSmith 2.02A to a network.
+TI2646.ZIP  Macro example of date field calculations.
+TI2626.ZIP  Macro example of adding days to a date field.
+TI2627.ZIP  Macro example calculating age from system date.
+TI2628.ZIP  Macro example of replace table using the DataSet 
+      Object Method.
+TI2629.ZIP  Macro example of connecting to a database and
+      opening a table.
+TI2630.ZIP  Macro example of conditionally formatting a
+      field.
+TI2631.ZIP  Macro example of conditionally counting a field.
+TI2632.ZIP  Example of Visual Basic DDE calls to connect to
+      ReportSmith, open and print a report.
+TI2633.ZIP  Example of macro code to build a dialog box.
+TI2634.ZIP  Macro example of how to write a record out to a 
+      delimited text file based on a condition. 
+TI2636.ZIP  INI file settings to allow selection criteria
+      against Paradox date fields. 
+TI2637.ZIP  Example of SQL syntax for doing a selection 
+      criteria based upon a summary field.
+TI2638.ZIP  Macro example of how to summarize the value of
+      a macro derived field. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  2/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+TI2639.ZIP  Macro example of how to subtract the summary
+      field of one group from the previous group. 
+TI2640.ZIP  Macro example of how to suppress a null field 
+      when creating a label report.
+TI2690.ZIP  Replacement Documentation for the User's Guide
+      on how to create and use a Temporary Table.  Also
+      describes how to export data to ODBC data sources.
+TI2712.ZIP  How to connect to Paradox 5 and dBASE 5 tables
+TI2741.ZIP  Accessing a RS report via a dBASE DDELINK.
+TI2757.ZIP  Accessing a RS report via a Paradox DDE link.
+TI2760.ZIP  Network Installation Guide for ReportSmith v2.5
+ 
+ 
+FREQUENTLY ASKED QUESTIONS AND ANSWERS
+--------------------------------------
+ 
+General Questions
+-----------------
+Q:      Who handles questions about older versions of 
+ReportSmith?
+ 
+A:      ReportSmith Technical Support handles calls on all 
+versions of ReportSmith.
+ 
+ 
+Q:      Does ReportSmith run under Windows NT and OS/2?
+ 
+A:      Yes, however it is not specifically designed to do 
+so. Expect a 32-bit version of ReportSmith soon.
+ 
+ 
+Q:      I have heard of ReportSmith version 2.0.2.a; it says 
+on my box and diskettes that I have version 2.0.  What 
+version do I really have?
+ 
+A:      Check the About under the Help Menu in ReportSmith.  
+The true version number of the product is listed there.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  3/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+ 
+Q:      I only received Disk 1 of the Runtime and it is 
+prompting me for Disk 2, where are the other diskettes?
+ 
+A:      Notice that the phrase "Not for distribution" 
+appears on Disks 1 and 4 of ReportSmith, yet is absent on 
+Disks 2 and 3. ReportSmith's Runtime shares Disk 2 and 3 of 
+the full version of ReportSmith and those disks are 
+distributable with the Runtime Disk.
+ 
+ 
+Installation
+------------
+Q:      How do I install ReportSmith on a network?  OR  How 
+do I install ReportSmith on my local drive when Windows is 
+on a network?  
+ 
+A:      The Network Installation Guide ( TI#2572 ) discusses 
+issues regarding installation under common network/windows 
+environments.
+ 
+ 
+Q:      During install, I get: "Cannot write FILE.XXX" or 
+"Error reading FILE.XXX."
+ 
+A:      If you are installing ReportSmith to a Network 
+Drive, you should consult the Network Installation guide 
+( TI#2572 ).  If you are installing ReportSmith under a 
+third party Windows front-end (i.e. Norton Desktop, HP 
+Dashboard, etc.), try installing under Program Manager.  If 
+none of the previous conditions apply, it could be a bad set 
+of disks.
+ 
+ 
+Q:      During install, I get: "Cannot write CTL3DV2.DLL."
+ 
+A:      Try exiting and restarting Windows with no Windows 
+applications running in the background (e.g. from the "load" 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  4/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+line in the WIN.INI file, or in the Startup Group), or try 
+reinstalling again.  You could also try manually expanding 
+the file from the ODBC diskette into your WINDOWS\SYSTEM 
+directory by exiting windows and typing at the dos prompt:
+EXPAND A:\CTL3DV2.DLL C:\WINDOWS\SYSTEM
+ 
+ 
+Q:      When I launch ReportSmith, I get a General 
+Protection Fault (GPF) in KRNL386.EXE.
+ 
+A:      Solution #1: Find out if you have a file called 
+"IMGEPSF.DIL" in your \WINDOWS directory, \WINDOWS\SYSTEM 
+directory, or in your DOS path.  Move that file out of the 
+path, perhaps into the directory of the application that it 
+belongs to (providing that application's directory is not in 
+the path either).
+        Solution #2: You might not have enough memory free.  
+Try running ReportSmith by itself in Windows, or try 
+reconfiguring your system to allow for more memory in 
+Windows.
+ 
+ 
+Q:      In trying to add a table after installing 
+ReportSmith, I get an error: "Unable to load database access 
+DLL."
+ 
+A:      When you first run ReportSmith, it thinks that the 
+last data it connected to was a sample dBase table in the 
+RPTSMITH\VIDEO directory and searches for the dBase ODBC 
+driver to give you a list of tables from that directory.  If 
+you have not installed the dBase driver, ReportSmith will 
+not be able to find it and will be "Unable to load..." it.  
+One solution could be to reinstall ReportSmith and include 
+the dBase driver as part of the install (it can be deleted 
+later through the ODBC Administrator program).  Another 
+possibility would be to cancel through the error messages 
+and connect to your own data (with the appropriate data 
+source listed in the Type drop-down list box) so that 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  5/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+ReportSmith remembers your connection as the last 
+connection.
+ 
+ 
+Q:      When joining two tables, or at some other point I 
+receive the error message "File locking not available."
+ 
+A:      You need to load SHARE.EXE before running Windows.  
+You should have something like one of the following lines in 
+your AUTOEXEC.BAT:
+c:\dos\share.exe /l:500 /f:5100
+lh \dos\share.exe /l:500 /f:5100
+ 
+ 
+Performance Enhancement
+-----------------------
+Q:      How can I optimize ReportSmith's performance?
+ 
+A:      There are several issues that can be addressed 
+involving performance enhancement:
+        1) QUERY EXECUTION -- Decide which Dynamic Data 
+Access (DDA) parameters are appropriate for your data and 
+your environment.  In general, setting your DDA's to 
+something other than Automatic keeps ReportSmith from having 
+to decide where to place the query (which can take time with 
+large datasets).  If you will be using fairly small datasets 
+and/or have large amounts of RAM free installed in your PC, 
+you will probably gain some speed by setting your DDA to 
+Client Memory.  If you have a large dataset, a good amount 
+of free disk space, and would like to move around in the 
+dataset a lot, Client Disk is probably the setting you will 
+want to use.  Finally, if you have a dataset that is too 
+large for either of the other settings (say 5,000,000 
+records), you will want the DDA set to On Server.  Remember, 
+since each dataset is different, you might need to change 
+your DDA's from report to report.  If you are unsure about 
+which setting to use, you might want to leave the setting on 
+Automatic, or test the other DDA settings with your specific 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  6/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+dataset.  See Also - Ch. 12 of the User's Guide.
+        2) DRIVER CHOICE -- If ReportSmith provides 
+native driver support for your database, use it.  Typically 
+native drivers are MUCH faster and contain more 
+functionality than ODBC drivers for the same database 
+because they are not bound to ODBC limitations.
+        3) DERIVED FIELDS (SQL vs. MACRO) -- Try to use 
+SQL derived fields if possible.  For instance, if you are 
+trying to concatenate two fields together or if you are 
+performing relatively simple calculations, chances are those 
+operations would go much faster through a SQL Derived Field.
+        4) SERVER TRAFFIC -- When server traffic is 
+high, it will take longer for SQL databases to return large 
+queries to ReportSmith.
+        5) MEMORY -- ReportSmith runs best when there is 
+extra RAM available.  Try to free up as much physical RAM as 
+possible.
+ 
+ 
+Q:      I am using dBase (or FoxPro) tables and ReportSmith 
+takes a long time to query my data.  Is there a way to speed 
+up query time?
+ 
+A:      Query time depends much on the driver and not 
+ReportSmith.  In the case of dBase or FoxPro files, the 
+driver recommends using index files.  Using indexes (esp. on 
+key fields) will dramatically improve query time on larger 
+data sets.
+      Index files have different names depending on the 
+product and the version.  For dBase IV and FoxPro 2.5, index 
+files have the same base name as the table they are 
+associated with but carry the extensions .MDX and .CDX 
+respectively (e.g. a dBase IV table DEPT.DBF would have an 
+associated index file DEPT.MDX).  For dBase III and FoxPro 
+2.0, index files must be associated with their tables 
+manually through the ODBC driver setup.  See the on-line 
+help of the specific driver you are using for assistance 
+regarding index association.
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  7/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+ 
+ 
+Connectivity
+------------
+Q:      What are Native, ODBC, and IDAPI drivers?
+ 
+A:      Native drivers are drivers that have been written 
+expressly for ReportSmith.  These drivers are usually faster 
+than other types of drivers because they are tailored to 
+ReportSmith and talk directly to the database's Native API.  
+They typically offer more SQL functions as well.
+      Open Database Connectivity (ODBC) and Integrated 
+Database Application Programming Interface (IDAPI) are 
+Middleware Interfaces to databases' APIs.  ReportSmith 
+communicates with these interfaces which in turn interact 
+with the database API, effectively adding extra steps in the 
+retrieval of the data and sometimes reducing performance.
+      A basic example of routes taken to reach data:
+ReportSmith --> Native Driver DLLs --> Database API DLL 
+--> DATA
+ReportSmith --> ODBC Manager DLL --> ODBC Driver DLL 
+--> Database API DLL --> DATA
+ReportSmith --> IDAPI Manager DLL --> IDAPI Driver DLL 
+--> Database API DLL --> DATA
+      ODBC and IDAPI use a front-end method of configuring
+their drivers which is referred to as 'aliasing'.  IDAPI 
+calls specific configurations "Aliases", while ODBC calls 
+them "Data Sources".  These aliases are known in ReportSmith 
+as the Connection Type.
+ 
+ 
+Q:      How do I add a new IDAPI Alias?
+ 
+A:      In Program Manager, start the IDAPI Configuration 
+Utility.  Select the Alias page and click on New Alias.  
+Enter the new alias name and select the type of alias you 
+wish to assign to that name (note - the "STANDARD" type is 
+used with Paradox and dBase).  Finish adding the Alias by 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  8/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+entering in any required parameters and clicking on 
+File|Save to update the IDAPI Configuration File.  Changes 
+made to this file will take effect in ReportSmith the next 
+time ReportSmith is started.
+ 
+ 
+Q:      How do I add a new ODBC Data Source?
+ 
+A:      In Program Manager, go into the Control Panel for 
+Windows.  Double-click on the ODBC Administrator icon and 
+click the Add button.  Select the ODBC driver that you 
+want your new data source to use and click OK.  Type in the 
+name that you want to use to identify the new data source 
+(ReportSmith sets up its default data sources with the 
+prefix "RS_" (e.g. "RS_dBase", "RS_Paradox", etc.).  For 
+some drivers, certain options must be set.  Refer to that 
+driver's On-Line Help for specific help regarding 
+configuration of the data source.  Note - Windows will not 
+recognize new data sources until you exit and restart 
+Windows.
+ 
+ 
+Q:      How do I modify an existing ODBC data source?
+ 
+A:      Go into the Control Panel for Windows.  Double-click 
+on the ODBC Administrator icon.  Select the data source you 
+wish to modify and click on Setup.  Note - ReportSmith may 
+not recognize changes made to data sources until you exit 
+and restart ReportSmith.
+ 
+ 
+Q:      I am trying to connect to Paradox tables (via ODBC) 
+and the driver will not connect to them.  What can I do?
+ 
+A:      1)  The driver displays a SQL Execution Error: 
+"[Microsoft][ODBC Single-Tier Driver]Invalid or missing 
+password" -- You are using the Microsoft ODBC driver to 
+connect to your Paradox for Windows files.  The Microsoft 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  9/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+driver says in its help file that it, "... can access data 
+only in Paradox version 3.5 files."  You need to Add or use 
+an existing data source that uses the Q+E ParadoxFile driver 
+with the Table Version option in that data source set to 4.
+        2)  The driver displays an "rs_odbc - getcolumnlist" 
+error: "[Q+E Software][ODBC Paradox Driver][Paradox] Cannot 
+open file: Insufficient password rights [file]" -- The Q+E 
+Driver can only accept the master password for access to the 
+table and is incapable of connecting to the table using 
+auxiliary passwords.
+        3)  The driver is displaying a dialog box requesting 
+a password for access to the table and the table does not 
+have one. -- You are probably trying to access Paradox for 
+DOS tables and the data source is setup by default to read 
+Paradox for Windows tables.  Add a new ODBC data source that 
+uses the Q+E ParadoxFile driver and set that data source to 
+check for Table Version 3 files.
+ 
+ 
+Q:      I am getting the error: "The setup routines for the 
+Q+E ParadoxFile ODBC driver could not be loaded.  You may be 
+low on memory and need to quit a few applications."
+ 
+A:      Make sure that the PXENGWIN.DLL file is in your path 
+or in your windows\SYSTEM directory.
+ 
+ 
+Q:      I am getting the error: "SQL Execution Error: [Q+E 
+Software][ODBC Paradox driver][Paradox]Field not found:"
+ 
+A:      Chances are that one of the tables being used in 
+your report has a character in its name that the driver 
+doesn't like (e.g. - a number as the first character in the 
+name, an underscore or a hyphen anywhere in the name, etc).  
+ReportSmith usually tries to solve this problem by giving 
+the table an alias and placing a lowercase "x" where the 
+illegal character is.  Due to the way the driver works with 
+aliases and case-sensitivity, it is necessary to change the 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  10/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+lowercase "x" in the alias to an uppercase "X" if you 
+receive this error.  Versions after 2.02a can avoid this 
+problem if an .INI setting is added in the RS_SQLIF.INI file 
+under the appropriate driver name e.g.:
+[Q+E ParadoxFile]
+QuoteAlias=1
+This setting puts quotation marks around the alias in the
+SQL statement.  In many versions of SQL, an alias with 
+quotes around it can contain characters that are usually 
+considered illegal and will also respect case-sensitivity.  
+This also means that for any version of ReportSmith that 
+another solution could be to go into Direct SQL Entry mode 
+and put the appropriate quotation marks around the alias 
+that is causing the problem.
+ 
+ 
+Q:      When trying to do a selection on date or time fields 
+(via ODBC) in my Paradox tables, I get: "Incompatible Data 
+Types in Expression"
+ 
+A:      Place the following in your RS_SQLIF.INI file in the 
+[Q+E ParadoxFile] section:
+DateFormat= ""{d '"yyyy-mm-dd"'}""
+TimeFormat= ""{t '"hh:mm:ss"'}""
+DateTimeFormat= ""{ts '"yyyy-mm-dd hh:mm:ss.ssssss"'}""
+ 
+ 
+Q:      When trying to do a selection on date or time fields 
+in my Access 2.0 tables, I get an error.
+ 
+A:      Place the following in your RS_SQLIF.INI file in the 
+[Access 2.0 for MS Office (*.mdb)] section:
+DateFormat=""#"mm/dd/yyyy"#""
+TimeFormat=""#"hh:mm:ss"#""
+DateTimeFormat=""#"mm/dd/yyyy hh:mm:ss"#""
+ 
+ 
+Q:      When I am trying to add an Oracle 7 table to my 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  11/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+report using the Native driver, I get: "Database Error"
+ 
+A:      Have your Database Administrator run the Oracle 
+Script "CATALOG6.SQL."  This builds Oracle Data Dictionary 
+Views that ReportSmith needs to access your data.
+ 
+ 
+General Errors
+--------------
+Q:      When loading a report, I get: "PStream Error - 
+invalid type encountered."
+ 
+A:      It could be that the .RPT (Report) or RSMITH.GMC 
+(Global Macro) files have been corrupted.  If the .RPT file 
+has been corrupted you can try running the .RPB (report 
+backup file that has the same base name as the .RPT file) 
+which contains information about your report before it was 
+last saved.  You can open an .RPB file like you would open
+a report (Select Open from the File menu, type in *.RPB
+for the file search string, and select the appropriate RPB
+file).  If the RSMITH.GMC file has been corrupted, you 
+must delete it and rebuild it by reloading each of your 
+Global Macros from their .MAC (Macro) files into 
+ReportSmith (NOTE - It is good practice to save your Global
+macros as .MAC files in case your .GMC file gets corrupted).  
+Finally, you can also try increasing the size of your 
+Windows Swap file.
+ 
+ 
+Q:      When using ReportSmith I received "Error 9025".
+ 
+A:      Error 9205 is a generic connection error.  It is 
+usually encountered when opening (or creating) a report that 
+contains connection information that does not exist anymore 
+(a deleted Data Source Name, an invalid path to a database 
+file, etc.).  Often the cause of this error is easily 
+remedied by ReportSmith prompting the user to "Fix" the 
+report.
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  12/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+ 
+ 
+Usability and Functionality
+---------------------------
+Q:      Can ReportSmith open an .RPT file created by another 
+product?
+ 
+A:      Not yet.  ReportSmith encodes its data into its own 
+.RPT files and is unable to read other report writer's 
+formats.
+ 
+ 
+Q:      Every time I start ReportSmith, it asks me to select 
+a report to open.  How do I turn this off?
+ 
+A:      Under Options (found in the Tools menu), there is a 
+group of radio buttons for Program startup options.  If you 
+select "None", ReportSmith will not prompt you at all after 
+loading.
+ 
+ 
+Q:      Every time I open a report to modify it, ReportSmith 
+runs a query.  How do I stop this from happening?
+ 
+A:      One of the features of WYSIWYG "live" data reporting 
+is that you see your actual data from the time of querying, 
+dynamically formatted on the report face while you edit it.  
+In order to provide you with an accurate accounting of the 
+data, ReportSmith must run a query.  If you want ReportSmith
+to display the Report Query dialog box so that you can view
+or modify the query before it runs, deselect the Run Report
+check box in the Open Report dialog box before clicking OK.
+ 
+ 
+Q:      I have a Derived Field (SQL or Macro) that 
+concatenates two or more other fields together.  Whenever 
+one of the fields being concatenated is Null, my derived 
+field returns a Null.
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  13/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+ 
+A:      Including a Null value in a calculation is congruous 
+to multiplying by zero.  Any number multiplied by zero, 
+equals zero.  Similarly, any expression involving a Null 
+value, evaluates to Null.  With SQL Derived Fields there are 
+sometimes functions that can replace Nulls with a value 
+(e.g. Oracle's NVL and DECODE functions), however these are 
+database specific.  With Macro Derived Fields, you can add a 
+checking mechanism to replace Nulls with values.
+ 
+ 
+Q:      What does the File|Connections dialog box do?
+ 
+A:      See Chapter 13:Menu's and Commands page 4 of the 
+User's Guide.
+ 
+ 
+Q:      How do I disconnect from a database connection that 
+I am no longer using, and why doesn't ReportSmith do this 
+automatically?
+ 
+A:      See Chapter 13:Menu's and Commands, page 5 of the 
+User's Guide.  ReportSmith keeps the connection open in case 
+you wish to use it again, thus freeing you from having to 
+enter your connection information every time you want to 
+open or create a report using the same connection 
+information.
+ 
+ 
+Q:      I am reporting from a large database that takes a 
+long time to load.  Is there a way to limit the number of 
+records I use to design the report?
+ 
+A:      See the section on Draft Mode in Chapter 13:Menu's 
+and Commands page 15 of the User's Guide.
+ 
+ 
+Q:  I accidentally connected ReportSmith to the wrong tables 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  14/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+and when I used the Replace Tables button in the 
+Report Query - Tables dialog box, either I get some of the 
+columns or none of the columns to appear.  What is wrong?
+ 
+A:      When you "Replace" a table, you are telling 
+ReportSmith to take a different table with like fields and 
+values and put it in place of the table you have selected.  
+This means that if you have TABLE1 (which contains the 
+fields ID_NUM & PART_INFO) and you "Replace" TABLE1 with 
+TABLE2 (which contains the fields ID_NUM & QUANTITY), your 
+report will only contain information from the ID_NUM field 
+because that is the only 'like' field.  In reference to the 
+question, the user probably wants to "Remove" the undesired 
+table, and "Add" a new one.  "Replace Table" is typically 
+used to make a new report from a different dataset (which 
+can include switching connection types) but still retain the 
+original formatting of the report based on the first 
+dataset.
+ 
+ 
+Q:      How can I make a report containing tables from two 
+different connection types (i.e. Servers/ODBC drivers)?
+ 
+A:      At this time ReportSmith is unable to handle a 
+report with heterogeneous data.  One workaround involves 
+exporting the data from one or both sources to the same 
+connection type.  For example, if you have Sybase and 
+Paradox tables that you wish to use in a report, you can use 
+ReportSmith's "Export Table" macro command to create Paradox 
+tables from the Sybase tables and then make a report based 
+off of the Paradox tables.
+Note for Access users - The ODBC drivers for Access require 
+that you select an .MDB database to be tied to the data 
+source name.  This means that ReportSmith will only be able 
+to create reports from one Access database at a time.
+ 
+ 
+Q:      How do I increase the row height for each record?
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  15/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+ 
+A:      See the section on Row Height in Chapter 13:Menu's 
+and Commands page 37 of the User's Guide.
+ 
+ 
+Q:      What's the difference between Column Mode and Form 
+Mode editing?
+ 
+A:      See the section on Using Column and Form Mode in 
+Chapter 7:Selecting and Moving Objects, pages 10-11 of the 
+User's Guide.
+ 
+ 
+Q:      I have a long text field in my database which goes 
+off of the edge of the actual print area in ReportSmith, 
+and I have to manually shrink it to fit it on the page.  Now 
+the data gets cut off, is there any way I can get 
+ReportSmith to carry the data onto a new line?
+ 
+A:      You can expand the row height, go into Form Mode and 
+expand the height of the field in the expanded row, OR you 
+can use Can Grow & Can Shrink on the Row and Field Height.
+For details on how to increase the height of a row, see the
+section on Row Height in Chapter 13:Menu's and Commands page 
+37 of the User's Guide.
+ 
+ 
+Q:      I created a Macro Derived Field and ReportSmith 
+won't group or sort on that field, why?
+ 
+A:      Sorting is done during query execution.  Macro 
+Derived Fields (MDF's) are calculated after the query has 
+executed and has been sorted.  If you want to sort or group 
+on a MDF, you can use the ExportTable macro command to 
+create a new dataset (which will include the MDF) and then 
+you can report off of that.
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2727
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  February 1, 1995                         PAGE  :  16/16
+
+    TITLE  :  ReportSmith Frequently Asked Questions
+
+
+
+
+Q:      What command line arguments can ReportSmith take?
+ 
+A:      ReportSmith (both the development edition and the 
+runtime) will recognize .INI, .MAC and .RPT files on the 
+command line after the executable is called.  For example:
+RPTSMITH.EXE C:\RPTS\TIME.RPT C:\MYWIN\MYRS.INI E:\ <more>
+ MACS\TEST.MAC  <-part of the above line
+would first run ReportSmith using the C:\MYWIN\MYRS.INI file 
+in place of the RPTSMITH.INI file, then open the TIME.RPT 
+file from C:\RPTS, and finally run the TEST macro from 
+E:\MACS.  If you list more than one macro and/or report, 
+ReportSmith will execute them in the order they appear in 
+the argument list.  In other words, if you list 2 reports, a 
+macro and then another report, that is the order that 
+ReportSmith will use to execute them.  While you can list 
+more than one report and/or macro, you should list only one 
+.INI file to ReportSmith, because you can only replace the 
+RPTSMITH.INI file from the command line.  If you list more 
+than one .INI file, ReportSmith will respect the last .INI 
+file listed.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

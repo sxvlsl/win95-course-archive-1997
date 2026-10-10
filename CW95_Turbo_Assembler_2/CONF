@@ -1,0 +1,91 @@
+[IIC]
+InternalDesc=TASM
+
+[PRODUCTO]
+Nombre=Turbo Assembler
+NumFicheros=42
+NumDiscos=3
+DiscoActual=2
+ConfirmReins=1
+DelFirstline=1
+Espacio=5000000
+Bitmap=MME_INS.BMP
+
+[PROGS]
+\tasm
+tasm\unpak.exe
+tasm\readme.com
+tasm\tsm_inst.txt
+tasm\tsm_rdme.txt
+\tasm\bin
+tasm\bin\td.exe
+tasm\bin\td.pif
+tasm\bin\tddos.ico
+tasm\bin\tdhelp.tdh
+tasm\bin\tdinst.exe
+tasm\bin\tdosinst.ico
+tasm\bin\tdremote.exe
+tasm\bin\tdrf.exe
+tasm\bin\jitime.exe
+tasm\bin\tdcon32.exe
+tasm\bin\tddebug.386
+tasm\bin\tdw.exe
+tasm\bin\tdw.ico
+tasm\bin\tdwhelp.tdh
+tasm\bin\tdwinst.exe
+tasm\bin\tdwinst.ico
+tasm\bin\tdwinth.dll
+tasm\bin\wremote.exe
+tasm\bin\wrsetup.exe
+tasm\bin\groups.exe
+tasm\bin\td32.exe
+tasm\bin\td32.ico
+tasm\bin\td32help.tdh
+tasm\bin\td32inst.exe
+tasm\bin\td32inst.ico
+tasm\bin\bwcc.dll
+tasm\bin\dual8514.dll
+tasm\bin\stb.dll
+tasm\bin\svga.dll
+tasm\bin\svga32.dll
+tasm\bin\tdkbd32.dll
+tasm\bin\tdvid16.dll
+tasm\bin\tdwgui.dll
+tasm\bin\tdwini.exe
+tasm\bin\tdwini.hlp
+\tasm\system
+tasm\system\bwcc.dll
+tasm\system\tddebug.386
+\tasm
+moreproc\moreproc.bat
+
+[INI]
++system.ini
+:386Enh
+>device=@\SYSTEM\TDDEBUG.386
+
++tdw.ini
+:TurboDebugger
+DEBUGGERDLL=#:\TASM\BIN\TDWINTH.DLL
+VIDEODLL=#:\TASM\BIN\TDWGUI.DLL
+
+[GRUPO]
+-TASM50.GRP "Borland Assembler/Debugger"
+\TASM\BIN
+TASM.HLP Turbo Assembler Reference
+TASM.EXE Turbo Assembler;?
+tdw.exe Turbo Debugger for Windows
+tdwinst.exe TDW Configuration
+jitime.exe Just In Time Debugging
+wremote.exe Remote Debugging
+wrsetup.exe Remote Debugging Setup
+td.pif Turbo Debugger for Dos
+tdinst.exe TD Configuration
+td32.exe Turbo Debugger for Win32
+td32inst.exe TD32 Configuration
+tdwini.exe TD Video Configuration
+
+[SISTEMA]
+
+[EXTERNO]
+

@@ -1,0 +1,548 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2572
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  1/9
+
+    TITLE  :  Network Installation Guide 2.02A
+
+
+
+
+                                                  July 7, 1994
+ 
+ReportSmith v2.02a
+Network Installation Guide
+ 
+ 
+This document provides step-by-step instructions for installing
+ReportSmith with various type of network configurations.  For
+reasons associated with network access and security, these
+installation procedures should be performed by the network
+administrator.  The following network configurations are
+covered by this installation guide:
+ 
+1.   Windows is installed locally and ReportSmith is being
+     installed to the network.
+2.   Windows is installed on the network and ReportSmith is
+     being installed to either a network or local
+     drive.
+ 
+ 
+Configuration 1:    Windows is installed locally and
+ReportSmith is being installed to the network.
+ 
+1.   Follow the installation instructions as specified in the
+     ReportSmith Installation Guide, selecting a network drive
+     as the location for ReportSmith.
+ 
+Note:     The ODBC drivers, by default, will be installed to
+          the C:\WINDOWS\SYSTEM directory on the local hard
+          drive.
+ 
+The ODBC drivers can be made available to other users who
+will be running ReportSmith from the network by installing
+them in one of the following two ways:
+ 
+     ODBC Install Option 1:   Have each user install the
+                              ODBC drivers from the network
+			      to the C:\WINDOWS\SYSTEM
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2572
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  2/9
+
+    TITLE  :  Network Installation Guide 2.02A
+
+
+
+
+                              directory on their local hard
+                              drive.
+ 
+     1.   Create a directory on a network drive where the
+          files from the ODBC installation disks can
+          be copied. i.e. F:\ODBC
+ 
+     2.   Insert the ReportSmith installation disk labelled
+          "ODBC Drivers Disk" into the floppy disk drive.
+ 
+     3.   At the C:\WINDOWS> prompt, type EXPAND A:*.*
+          F:\ODBC and press Enter.
+ 
+     Note:     The version of EXPAND.EXE that ships with
+               Microsoft Windows must used.  The version
+               of EXPAND.EXE thats ships with DOS 6.x does
+               not accept wildcards.
+ 
+     4.   Insert the ReportSmith installation disk labelled
+          "Disk 2" into the floppy disk drive.
+ 
+     5.   At the C:\WINDOWS> prompt, type EXPAND A:*.HLP
+          F:\ODBC and press Enter.
+ 
+     6.   At the F:\ODBC> prompt, type REN PXENGCFG.EX_
+          PXENGCFG.EXE and press Enter.
+ 
+     7.   Copy ODBC.INI, ODBCINST.INI, and ODBCISAM.INI
+          from the C:\WINDOWS directory to the F:\ODBC
+          directory.
+ 
+     8.   Each network user should now install the ODBC
+          drivers by copying ODBC.INI, ODBCINST.INI, and
+          ODBCISAM.INI from the F:\ODBC directory to their
+          C:\WINDOWS directory.  Then copy the remaining
+          files from the F:\ODBC directory to their
+          C:\WINDOWS\SYSTEM directory.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2572
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  3/9
+
+    TITLE  :  Network Installation Guide 2.02A
+
+
+
+
+     9.   Each user should create a new program item for
+          the ODBC Administration Program. Type the name of
+          the ODBC Administration Program executable with
+          the correct drive letter and path into the Command
+          Line text box of the Properties dialog box,
+          i.e. C:\WINDOWS\SYSTEM\ODBCADM.EXE  The working
+          directory should also be specified as
+          C:\WINDOWS\SYSTEM
+ 
+     Note:     See the ReportSmith Installation Guide for
+               more information on configuring ODBC data
+               sources.
+ 
+     ODBC Install Option 2:   Have each user run the ODBC
+                              drivers from a single network
+                              installation.
+ 
+     1.   Create a directory on a network drive where the
+          files from the ODBC installation disks can
+          be copied. i.e. F:\ODBC
+ 
+     2.   Insert the ReportSmith installation disk labelled
+          "ODBC Drivers Disk" into the floppy disk drive.
+ 
+     3.   At the C:\WINDOWS> prompt, type EXPAND A:*.* F:\ODBC
+          and press Enter.
+ 
+     Note:     The version of EXPAND.EXE that ships with
+	       Microsoft Windows must used.  The version
+               of EXPAND.EXE thats ships with DOS 6.x does
+               not accept wildcards.
+ 
+     4.   Insert the ReportSmith installation disk labelled
+          "Disk 2" into the floppy disk drive.
+ 
+     5.   At the C:\WINDOWS> prompt, type EXPAND A:*.HLP
+          F:\ODBC and press Enter.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2572
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  4/9
+
+    TITLE  :  Network Installation Guide 2.02A
+
+
+
+
+ 
+     6.   At the F:\ODBC> prompt, type REN PXENGCFG.EX_
+          PXENGCFG.EXE and press Enter.
+ 
+     7.   Launch a text editor, such as Notepad, and open
+          the ODBCINST.INI file found in the C:\WINDOWS
+          directory.
+ 
+     8.   Edit the ODBCINST.INI file to reflect the new
+          network location of the Driver and Setup .DLL
+          files for each of the installed ODBC data sources
+          as shown in the example below.
+ 
+               [ODBC Drivers]
+               dBase Files (*.dbf)=Installed
+               Q+E ParadoxFile=Installed
+               Btrieve Data (file.ddf)=Installed
+ 
+               [dBase Files (*.dbf)]
+               Driver=F:\ODBC\simba.dll
+               Setup=F:\ODBC\simadmin.dll
+ 
+               [Q+E ParadoxFile]
+               Driver=F:\ODBC\bipdx04.dll
+               Setup=F:\ODBC\bipdx04.dll
+ 
+               [Btrieve Data (file.ddf)]
+               Driver=F:\ODBC\simba.dll
+               Setup=F:\ODBC\simadmin.dll
+ 
+     9.   Save the edited version of the ODBCINST.INI file
+          to the network directory where the ODBC files are
+          located, i.e. F:\ODBC
+ 
+     10.  Each user should copy the ODBCINST.INI file to
+          their C:\WINDOWS directory.
+ 
+     11.  Each user should create a new program item for
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2572
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  5/9
+
+    TITLE  :  Network Installation Guide 2.02A
+
+
+
+
+          the ODBC Administration Program.
+          Type the name of the ODBC Administration Program
+          executable with the correct drive letter and path
+          into the Command Line text box of the Properties
+          dialog box, i.e. F:\ODBC\ODBCADM.EXE  The working
+          directory should also be specified as F:\ODBC
+ 
+     12.  Launch the ODBC Administration Program to add and
+          configure ODBC data sources. More information on
+          this process can found in the ReportSmith
+          Installation Guide.
+ 
+     Note:     For minimal user intervention, the ODBC.INI
+               can be edited to reflect the new network
+               drive and path. This file along with the
+               ODBCISAM.INI file can be copied to the
+               network
+               directory where the ODBC files and located.
+               Each user can then copy these two files,
+               along with the ODBCINST.INI to their
+               C:\WINDOWS directory.  This extra step will
+               eliminate the need for each user to manually
+               configure any needed ODBC data sources.
+ 
+ 
+Configuration 1 (continued):
+ 
+2.   ReportSmith installed the files listed below in the
+     C:\WINDOWS\SYSTEM directory.  These files are
+     provided by Microsoft and are necessary for OLE
+     version 2.0 capability.  ReportSmith will not launch
+     without these files.  In order for other users to
+     launch ReportSmith from the network, these files must
+     be copied to a location on the network where they can
+     be found by ReportSmith.  These files can be copied to
+     the network directory where ReportSmith is installed.
+     If there is a network directory for Microsoft shared
+     applications, i.e. F:\MSAPPS, they can also be copied
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2572
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  6/9
+
+    TITLE  :  Network Installation Guide 2.02A
+
+
+
+
+     to this location, assuming that this directory is in
+     each users' DOS path.
+ 
+          STORAGE.DLL
+          TYPELIB.DLL
+          OLE2.DLL
+          OLE2CONV.DLL
+          OLE2DISP.DLL
+          OLE2NLS.DLL
+          OLE2PROX.DLL
+          COMPOBJ.DLL
+ 
+3.   Copy the RPTSMITH.CON and RS_SQLIF.INI files, which are
+     found in the C:\WINDOWS directory,  to a location on the
+     network where other users can have access to them.
+ 
+4.   Each user should then copy the RPTSMITH.CON and
+     RS_SQLIF.INI files from the network to the C:\WINDOWS
+     directory on their local hard drive.
+ 
+5.   Each user who will be running ReportSmith from the
+     network should create a new program group called
+     "ReportSmith" and a new program item for the ReportSmith
+     application.  Type the name of the ReportSmith executable
+     with the correct drive letter and path into the Command
+     Line text box of the Properties dialog box, i.e.
+     F:\RPTSMITH\RPTSMITH.EXE  The working directory should
+     also be specified as F:\RPTSMITH
+ 
+6.   Each user running ReportSmith from the network should
+     launch ReportSmith.  This initial launch will create the
+     RPTSMITH.INI file in their C:\WINDOWS directory.
+ 
+7.   After ReportSmith has opened, select Tools|Options.  In
+     the Connection File text box, specify the location of the
+     RPTSMITH.CON file as being in the C:\WINDOWS directory,
+     i.e. C:\WINDOWS\RPTSMITH.CON, click OK.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2572
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  7/9
+
+    TITLE  :  Network Installation Guide 2.02A
+
+
+
+
+8.   Installation is complete.
+ 
+ 
+ 
+Configuration 2:    Windows is installed on the network and
+                    ReportSmith is being installed to either a
+                    network or local drive.
+ 
+Note:     You must have Write Access to the network directory
+          where Windows is installed to perform this
+          installation.
+ 
+1.   Follow the installation instructions as specified in the
+     ReportSmith Installation Guide, selecting a either a local
+     or network drive as the location for ReportSmith.
+ 
+2.   Launch a text editor such as Notepad, open the
+     RPTSMITH.INI file which is located in the personal Windows
+     directory.
+ 
+3.   Add the following line to the [ReportSmith] section and
+     specify a drive and path where Write access is available,
+     i.e.
+ 
+          TempDataPath=C:\dos\temp
+ 
+     This line specifies the location for ReportSmith temporary
+     files to be written.  This line is necessary in the event
+     that Write Access is not available to the default location
+     where ReportSmith will try to write temporary files.
+ 
+4.   Verify that the BinaryPath= found in the [Macro] section
+     is also pointing to a location where Write access is
+     available, i.e.
+          BinaryPath=C:\dos\temp
+ 
+5.   Save the changes to the RPTSMITH.INI file.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2572
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  8/9
+
+    TITLE  :  Network Installation Guide 2.02A
+
+
+
+
+Note:     The ODBC drivers, by default, will be installed to
+          the location where Windows is installed on the
+          network, i.e. F:\WIN31
+ 
+Note:     If ReportSmith has been installed locally, skip the
+          remaining instructions.
+ 
+6.   For other users who will be running ReportSmith from the
+     network, have them create a new program group called
+     "ReportSmith" and a new program item for the ReportSmith
+     application. Type the name of the ReportSmith executable
+     with the correct drive letter and path into the Command
+     Line text box of the Properties dialog box, i.e.
+     F:\RPTSMITH\RPTSMITH.EXE  The working directory should
+     also be specified as F:\RPTSMITH
+ 
+Note:     If access to ODBC drivers for other network users
+          is not necessary skip steps 7 through 10.
+ 
+7.   Copy the ODBCINST.INI file, which is found in the
+     personal Windows directory,  to a location on
+     the network where other users can have access to it.
+ 
+8.   Each user should then copy the ODBCINST.INI file to their
+     personal Windows directory.
+ 
+9.   Each user should create a new program item for the ODBC
+     Administration Program.  Type the name of the ODBC
+     Administration Program executable with the correct drive
+     letter and path into the Command Line text box of the
+     Properties dialog box, i.e. F:\WIN31\ODBCADM.EXE  The
+     working directory should also be specified as F:\WIN31
+ 
+10.  Launch the ODBC Administration Program to add and
+     configure ODBC data sources.  More information on this
+     process can found in the ReportSmith Installation Guide.
+ 
+Note:     For minimal user intervention, the ODBC.INI and
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2572
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  September 14, 1994                       PAGE  :  9/9
+
+    TITLE  :  Network Installation Guide 2.02A
+
+
+
+
+          ODBCISAM.INI files can also be copied to a
+          location on the network where other users can have
+          access to it.  Each user can then copy these two
+          files, along with the ODBCINST.INI to their personal
+          Windows directory.  This extra step will eliminate
+          the need for each user to manually configure any
+          needed ODBC data sources.
+ 
+11.  Copy the RPTSMITH.CON and RS_SQLIF.INI files, which are
+     found in the personal Windows directory,  to a location
+     on the network where other users can have access to them.
+ 
+12.  Each user should then copy the RPTSMITH.CON and
+     RS_SQLIF.INI files to their personal Windows directory.
+ 
+13.  Each user running ReportSmith from the network should
+     launch ReportSmith.  This initial launch will create the
+     RPTSMITH.INI file in their in their personal Windows
+     directory.
+ 
+14.  After ReportSmith has opened, select Tools|Options.  In
+     the Connection File text box, specify the location of the
+     RPTSMITH.CON file as being in the personal Windows
+     directory, i.e. F:\MYWIN\RPTSMITH.CON, click OK.
+ 
+15.  Close ReportSmith.
+ 
+16.  Each network user should repeat steps 2 and 5.
+ 
+17.  Installation is complete.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

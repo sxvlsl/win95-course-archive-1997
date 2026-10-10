@@ -1,0 +1,30 @@
+Notes on OWLDLL.IDE:
+1/30/95
+
+The gray box next to 'OWL Diagnostic DLL' is called an 'exclude from parent'
+marker. When a Make All, Build All is performed this node will not be
+processed. Here's how to get to the dialog that changes this option:
+Select the node 'OWL Diagnostic DLL [SourcePool]', then right-mouse-click and
+select 'Edit local options' from the popup menu. In the Topics list, the
+last item is 'Build Attributes', select it. Uncheck 'Exclude from parent'.
+Press OK.
+
+To build the diagnostic version of OWL (OWL250D.DLL), the diagnostic version
+of the class library (BIDSDI.LIB) most be present. This file can be found on
+the CD in TCWIN45\LIB\BIDSDI.LIB or built using the project file in
+TCWIN45\SOURCE\CLASSLIB, classlib.ide.
+
+TargetExpert may rewrite the DEFINEs string for the DLL targets
+(OWL250.DLL & OWL250D.DLL). This will cause
+"..trying to derive from huge class.." errors during compiles.
+This is easily fixed by selecting the dll in the project window,
+do a right-mouse-click and select 'Edit local options.'
+In the Topics list select Compiler, then select Defines.
+Press TAB, and click off the 'Include' checkbox near the bottom of the dialog.
+Press OK.
+
+The DLLs must be named OWL250 and OWL250D.
+
+If you choose to turn symbolic debugger information when building OWL250D.DLL,
+you'll need about 60 megs of free disk space.
+

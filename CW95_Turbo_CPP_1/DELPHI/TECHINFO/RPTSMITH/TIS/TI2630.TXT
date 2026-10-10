@@ -1,0 +1,37 @@
+PRODUCT  :  ReportSmith                                                                            NUMBER  :  2630
+VERSION  :  ALL
+     OS  :  ALL
+   DATE  :  May 25, 1995
+
+  TITLE  :  Conditional Field Formatting
+
+
+
+Intended Audience:   All Users
+
+Prerequisites:    How to edit a macro, How to link a macro to an event
+
+Purpose:    The following macro example demonstrates how to dynamically format the text in a field based upon a macro
+defined condition
+
+Introduction:    This TI demonstrates the formatting of a field based upon a condition specified in a report macro.  In 
+this example, the value of the "TOTAL" field (from the INVOICES sample dBASE table included with ReportSmith) is tested.
+ 
+Steps:
+Add the INVOICES table to a report.
+Add a macro named CondFmt to the report:
+
+Sub CondFmt()
+if Val(Field$("TOTAL")) > 10 AND Val(Field$("TOTAL")) < 25 then FieldFont "",0,9,-1,-1 
+End Sub
+ 
+Link the "CondFmt" macro to the display event of the "CSTMR_ID" DataField.
+
+Explanation:    If the value of "TOTAL" is greater than 10 and less than 25, the "CSTMR_ID" field's font will change to
+bold underlined text for that record.  Refer to the documentation or on-line help for an explanation of what argument
+values the FieldFont macro function takes.
+
+
+
+DISCLAIMER: You have the right to use this technical information subject to the terms of the No-Nonsense License
+Statement that you received with the Borland product to which this information pertains.

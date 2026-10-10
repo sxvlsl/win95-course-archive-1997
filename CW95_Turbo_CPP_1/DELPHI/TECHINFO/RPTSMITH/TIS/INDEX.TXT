@@ -1,0 +1,25 @@
+TI Number	Description
+---------  	-----------
+TI4.TXT     	ReportSmith Frequently Asked Questions
+TI2546.TXT	Client Server Bug Report Form
+TI2572.TXT	Network Installation Guide 2.02A
+TI2626.TXT	Date Calculation
+TI2627.TXT	Calculating Current Age
+TI2628.TXT	Replacing a Table
+TI2629.TXT	Connecting to a Database and Opening a Table
+TI2630.TXT	Conditional Field Formatting
+TI2631.TXT	Conditionally Counting a Field
+TI2632.TXT	Visual Basic DDE Example
+TI2633.TXT	Sample Macro Dialog Box
+TI2634.TXT	Writing data out to a delimited text file
+TI2636.TXT	Selections on Paradox ODBC Date Fields
+TI2637.TXT	Selection Criteria based upon a Summary Field
+TI2638.TXT	Summarizing Macro Derived Fields
+TI2639.TXT	Calculating a Summary Field
+TI2640.TXT	Suppressing a Null Field (Field Squeezing)
+TI2690.TXT	Creating a Temporary Table
+TI2712.TXT	ReportSmith connectivity to Paradox 5 and dBASE 5
+TI2727.TXT	ReportSmith Frequently Asked Questions
+TI2741.TXT	Accessing a ReportSmith report via a dBASE DDELINK
+TI2757.TXT	Accessing ReportSmith via a Paradox DDE Link
+TI2760.TXT	Network Installation Guide v2.5

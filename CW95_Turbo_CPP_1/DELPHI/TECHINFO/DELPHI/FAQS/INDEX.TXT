@@ -1,0 +1,19 @@
+Delphi Frequently Asked Questions 
+(Listed By Delphi Compuserve Forum Section number)
+
+Non-Tech General 		DelSec01.Faq
+Installation 			DelSec03.Faq
+Delphi IDE			DelSec04.Faq
+Delphi VCL			DelSec05.Faq
+Delphi Database			DelSec06.Faq
+Object Pascal 			DelSec07.Faq
+VBX Controls			DelSec08.Faq
+Component Design		DelSec09.Faq
+Windows API			DelSec14.Faq
+Debugger/Tools			DelSec15.Faq
+OWL/BWCC			DelSec16.Faq
+TP/BP DOS Programming		DelSec17.Faq
+Turbo Vision			DelSec18.Faq
+Protected Mode Programming 	DelSec19.Faq
+Networks			DelSec20.Faq
+

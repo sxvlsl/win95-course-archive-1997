@@ -1,0 +1,38 @@
+# Archivos de imagen de disco
+*.iso
+*.ISO
+ISOs_Originales/
+
+# Binarios y ejecutables propietarios
+*.exe
+*.EXE
+*.dll
+*.DLL
+*.sys
+*.SYS
+*.drv
+*.DRV
+
+# Recursos pesados y multimedia del visor
+*.pak
+*.PAK
+*.snp
+*.SNP
+*.avi
+*.AVI
+*.wav
+*.WAV
+*.bmp
+*.BMP
+*.ico
+*.ICO
+*.raw
+*.RAW
+*.mme
+*.MME
+
+# Temporal y entorno de desarrollo moderno
+.DS_Store
+analizar_isos.py
+*.pyc
+__pycache__/

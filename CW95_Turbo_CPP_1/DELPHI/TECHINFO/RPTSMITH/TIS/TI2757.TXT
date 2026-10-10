@@ -1,0 +1,182 @@
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2757
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  January 30, 1995                         PAGE  :  1/3
+
+    TITLE  :  Accessing ReportSmith via a Paradox DDE Link
+
+
+
+
+OVERVIEW
+ 
+ReportSmith supports DDE links to other Windows applications that
+have DDE capabilities.  The following Technical Information
+article provides an example of how to call a previously created
+ReportSmith report from a Paradox form using DDE object Paradox
+and the LoadReport macro command in ReportSmith.
+ 
+DESCRIPTION
+ 
+Paradox code that communicates with ReportSmith via a DDE
+object can be run as a procedure attached to a form object.  
+For example, a pushButton event for a Pushbutton on a form can 
+include the following code.
+ 
+EXAMPLE 1
+ 
+To launch ReportSmith (or RunTime) from a Paradox form, integrate 
+the following code into your program:
+ 
+method pushButton(var eventInfo Event)
+var
+  d1 DDE
+  x  anyType
+endVar
+ 
+; ReportSmith recognizes "ReportSmith" and "Rptsmith" as
+; Application names, and "Command" and "System" as Topics.
+; Generally, "Command" can access most of the macro language
+; functions/statements, and "System" recognizes menu commands,
+; although many of them are disabled in the RunTime.
+ 
+; For the regular version of ReportSmith
+if Not d1.open("ReportSmith", "Command") Then   ;if not open...
+  x = execute("c:\\rptsmith\\rptsmith.exe", No, ExeShowNormal)
+ 
+; For the RunTime version of ReportSmith
+;if Not d1.open("RS_RunTime", "Command") Then   ;if not open...
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2757
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  January 30, 1995                         PAGE  :  2/3
+
+    TITLE  :  Accessing ReportSmith via a Paradox DDE Link
+
+
+
+
+; x = execute("c:\\RS_run\\RS_Run.exe", No, ExeShowNormal)
+ 
+endIf
+endmethod
+ 
+EXAMPLE 2
+ 
+To load and print a report on the default printer:
+ 
+method pushButton(var eventInfo Event)
+var
+  d1 DDE
+endvar
+ 
+d1.open("RptSmith", "Command")
+;d1.open("RS_RunTime", "Command")       ; if Runtime
+ 
+d1.execute("LoadReport \"c:\\rptsmith\\video\\summary.rpt\",
+\"\"")
+ 
+; print all pages on the default printer.
+d1.execute("PrintReport 0, 0, \"\", \"\", \"\"")
+ 
+; close this report
+d1.execute("CloseReport 1")
+ 
+endmethod
+ 
+EXAMPLE 3
+ 
+To close ReportSmith:
+ 
+method pushButton(var eventInfo Event)
+var
+  d1           DDE
+endvar
+ 
+if(d1.open("ReportSmith", "Command")) Then   
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PRODUCT  :  ReportSmith                            NUMBER  :  2757
+  VERSION  :  ALL
+       OS  :  ALL
+     DATE  :  January 30, 1995                         PAGE  :  3/3
+
+    TITLE  :  Accessing ReportSmith via a Paradox DDE Link
+
+
+
+
+;if(d1.open("RS_RunTime", "Command") Then   ;if RunTime
+ d1.execute("CloseRS 1")
+endIf
+endmethod
+ 
+Variations:
+ 
+To print the first page only of a report to the network printer
+named "Jammer" via LPT3 (network connection) using the default
+printer driver, change the d1.Execute(PrintReport........)
+command line (above) to read as follows:
+ 
+  d1.execute("PrintReport 1,1,\"Jammer\",\"LPT3\",\"\"")
+ 
+ADDITIONAL INFORMATION
+ 
+The above code is provided as an example of using the Paradox
+ObjectPal language and the ReportSmith macro language to make the
+two application programs function together as client and server. 
+If you wish further assistance with the above code, you may
+choose from a Borland Assist support package or use one of the
+Advisor hotlines.  Please refer to Technical Information document
+9800 for information on  Borland Assist, or call (800) 523-7070. 
+Borland provides toll-free automated technical support, 24 hours
+a day, at(800) 524-8420.  Borland publishes a book which lists
+programmers and consultants from around the country.  You may
+purchase a copy of the Developer's Registry from Customer
+Service.
+ 
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.
+ 
+ 
+ 
+ 
+ 
+
+
+DISCLAIMER: You have the right to use this technical information
+subject to the terms of the No-Nonsense License Statement that
+you received with the Borland product to which this information
+pertains.

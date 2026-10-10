@@ -1,0 +1,42 @@
+Instructions for the ide example STYLESHT.IDE.
+//
+// Instructions for StyleSht.ide
+// Copyright Borland International, 1994
+//
+
+Preface:
+This example builds on concepts described in the "SRCPOOL" directory. That 
+example walks through building a multi-target project, using SourcePools
+and reference copies. Although SourcePools and reference copying are used 
+in this example, they are by no means necessary for using StyleSheets.
+
+
+
+	This example shows how applying StyleSheets can dramatically ease the 
+process of creating multiple targets based on the same source and produce
+dramatically different results.
+	In this example one target is designed for debugging and
+pre-production, while the other target, using the exact same pool of 
+source code creates a 'delivery' edition with no debugging symbols.
+
+	Anywhere along the way you can inspect the impact of setting options
+and assigning StyleSheets by using the Options Inspector. To reach
+the Inspector:
+1) Bring up the SpeedMenu for a node in the Project View by hitting
+	the right-button while the cursor is over that node.
+2) Select 'View options hierarchy'
+
+
+How to apply StyleSheets:
+1) Bring up the SpeedMenu for styleshtdb [.exe] by hitting
+	the right-mouse button while the cursor is over that node.
+2) Select 'Edit node attributes' from the local menu.
+3) Select from the drop-list called StyleSheets one of pre-existing 
+	StyleSheets to apply to the node. Click OK.
+4) Optionally you can create your own StyleSheet (either based on a
+	pre-existing one, or from scratch) by pushing the 'Styles...' 
+	button in this dialog or from Option|Style Sheets from the main
+	menu.
+
+
+

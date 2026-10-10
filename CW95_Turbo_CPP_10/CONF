@@ -1,0 +1,229 @@
+[IIC]
+InternalDesc=TURBOC
+
+[PRODUCTO]
+Nombre=Turbo C++
+NumFicheros=51
+NumDiscos=10
+DiscoActual=10
+ConfirmReins=1
+DelFirstline=1
+Espacio=38000000
+Bitmap=MME_INS.BMP
+
+[PROGS]
+\tcwin45
+tcwin45\install.txt
+tcwin45\readme.txt
+tcwin45\unpaq.exe
+\tcwin45\bin
+tcwin45\bin\tcwtour.dll
+\tcwin45\acroread
+tcwin45\acroread\acrocore.dll
+tcwin45\acroread\acrograf.dll
+tcwin45\acroread\acroread.exe
+tcwin45\acroread\acroread.reg
+tcwin45\acroread\tcbooks.ico
+tcwin45\acroread\viewlib.dll
+\tcwin45\acroread\help
+tcwin45\acroread\help\help_r.pdf
+tcwin45\acroread\help\readme_r.txt
+\tcwin45\books
+tcwin45\books\owpg.pdf
+tcwin45\books\owtutor.pdf
+tcwin45\books\pg.pdf
+tcwin45\books\readrtip.pdf
+tcwin45\books\startup.pdf
+tcwin45\books\tcbooks.ico
+tcwin45\books\ug.pdf
+\tcwin45\tcwtour
+tcwin45\tcwtour\quiktour.ico
+tcwin45\tcwtour\tcwtour.hlp
+\tcwin45\tcwtour\avi
+tcwin45\tcwtour\avi\appexprt.avi
+tcwin45\tcwtour\avi\breakpt.avi
+tcwin45\tcwtour\avi\clsex2rw.avi
+tcwin45\tcwtour\avi\clsexprt.avi
+tcwin45\tcwtour\avi\debug.avi
+tcwin45\tcwtour\avi\debuginf.avi
+tcwin45\tcwtour\avi\evaluate.avi
+tcwin45\tcwtour\avi\inspect.avi
+tcwin45\tcwtour\avi\prjmgr3a.avi
+tcwin45\tcwtour\avi\projmgr1.avi
+tcwin45\tcwtour\avi\projmgr2.avi
+tcwin45\tcwtour\avi\projmgr4.avi
+tcwin45\tcwtour\avi\rw2.avi
+tcwin45\tcwtour\avi\step.avi
+tcwin45\tcwtour\avi\target.avi
+tcwin45\tcwtour\avi\watch.avi
+tcwin45\tcwtour\avi\workshop.avi
+\tcwin45\system
+tcwin45\system\SY______.PFB
+tcwin45\system\ZD______.PFB
+tcwin45\system\ZX______.PFB
+tcwin45\system\ZY______.PFB
+tcwin45\system\SY______.PFM
+tcwin45\system\ZD______.PFM
+tcwin45\system\ZX______.PFM
+tcwin45\system\ZX______.MMM
+tcwin45\system\ZY______.PFM
+tcwin45\system\ZY______.MMM
+tcwin45\system\ATMSYS.DRV
+tcwin45\system\ATM32.DLL
+\tcwin45
+moreproc\moreproc.bat
+
+[INI]
++winhelp.ini
+:TCWTOUR
+CdTcPath=#:\TCWIN45
+
++acroread.ini
+:AdobeViewer
+MaxDoc=1
+MaxApp=1
+ShortMenu=0
+ShowToolbar=1
+MaxPageCacheZoom=131072
+MinPageCacheTicks=12
+MaxPageCacheBytes=4194304
+FullScrolling=0
+DefaultSplitterPos=140
+ThreadIndicator=180
+DrawMissingThumbs=0
+ThumbViewScale=8192
+ThumbViewTimeout=120
+DefaultFitType=FitR
+DefaultInheritZoom=0
+MaxCosDocCache=200000
+DefaultOverviewType=1
+CaseSensitive=0
+WholeWords=0
+UseDIC=0
+CustomColor0=16777215
+CustomColor1=16777215
+CustomColor2=16777215
+CustomColor3=16777215
+CustomColor4=16777215
+CustomColor5=16777215
+CustomColor6=16777215
+CustomColor7=16777215
+CustomColor8=16777215
+CustomColor9=16777215
+CustomColor10=16777215
+CustomColor11=16777215
+CustomColor12=16777215
+CustomColor13=16777215
+CustomColor14=16777215
+CustomColor15=16777215
+User=Curso
+
+:Oem
+OEM1=For product information and online help,
+OEM2=please see the file HELP_R.PDF in
+OEM3=the Acrobat(tm) Reader Help folder.
+
+
++atm.ini
+
+:Settings
+Private=On
+ATMIcon=off
+TmpDir=@\TEMP
+TmpCount=0
+QLCDir=@
+LanguageCode=ENG
+ATM=off
+FontCache=256
+SynonymPSBegin=9
+Version=3.01
+
+:Aliases
+Helv=Helvetica
+Tms Rmn=Times
+Roman=Times
+Modern=Helvetica
+
+:Synonyms
+Helv=Helvetica
+Tms Rmn=Times
+
+:OldScreenFonts
+Helv=Yes
+Tms Rmn=Yes
+Courier=Yes
+
+:ATMVersions
+pm5app=2.60
+
+:DisablePSBD
+Acroexch=Yes
+Acroread=Yes
+XPress=Yes
+Wpwin60=Yes
+wpwprint=Yes
+FLW2=Yes
+
+:Mono
+Courier=Yes
+LetterGothic=Yes
+PrestigeElite=Yes
+Orator=Yes
+
+:Fonts
+Symbol=@\PFM\SY______.PFM,@\SY______.PFB
+ZapfDingbats=@\PFM\ZD______.PFM,@\ZD______.PFB
+AdobeSanMM=@\PFM\ZX______.PFM,@\ZX______.PFB
+AdobeSerMM=@\PFM\ZY______.PFM,@\ZY______.PFB
+
+:MMFonts
+AdobeSanMM=@\PFM\ZX______.MMM,@\ZX______.PFB
+AdobeSerMM=@\PFM\ZY______.MMM,@\ZY______.PFB
+
++system.ini
+
+:boot
+system.drv=atmsys.drv
+atm.system.drv=system.drv
+
++win.ini
+
+
+:Extensions
+PDF=#:\tcwin45\ACROREAD\ACROREAD.EXE ^.PDF
+
+:Adobe Display
+UseGDI=1
+
+[GRUPO]
+-TCW.GRP "Turbo C++ 4.5"
+\tcwin45\bin
+tcw.exe Turbo C++
+workshop.exe Resource Workshop
+openhelp.exe OpenHelp
+ohelpcfg.exe OpenHelp Configuration
+ole.hlp OLE2 Online Help
+winsight.exe Winsight
+winspctr.exe Winspector
+fconvert.exe File Convert
+ctl3d.hlp Control 3D Reference
+owl.hlp ObjectWindows Reference
+bcw.hlp TCW and Library Reference
+win31wh.hlp Windows API Reference
+ocf.hlp ObjectComponent Reference
+workhelp.hlp Resource Workshop Reference
+rsl.hlp Resource Script Reference
+winsight.hlp Winsight Reference
+winspctr.hlp Winspector Reference
+bwcc.hlp Borland Custom Controls
+bcpp.hlp Programming Tips
+classlib.hlp Class Library Reference
+cwh.hlp Creating Help
+\tcwin45\tcwtour
+tcwtour.hlp Quick Tour
+\tcwin45\acroread
+acroread.exe Turbo C++ 4.5 Online Books;\tcwin45\books\startup.pdf
+
+[SISTEMA]
+
+[EXTERNO]
