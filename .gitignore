@@ -36,3 +36,35 @@ ISOs_Originales/
 analizar_isos.py
 *.pyc
 __pycache__/
+
+# --- Regenerable desde las ISOs (ver MANIFEST_*.sha256 y fastextract.py) ---
+Extraccion_UNPAQ/
+Extraccion_PAK/
+Herramientas_Borland_Extraidas/
+# --- Experimentos / temporales / IDE ---
+tools/libmspack/
+tools/qdec
+.idea/
+*.o
+*.log
+Extraccion_UNPAQ_log.txt
+Extraccion_UNPAQ_log.txt
+
+# --- Binarios (mayúsculas/minúsculas: los originales son .PAK/.SNP/.EXE...) ---
+Contenedores_Binarios_MME/
+tools/qdec
+tools/qdec_*
+!tools/qdec.c
+*.[Pp][Aa][Kk]
+*.[Ss][Nn][Pp]
+*.[Dd][Aa][Tt]
+
+# --- Binarios (mayúsculas/minúsculas: los originales son .PAK/.SNP/.EXE...) ---
+Contenedores_Binarios_MME/
+tools/qdec
+tools/qdec_*
+!tools/qdec.c
+*.[Pp][Aa][Kk]
+*.[Ss][Nn][Pp]
+*.[Dd][Aa][Tt]
+Extraccion_UNPAQ_log.txt
