@@ -71,3 +71,6 @@ Extraccion_UNPAQ_log.txt
 
 # Material generado/local
 work/
+
+# Librerias de Borland (cualquier capitalizacion)
+*.[Ll][Ii][Bb]
